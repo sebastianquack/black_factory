@@ -15,6 +15,12 @@
   <%= @challenge.description %>
 </p>
 
+<p>
+  <b>Designs:</b>
+  <% @challenge.designs.each do |design| %>
+  <%= design.name %>;
+  <% end %>
+</p>
 
 <%= link_to 'Edit', edit_challenge_path(@challenge) %> |
 <%= link_to 'Back', challenges_path %>

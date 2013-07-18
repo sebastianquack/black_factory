@@ -1,4 +1,7 @@
 BlackFactory::Application.routes.draw do
+  resources :designs
+
+
   resources :challenges
 
   # The priority is based upon order of creation:
