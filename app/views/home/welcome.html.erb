@@ -1,0 +1,20 @@
+<h1>Listing challenges</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Time</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @challenges.each do |challenge| %>
+  <tr>
+    <td><%= challenge.name %></td>
+    <td><%= challenge.time %></td>
+    <td><%= challenge.description %></td>
+  </tr>
+<% end %>
+</table>
