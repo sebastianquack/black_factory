@@ -17,9 +17,11 @@
 
 <p>
   <b>Designs:</b>
+  <ul>
   <% @challenge.designs.each do |design| %>
-  <%= design.name %>;
+  	<li><%= design.name %></li>
   <% end %>
+  </ul>
 </p>
 
 <%= link_to 'Edit', edit_challenge_path(@challenge) %> |
