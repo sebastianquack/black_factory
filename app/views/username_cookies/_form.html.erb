@@ -1,10 +1,10 @@
-<%= form_for(@username_cooky) do |f| %>
-  <% if @username_cooky.errors.any? %>
+<%= form_for(@username_cookie) do |f| %>
+  <% if @username_cookie.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@username_cooky.errors.count, "error") %> prohibited this username_cooky from being saved:</h2>
+      <h2><%= pluralize(@username_cookie.errors.count, "error") %> prohibited this username_cookie from being saved:</h2>
 
       <ul>
-      <% @username_cooky.errors.full_messages.each do |msg| %>
+      <% @username_cookie.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>

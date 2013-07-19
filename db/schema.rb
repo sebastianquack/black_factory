@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719115303) do
+ActiveRecord::Schema.define(:version => 20130719121317) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -21,8 +21,16 @@ ActiveRecord::Schema.define(:version => 20130719115303) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "designs", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "challenge_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "username_cookies", :force => true do |t|
-    t.string   "hash"
+    t.string   "cookiehash"
     t.string   "username"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -36,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20130719115303) do
   end
 
   create_table "vote_cookies", :force => true do |t|
-    t.string   "hash"
+    t.string   "cookiehash"
     t.integer  "design_id"
     t.integer  "vote"
     t.string   "ip"

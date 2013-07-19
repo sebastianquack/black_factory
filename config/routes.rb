@@ -1,14 +1,8 @@
 BlackFactory::Application.routes.draw do
 
-  resources :vote_cookies
-
-
-  resources :username_cookies
-
-
-  resources :username_cookies
+  resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
+  resources :username_cookies # watch out: singular helper methods are generated with cooky
   resources :username_scores
-  resources :vote_cookies
   resources :designs
   resources :challenges
 
