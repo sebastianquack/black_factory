@@ -15,8 +15,20 @@
 
 <p>
   <b>Votes:</b>
-  <%= @design.votes.count %>
+  <%= VoteCookie.where(design_id: @design.id).sum('vote') %>
 </p>
+
+	<% if @vote_cookie.vote == 1 %> 
+		Dafür!<br/>
+	<% else %>
+		<%= link_to "Dafür!", controller: "designs", action: "vote", id: @design, value: 1 %><br/>
+	<% end %>
+	
+	<% if @vote_cookie.vote == -1 %> 
+		Dagegen!<br/>
+	<% else %>
+		<%= link_to "Dagegen!", controller: "designs", action: "vote", id: @design, value: -1 %><br/>
+	<% end %>
 
 <p>
   <b>Comments:</b><br/>

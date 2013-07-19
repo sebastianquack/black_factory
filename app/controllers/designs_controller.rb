@@ -1,9 +1,15 @@
+require 'securerandom'
+
 class DesignsController < ApplicationController
 
   # GET /designs/1
   # GET /designs/1.json
   def show_public
     @design = Design.find(params[:id])
+		cookie_hash = cookies[:vote_hash]
+		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
+		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash).first
+		@vote_cookie = VoteCookie.new if @vote_cookie.nil?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -28,6 +34,29 @@ class DesignsController < ApplicationController
       end
     end
   end
+
+	def vote 		
+		cookie_hash = cookies[:vote_hash]
+		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
+		
+		@design = Design.find(params[:id])
+		
+		record = VoteCookie.where(cookiehash: cookie_hash).first
+		if record == nil
+			record = VoteCookie.new
+			record.design_id = @design.id
+			record.cookiehash = cookie_hash
+			record.vote = params[:value]			
+		elsif record.vote == 1 && params[:value].to_i == -1	
+			record.vote = -1
+		elsif record.vote == -1 && params[:value].to_i == 1 
+			record.vote = 1
+		end
+		record.save
+	
+		redirect_to :action => "show_public", :id => @design
+
+	end
 
   # GET /designs
   # GET /designs.json
