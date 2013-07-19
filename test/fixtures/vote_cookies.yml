@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cookiehash: MyString
+  design_id: 1
+  vote: 1
+  ip: MyString
+
+two:
+  cookiehash: MyString
+  design_id: 1
+  vote: 1
+  ip: MyString

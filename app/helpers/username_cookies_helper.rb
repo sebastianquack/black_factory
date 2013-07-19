@@ -1,0 +1,2 @@
+module UsernameCookiesHelper
+end

@@ -1,11 +1,12 @@
 BlackFactory::Application.routes.draw do
-  resources :comments
-
-
-  resources :designs
-
 
   resources :challenges
+  resources :designs
+  resources :comments
+  resources :username_cookies
+  resources :username_scores
+  resources :vote_cookies
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

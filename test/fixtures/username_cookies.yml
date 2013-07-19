@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  cookiehash: MyString
+  username: MyString
+
+two:
+  cookiehash: MyString
+  username: MyString
