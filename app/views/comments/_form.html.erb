@@ -16,9 +16,13 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :design_id, "Design" %><br />
-    <%= f.select :design_id, Design.order("created_at").collect { |d| [d.name, d.id] } %>
+    <%= f.label :design_id %><br />
+    <%= f.select :design_id, Design.order("created_at").collect { |d| [d.name, d.id] }.insert(0, ["(choose either challenge or design)", nil]) %>
   </div>
+  <div class="field">
+    <%= f.label :challenge_id %><br />
+    <%= f.select :challenge_id, Challenge.order("time").collect { |c| [c.name, c.id] }.insert(0, ["(choose either challenge or design)", nil]) %>
+  </div>  
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>

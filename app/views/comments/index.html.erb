@@ -3,6 +3,7 @@
 <table>
   <tr>
     <th>Content</th>
+    <th>Challenge</th>
     <th>Design</th>
     <th>Username</th>
     <th>Ip</th>
@@ -14,6 +15,7 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.content %></td>
+    <td><%= comment.challenge.name %></td>
     <td><%= comment.design_id %></td>
     <td><%= comment.username %></td>
     <td><%= comment.ip %></td>
