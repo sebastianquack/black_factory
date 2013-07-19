@@ -1,20 +1,9 @@
-<h1>Listing challenges</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Time</th>
-    <th>Description</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @challenges.each do |challenge| %>
-  <tr>
-    <td><%= challenge.name %></td>
-    <td><%= challenge.time %></td>
-    <td><%= challenge.description %></td>
-  </tr>
+
+<h2><%= challenge.name %></h2>
+<h3><%= challenge.time %></h3>
+<p><%= challenge.description %></p>
+<%= link_to "Link", controller: "challenges", action: "show_public", id: challenge %>
+
 <% end %>
-</table>
+

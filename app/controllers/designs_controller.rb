@@ -1,4 +1,16 @@
 class DesignsController < ApplicationController
+
+  # GET /designs/1
+  # GET /designs/1.json
+  def show_public
+    @design = Design.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @design }
+    end
+  end
+
   # GET /designs
   # GET /designs.json
   def index

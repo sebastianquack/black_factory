@@ -1,0 +1,23 @@
+<p>
+  <b>Name:</b>
+  <%= @challenge.name %>
+</p>
+
+<p>
+  <b>Time:</b>
+  <%= @challenge.time %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @challenge.description %>
+</p>
+
+<p>
+  <b>Designs:</b>
+  <ul>
+  <% @challenge.designs.each do |design| %>
+		<%= link_to design.name, controller: "designs", action: "show_public", id: design %>
+  <% end %>
+  </ul>
+</p>

@@ -1,5 +1,17 @@
 class ChallengesController < ApplicationController
-  # GET /challenges
+ 
+  # GET /challenges/1
+  # GET /challenges/1.json
+  def show_public
+    @challenge = Challenge.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @challenge }
+    end
+  end
+
+ # GET /challenges
   # GET /challenges.json
   def index
     @challenges = Challenge.all
