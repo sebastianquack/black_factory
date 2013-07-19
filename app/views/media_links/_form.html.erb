@@ -1,0 +1,33 @@
+<%= form_for(@media_link) do |f| %>
+  <% if @media_link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@media_link.errors.count, "error") %> prohibited this media_link from being saved:</h2>
+
+      <ul>
+      <% @media_link.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :challenge_id %><br />
+    <%= f.number_field :challenge_id %>
+  </div>
+  <div class="field">
+    <%= f.label :design_id %><br />
+    <%= f.number_field :design_id %>
+  </div>
+  <div class="field">
+    <%= f.label :url %><br />
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

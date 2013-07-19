@@ -15,3 +15,6 @@
 /tmp
 
 *.DS_Store
+
+#ignore paperclip images for image class
+/public/system/images/images/*

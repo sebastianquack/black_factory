@@ -6,13 +6,15 @@ BlackFactory::Application.routes.draw do
 	match 'designs/:id/vote' => 'designs#vote'
 
   scope "admin" do
-		get "/", :controller => :admin, :action => :index
-	  resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
+	get "/", :controller => :admin, :action => :index
+	resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
   	resources :username_cookies # watch out: singular helper methods are generated with cooky
-	  resources :username_scores
+	resources :username_scores
   	resources :designs
-	  resources :challenges
+	resources :challenges
   	resources :comments
+  	resources :media_links
+  	resources :images
   end
 
   # The priority is based upon order of creation:

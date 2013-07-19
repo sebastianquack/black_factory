@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Challenge:</b>
+  <%= @media_link.challenge_id %>
+</p>
+
+<p>
+  <b>Design:</b>
+  <%= @media_link.design_id %>
+</p>
+
+<p>
+  <b>Url:</b>
+  <%= @media_link.url %>
+</p>
+
+<a class="oembed" href="<%= @media_link.url %>">...</a>
+
+<p>
+  <b>Ip:</b>
+  <%= @media_link.ip %>
+</p>
+
+
+<%= link_to 'Edit', edit_media_link_path(@media_link) %> |
+<%= link_to 'Back', media_links_path %>

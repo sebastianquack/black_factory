@@ -1,0 +1,29 @@
+<h1>Listing media_links</h1>
+
+<table>
+  <tr>
+    <th>Challenge</th>
+    <th>Design</th>
+    <th>Url</th>
+    <th>Ip</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @media_links.each do |media_link| %>
+  <tr>
+    <td><%= media_link.challenge_id %></td>
+    <td><%= media_link.design_id %></td>
+    <td><%= media_link.url %></td>
+    <td><%= media_link.ip %></td>
+    <td><%= link_to 'Show', media_link %></td>
+    <td><%= link_to 'Edit', edit_media_link_path(media_link) %></td>
+    <td><%= link_to 'Destroy', media_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Media link', new_media_link_path %>
