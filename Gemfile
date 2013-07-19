@@ -24,8 +24,10 @@ gem 'jquery-rails'
 #gem 'aws-s3'
 gem 'aws-sdk'
 
-gem "paperclip", "~> 3.0"
-gem 'cocaine', '0.3.2' # new version of cocaine used in paperclip has bug
+gem "paperclip", "~> 3.5.0"
+
+#gem "paperclip", "~> 3.0"
+#gem 'cocaine', '0.3.2' # new version of cocaine used in paperclip has bug
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
