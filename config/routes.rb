@@ -1,12 +1,11 @@
 BlackFactory::Application.routes.draw do
 
-  resources :challenges
-  resources :designs
-  resources :comments
-  resources :username_cookies
+  resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
+  resources :username_cookies # watch out: singular helper methods are generated with cooky
   resources :username_scores
-  resources :vote_cookies
-
+  resources :designs
+  resources :challenges
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

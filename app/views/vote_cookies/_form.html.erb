@@ -1,10 +1,10 @@
-<%= form_for(@vote_cooky) do |f| %>
-  <% if @vote_cooky.errors.any? %>
+<%= form_for(@vote_cookie) do |f| %>
+  <% if @vote_cookie.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@vote_cooky.errors.count, "error") %> prohibited this vote_cooky from being saved:</h2>
+      <h2><%= pluralize(@vote_cookie.errors.count, "error") %> prohibited this vote_cookie from being saved:</h2>
 
       <ul>
-      <% @vote_cooky.errors.full_messages.each do |msg| %>
+      <% @vote_cookie.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :design_id %><br />
-    <%= f.number_field :design_id %>
+    <%= f.select :design_id, Design.order("challenge_id").collect {|d| [d.challenge.name + ": " + d.name, d.id]} %>
   </div>
   <div class="field">
     <%= f.label :vote %><br />

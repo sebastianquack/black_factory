@@ -11,15 +11,15 @@
     <th></th>
   </tr>
 
-<% @vote_cookies.each do |vote_cooky| %>
+<% @vote_cookies.each do |vote_cookie| %>
   <tr>
-    <td><%= vote_cooky.cookiehash %></td>
-    <td><%= vote_cooky.design_id %></td>
-    <td><%= vote_cooky.vote %></td>
-    <td><%= vote_cooky.ip %></td>
-    <td><%= link_to 'Show', vote_cooky %></td>
-    <td><%= link_to 'Edit', edit_vote_cooky_path(vote_cooky) %></td>
-    <td><%= link_to 'Destroy', vote_cooky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= vote_cookie.cookiehash %></td>
+    <td><%= vote_cookie.design_id %></td>
+    <td><%= vote_cookie.vote %></td>
+    <td><%= vote_cookie.ip %></td>
+    <td><%= link_to 'Show', vote_cookie %></td>
+    <td><%= link_to 'Edit', edit_vote_cooky_path(vote_cookie) %></td>
+    <td><%= link_to 'Destroy', vote_cookie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

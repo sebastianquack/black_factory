@@ -2,7 +2,7 @@ require 'test_helper'
 
 class VoteCookiesControllerTest < ActionController::TestCase
   setup do
-    @vote_cooky = vote_cookies(:one)
+    @vote_cookie = vote_cookies(:one)
   end
 
   test "should get index" do
@@ -16,32 +16,32 @@ class VoteCookiesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create vote_cooky" do
+  test "should create vote_cookie" do
     assert_difference('VoteCookie.count') do
-      post :create, vote_cooky: { cookiehash: @vote_cooky.cookiehash, design_id: @vote_cooky.design_id, ip: @vote_cooky.ip, vote: @vote_cooky.vote }
+      post :create, vote_cookie: { cookiehash: @vote_cookie.cookiehash, design_id: @vote_cookie.design_id, ip: @vote_cookie.ip, vote: @vote_cookie.vote }
     end
 
-    assert_redirected_to vote_cooky_path(assigns(:vote_cooky))
+    assert_redirected_to vote_cookie_path(assigns(:vote_cookie))
   end
 
-  test "should show vote_cooky" do
-    get :show, id: @vote_cooky
+  test "should show vote_cookie" do
+    get :show, id: @vote_cookie
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @vote_cooky
+    get :edit, id: @vote_cookie
     assert_response :success
   end
 
-  test "should update vote_cooky" do
-    put :update, id: @vote_cooky, vote_cooky: { cookiehash: @vote_cooky.cookiehash, design_id: @vote_cooky.design_id, ip: @vote_cooky.ip, vote: @vote_cooky.vote }
-    assert_redirected_to vote_cooky_path(assigns(:vote_cooky))
+  test "should update vote_cookie" do
+    put :update, id: @vote_cookie, vote_cookie: { cookiehash: @vote_cookie.cookiehash, design_id: @vote_cookie.design_id, ip: @vote_cookie.ip, vote: @vote_cookie.vote }
+    assert_redirected_to vote_cookie_path(assigns(:vote_cookie))
   end
 
-  test "should destroy vote_cooky" do
+  test "should destroy vote_cookie" do
     assert_difference('VoteCookie.count', -1) do
-      delete :destroy, id: @vote_cooky
+      delete :destroy, id: @vote_cookie
     end
 
     assert_redirected_to vote_cookies_path
