@@ -5,6 +5,7 @@ BlackFactory::Application.routes.draw do
   resources :username_scores
   resources :designs
   resources :challenges
+  resources :comments
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
