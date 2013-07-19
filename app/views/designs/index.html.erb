@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Description</th>
     <th>Challenge</th>
+    <th>Username</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= design.name %></td>
     <td><%= design.description %></td>
     <td><%= design.challenge.name %></td>
+    <td><%= design.username %></td>
     <td><%= link_to 'Show', design %></td>
     <td><%= link_to 'Edit', edit_design_path(design) %></td>
     <td><%= link_to 'Destroy', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>

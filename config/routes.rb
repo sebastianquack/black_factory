@@ -1,4 +1,7 @@
 BlackFactory::Application.routes.draw do
+  resources :comments
+
+
   resources :designs
 
 
