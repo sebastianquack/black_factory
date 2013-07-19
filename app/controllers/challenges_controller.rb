@@ -4,6 +4,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/1.json
   def show_public
     @challenge = Challenge.find(params[:id])
+    @design = Design.new
 
     respond_to do |format|
       format.html # show.html.erb

@@ -11,6 +11,24 @@ class DesignsController < ApplicationController
     end
   end
 
+	def create_public 
+    @design = Design.new(params[:design])
+
+    respond_to do |format|
+      if @design.save
+        format.html { 
+        	redirect_to :controller => "challenges", :action => "show_public", :id => @design.challenge
+        }
+        format.json { render json: @design, status: :created, location: @design }
+      else
+        format.html { 
+        	redirect_to :controller => "challenges", :action => "show_public", :id => params[:design][:challenge_id]
+        }
+        format.json { render json: @design.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # GET /designs
   # GET /designs.json
   def index
