@@ -20,6 +20,13 @@
   <%= @design.votes.count %>
 </p>
 
+<p>
+  <b>Comments:</b>
+  <% @design.comments.each do |comment| %>
+  	<%= comment.username + ': ' + comment.content %><br/>
+  <% end %>
+</p>
+
 
 
 <%= link_to 'Edit', edit_design_path(@design) %> |
