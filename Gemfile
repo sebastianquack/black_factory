@@ -21,6 +21,9 @@ end
 
 gem 'jquery-rails'
 
+#gem 'aws-s3'
+gem 'aws-sdk'
+
 gem "paperclip", "~> 3.0"
 gem 'cocaine', '0.3.2' # new version of cocaine used in paperclip has bug
 
