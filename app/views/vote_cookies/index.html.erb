@@ -1,0 +1,29 @@
+<h1>Listing vote_cookies</h1>
+
+<table>
+  <tr>
+    <th>Hash</th>
+    <th>Design</th>
+    <th>Vote</th>
+    <th>Ip</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @vote_cookies.each do |vote_cooky| %>
+  <tr>
+    <td><%= vote_cooky.hash %></td>
+    <td><%= vote_cooky.design_id %></td>
+    <td><%= vote_cooky.vote %></td>
+    <td><%= vote_cooky.ip %></td>
+    <td><%= link_to 'Show', vote_cooky %></td>
+    <td><%= link_to 'Edit', edit_vote_cooky_path(vote_cooky) %></td>
+    <td><%= link_to 'Destroy', vote_cooky, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vote cookie', new_vote_cooky_path %>

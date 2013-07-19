@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hash:</b>
+  <%= @vote_cooky.hash %>
+</p>
+
+<p>
+  <b>Design:</b>
+  <%= @vote_cooky.design_id %>
+</p>
+
+<p>
+  <b>Vote:</b>
+  <%= @vote_cooky.vote %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%= @vote_cooky.ip %>
+</p>
+
+
+<%= link_to 'Edit', edit_vote_cooky_path(@vote_cooky) %> |
+<%= link_to 'Back', vote_cookies_path %>

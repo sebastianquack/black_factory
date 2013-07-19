@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hash:</b>
+  <%= @username_cooky.hash %>
+</p>
+
+<p>
+  <b>Username:</b>
+  <%= @username_cooky.username %>
+</p>
+
+
+<%= link_to 'Edit', edit_username_cooky_path(@username_cooky) %> |
+<%= link_to 'Back', username_cookies_path %>

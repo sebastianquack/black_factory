@@ -1,0 +1,25 @@
+<%= form_for(@username_cooky) do |f| %>
+  <% if @username_cooky.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@username_cooky.errors.count, "error") %> prohibited this username_cooky from being saved:</h2>
+
+      <ul>
+      <% @username_cooky.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hash %><br />
+    <%= f.text_field :hash %>
+  </div>
+  <div class="field">
+    <%= f.label :username %><br />
+    <%= f.text_field :username %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

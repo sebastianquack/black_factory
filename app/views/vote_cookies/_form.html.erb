@@ -1,0 +1,33 @@
+<%= form_for(@vote_cooky) do |f| %>
+  <% if @vote_cooky.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@vote_cooky.errors.count, "error") %> prohibited this vote_cooky from being saved:</h2>
+
+      <ul>
+      <% @vote_cooky.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :hash %><br />
+    <%= f.text_field :hash %>
+  </div>
+  <div class="field">
+    <%= f.label :design_id %><br />
+    <%= f.number_field :design_id %>
+  </div>
+  <div class="field">
+    <%= f.label :vote %><br />
+    <%= f.number_field :vote %>
+  </div>
+  <div class="field">
+    <%= f.label :ip %><br />
+    <%= f.text_field :ip %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
