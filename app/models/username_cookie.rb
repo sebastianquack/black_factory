@@ -1,3 +1,3 @@
 class UsernameCookie < ActiveRecord::Base
-  attr_accessible :hash, :username
+  attr_accessible :cookiehash, :username
 end

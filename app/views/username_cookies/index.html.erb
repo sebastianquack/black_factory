@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Hash</th>
+    <th>Cookiehash</th>
     <th>Username</th>
     <th></th>
     <th></th>
@@ -11,7 +11,7 @@
 
 <% @username_cookies.each do |username_cooky| %>
   <tr>
-    <td><%= username_cooky.hash %></td>
+    <td><%= username_cooky.cookiehash %></td>
     <td><%= username_cooky.username %></td>
     <td><%= link_to 'Show', username_cooky %></td>
     <td><%= link_to 'Edit', edit_username_cooky_path(username_cooky) %></td>

@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  hash: MyString
+  cookiehash: MyString
   design_id: 1
   vote: 1
   ip: MyString
 
 two:
-  hash: MyString
+  cookiehash: MyString
   design_id: 1
   vote: 1
   ip: MyString

@@ -18,7 +18,7 @@ class VoteCookiesControllerTest < ActionController::TestCase
 
   test "should create vote_cooky" do
     assert_difference('VoteCookie.count') do
-      post :create, vote_cooky: { design_id: @vote_cooky.design_id, hash: @vote_cooky.hash, ip: @vote_cooky.ip, vote: @vote_cooky.vote }
+      post :create, vote_cooky: { cookiehash: @vote_cooky.cookiehash, design_id: @vote_cooky.design_id, ip: @vote_cooky.ip, vote: @vote_cooky.vote }
     end
 
     assert_redirected_to vote_cooky_path(assigns(:vote_cooky))
@@ -35,7 +35,7 @@ class VoteCookiesControllerTest < ActionController::TestCase
   end
 
   test "should update vote_cooky" do
-    put :update, id: @vote_cooky, vote_cooky: { design_id: @vote_cooky.design_id, hash: @vote_cooky.hash, ip: @vote_cooky.ip, vote: @vote_cooky.vote }
+    put :update, id: @vote_cooky, vote_cooky: { cookiehash: @vote_cooky.cookiehash, design_id: @vote_cooky.design_id, ip: @vote_cooky.ip, vote: @vote_cooky.vote }
     assert_redirected_to vote_cooky_path(assigns(:vote_cooky))
   end
 

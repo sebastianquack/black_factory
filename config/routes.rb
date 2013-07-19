@@ -1,5 +1,11 @@
 BlackFactory::Application.routes.draw do
 
+  resources :vote_cookies
+
+
+  resources :username_cookies
+
+
   resources :username_cookies
   resources :username_scores
   resources :vote_cookies

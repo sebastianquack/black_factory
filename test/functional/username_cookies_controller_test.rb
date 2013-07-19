@@ -18,7 +18,7 @@ class UsernameCookiesControllerTest < ActionController::TestCase
 
   test "should create username_cooky" do
     assert_difference('UsernameCookie.count') do
-      post :create, username_cooky: { hash: @username_cooky.hash, username: @username_cooky.username }
+      post :create, username_cooky: { cookiehash: @username_cooky.cookiehash, username: @username_cooky.username }
     end
 
     assert_redirected_to username_cooky_path(assigns(:username_cooky))
@@ -35,7 +35,7 @@ class UsernameCookiesControllerTest < ActionController::TestCase
   end
 
   test "should update username_cooky" do
-    put :update, id: @username_cooky, username_cooky: { hash: @username_cooky.hash, username: @username_cooky.username }
+    put :update, id: @username_cooky, username_cooky: { cookiehash: @username_cooky.cookiehash, username: @username_cooky.username }
     assert_redirected_to username_cooky_path(assigns(:username_cooky))
   end
 
