@@ -5,7 +5,15 @@ class ChallengesController < ApplicationController
   def show_public
     @challenge = Challenge.find(params[:id])
     @design = Design.new
-
+		
+		@designs_sorted = []
+		@challenge.designs.each do |design|
+			@designs_sorted.push({ :design => design,
+				:votes => VoteCookie.where(design_id: design.id).sum('vote')
+			})
+		end
+		@designs_sorted.sort_by! {|d| - d[:votes]}
+		
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @challenge }

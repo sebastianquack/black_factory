@@ -8,7 +8,7 @@ class DesignsController < ApplicationController
     @design = Design.find(params[:id])
 		cookie_hash = cookies[:vote_hash]
 		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
-		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash).first
+		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
 		@vote_cookie = VoteCookie.new if @vote_cookie.nil?
 
     respond_to do |format|
@@ -41,7 +41,7 @@ class DesignsController < ApplicationController
 		
 		@design = Design.find(params[:id])
 		
-		record = VoteCookie.where(cookiehash: cookie_hash).first
+		record = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
 		if record == nil
 			record = VoteCookie.new
 			record.design_id = @design.id

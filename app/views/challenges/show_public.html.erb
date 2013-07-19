@@ -16,8 +16,8 @@
 <p>
   <b>Designs:</b>
   <ul>
-  <% @challenge.designs.each do |design| %>
-		<%= link_to design.name, controller: "designs", action: "show_public", id: design %>
+  <% @designs_sorted.each do |design| %>
+		<%= link_to design[:design].name + " (" + design[:votes].to_s + ")", controller: "designs", action: "show_public", id: design[:design] %><br/>
   <% end %>
   </ul>
 </p>
