@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719134241) do
+ActiveRecord::Schema.define(:version => 20130719161037) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -38,6 +38,27 @@ ActiveRecord::Schema.define(:version => 20130719134241) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.string   "username"
+  end
+
+  create_table "images", :force => true do |t|
+    t.integer  "challenge_id"
+    t.integer  "design_id"
+    t.string   "ip"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "media_links", :force => true do |t|
+    t.integer  "challenge_id"
+    t.integer  "design_id"
+    t.string   "url"
+    t.string   "ip"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "username_cookies", :force => true do |t|

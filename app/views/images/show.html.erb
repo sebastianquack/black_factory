@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+	<%= image_tag @image.image.url(:medium) %>
+</p>
+
+<p>
+  <b>Challenge:</b>
+  <%= @image.challenge_id %>
+</p>
+
+<p>
+  <b>Design:</b>
+  <%= @image.design_id %>
+</p>
+
+<p>
+  <b>Ip:</b>
+  <%= @image.ip %>
+</p>
+
+
+<%= link_to 'Edit', edit_image_path(@image) %> |
+<%= link_to 'Back', images_path %>
