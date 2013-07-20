@@ -43,3 +43,6 @@ gem "paperclip", "~> 3.5.0"
 
 # To use debugger
 # gem 'debugger'
+
+gem 'rename'
+

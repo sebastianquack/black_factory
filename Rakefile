@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BlackFactory::Application.load_tasks
+DarkFactory::Application.load_tasks

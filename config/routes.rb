@@ -1,4 +1,4 @@
-BlackFactory::Application.routes.draw do
+DarkFactory::Application.routes.draw do
 
   match 'challenges/:id' => 'challenges#show_public'
   match 'designs/create' => 'designs#create_public'
