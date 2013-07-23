@@ -6,6 +6,7 @@
     <th>Challenge</th>
     <th>Design</th>
     <th>Ip</th>
+    <th>Hidden</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,6 +18,7 @@
     <td><%= image.challenge_id %></td>
     <td><%= image.design_id %></td>
     <td><%= image.ip %></td>
+    <td><%= image.hidden %></td>
     <td><%= link_to 'Show', image %></td>
     <td><%= link_to 'Edit', edit_image_path(image) %></td>
     <td><%= link_to 'Destroy', image, method: :delete, data: { confirm: 'Are you sure?' } %></td>

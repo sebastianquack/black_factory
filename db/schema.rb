@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130719161037) do
+ActiveRecord::Schema.define(:version => 20130723142300) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
     t.datetime "time"
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "hidden",      :default => true
   end
 
   create_table "comments", :force => true do |t|
@@ -26,30 +27,33 @@ ActiveRecord::Schema.define(:version => 20130719161037) do
     t.integer  "design_id"
     t.string   "username"
     t.string   "ip"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.integer  "challenge_id"
+    t.boolean  "hidden",       :default => false
   end
 
   create_table "designs", :force => true do |t|
     t.string   "name"
     t.text     "description"
     t.integer  "challenge_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
     t.string   "username"
+    t.boolean  "hidden",       :default => false
   end
 
   create_table "images", :force => true do |t|
     t.integer  "challenge_id"
     t.integer  "design_id"
     t.string   "ip"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                            :null => false
+    t.datetime "updated_at",                            :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.boolean  "hidden",             :default => false
   end
 
   create_table "media_links", :force => true do |t|
@@ -57,8 +61,9 @@ ActiveRecord::Schema.define(:version => 20130719161037) do
     t.integer  "design_id"
     t.string   "url"
     t.string   "ip"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "hidden",       :default => false
   end
 
   create_table "username_cookies", :force => true do |t|

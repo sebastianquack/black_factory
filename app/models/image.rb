@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :image, :challenge_id, :design_id, :ip
+  attr_accessible :image, :challenge_id, :design_id, :ip, :hidden
   has_attached_file :image, 
   	:styles => { :large => "500x500", :medium => "300x300>", :thumb => "100x100>" },
     :storage => :s3,

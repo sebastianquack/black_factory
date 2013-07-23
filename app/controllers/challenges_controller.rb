@@ -8,9 +8,11 @@ class ChallengesController < ApplicationController
 		
 		@designs_sorted = []
 		@challenge.designs.each do |design|
-			@designs_sorted.push({ :design => design,
-				:votes => VoteCookie.where(design_id: design.id).sum('vote')
-			})
+			unless design.hidden
+				@designs_sorted.push({ :design => design,
+					:votes => VoteCookie.where(design_id: design.id).sum('vote')
+				})
+			end
 		end
 		@designs_sorted.sort_by! {|d| - d[:votes]}
 		

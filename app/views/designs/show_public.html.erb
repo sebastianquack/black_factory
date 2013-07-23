@@ -35,6 +35,8 @@
 <p>
   <b>Comments:</b><br/>
   <% @design.comments.each do |comment| %>
+  	<% unless comment.hidden %>
   	<%= comment.username + ': ' + comment.content %><br/>
+  	<% end %>
   <% end %>
 </p>
