@@ -71,14 +71,15 @@ class RewardCodesController < ApplicationController
 	end
 
 	def generate
-		if params[:amount] < 100
+		if params[:amount].to_i < 100
 			(1..params[:amount].to_i).each do |i|
 				reward_code = RewardCode.new
 				
 				new_code = ""
+				j = 0
 				begin
 					new_code = (0...6).map{(65+rand(26)).chr}.join
-					j += 1
+					j = j + 1
 				end while RewardCode.where(:code => new_code).first && j < 10 			
 	
 				reward_code.code = new_code			
