@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723142300) do
+ActiveRecord::Schema.define(:version => 20130723185116) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(:version => 20130723142300) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
     t.boolean  "hidden",       :default => false
+  end
+
+  create_table "reward_codes", :force => true do |t|
+    t.string   "code"
+    t.integer  "type"
+    t.integer  "points"
+    t.integer  "achievement_id"
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.integer  "status",         :default => 0
   end
 
   create_table "username_cookies", :force => true do |t|

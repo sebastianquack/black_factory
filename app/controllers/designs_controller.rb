@@ -41,21 +41,19 @@ class DesignsController < ApplicationController
 		
 		@design = Design.find(params[:id])
 		
-		record = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
-		if record == nil
-			record = VoteCookie.new
-			record.design_id = @design.id
-			record.cookiehash = cookie_hash
-			record.vote = params[:value]			
-		elsif record.vote == 1 && params[:value].to_i == -1	
-			record.vote = -1
-		elsif record.vote == -1 && params[:value].to_i == 1 
-			record.vote = 1
+		if params[:value].to_i > 0 && params[:value].to_i < 6
+			record = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
+			if record == nil
+				record = VoteCookie.new
+				record.design_id = @design.id
+				record.cookiehash = cookie_hash
+			end
+			record.vote = params[:value]
+			record.save
 		end
-		record.save
 	
 		redirect_to :action => "show_public", :id => @design
-
+	
 	end
 
   # GET /designs

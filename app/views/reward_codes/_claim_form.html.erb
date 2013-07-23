@@ -1,0 +1,16 @@
+<h1>Claim points</h1>
+<%= form_tag(url_for controller: "reward_codes", action: "claim") do %>
+
+  <div class="field">
+    <%= label_tag :username %><br />
+    <%= text_field_tag :username %>
+  </div>
+  <div class="field">
+    <%= label_tag :code %><br />
+    <%= text_field_tag :code %>
+  </div>
+	<%= submit_tag "Einlösen" %>
+
+<% end %>
+
+<p><%= @message %></p>
