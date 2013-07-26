@@ -8,6 +8,9 @@ DarkFactory::Application.routes.draw do
 	match 'reward_codes/claim' => 'reward_codes#claim'
 	match 'highscores' => 'reward_codes#highscores'
   
+  match 'images/upload_public' => 'images#create_public'
+  
+  match 'images/test' => 'images#test'
   
   scope "admin" do
 	get "/", :controller => :admin, :action => :index

@@ -1,4 +1,11 @@
 <%= link_to "Zurück", controller: "home", action: "welcome" %><br/>
+
+<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
+
+<% @challenge.images do |image| %>
+		<%= image_tag image.image.url(:thumb) %>
+<% end %><br/>
+
 <p>
   <b>Name:</b>
   <%= @challenge.name %>
@@ -21,6 +28,7 @@
   <b>Designs:</b>
   <ul>
   <% @designs_sorted.each do |design| %>
+		<%= image_tag design[:design].main_image.image.url(:thumb) if design[:design].main_image %></br>
 		<%= link_to design[:design].name + " (" + design[:votes].to_s + ")", controller: "designs", action: "show_public", id: design[:design] %><br/>
   <% end %>
   </ul>

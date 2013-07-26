@@ -1,3 +1,5 @@
+require 'securerandom'
+
 class ChallengesController < ApplicationController
  
   # GET /challenges/1
@@ -7,6 +9,8 @@ class ChallengesController < ApplicationController
 
 		# prepare forms
     @design = Design.new
+    @design_upload_hash = SecureRandom.uuid
+				
 		@comment = Comment.new
 		@cookie_username = cookies[:username]
 		@cookie_username = 'Anonym' if @cookie_username.nil?

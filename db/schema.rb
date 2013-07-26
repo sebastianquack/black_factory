@@ -11,15 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130723185116) do
+ActiveRecord::Schema.define(:version => 20130726115802) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
     t.datetime "time"
     t.text     "description"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "hidden",      :default => true
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.boolean  "hidden",        :default => true
+    t.integer  "main_image_id"
   end
 
   create_table "comments", :force => true do |t|
@@ -37,10 +38,11 @@ ActiveRecord::Schema.define(:version => 20130723185116) do
     t.string   "name"
     t.text     "description"
     t.integer  "challenge_id"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
     t.string   "username"
-    t.boolean  "hidden",       :default => false
+    t.boolean  "hidden",        :default => false
+    t.integer  "main_image_id"
   end
 
   create_table "images", :force => true do |t|
@@ -54,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130723185116) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.boolean  "hidden",             :default => false
+    t.string   "upload_hash"
   end
 
   create_table "media_links", :force => true do |t|

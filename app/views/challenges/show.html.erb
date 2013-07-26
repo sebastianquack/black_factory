@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @challenge.main_image.image.url(:thumb) if @challenge.main_image %>
+
 <p>
   <b>Name:</b>
   <%= @challenge.name %>

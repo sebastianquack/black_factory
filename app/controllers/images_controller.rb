@@ -1,4 +1,19 @@
 class ImagesController < ApplicationController
+
+	def test
+		@images = Image.all
+		render :partial => 'images/thumb_list'
+	end
+
+  def create_public
+    @image = Image.new(params[:image])
+		
+    if @image.save
+    	@images = Image.where(:uplaod_hash => @image.upload_hash)
+			render :partial => 'images/thumb_list'
+		end	
+	end
+
   # GET /images
   # GET /images.json
   def index

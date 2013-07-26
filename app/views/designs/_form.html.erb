@@ -27,6 +27,16 @@
     <%= f.label :challenge_id, "Challenge" %><br />
     <%= f.select :challenge_id, Challenge.order("time").collect {|c| [c.name, c.id]} %>
   </div>
+
+  <div class="field">
+  	<%= f.label "Main image" %>
+		<% @design.images do |image| %>
+				<%= radio_button_tag "design[main_image_id]", image.id.to_s %>
+				<%= image_tag image.image.url(:thumb) %>
+		<% end %>
+	</div>
+
+
   <div class="field">
     <%= f.label :hidden %><br />
     <%= f.check_box :hidden %>

@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+		<th></th>
     <th>Name</th>
     <th>Description</th>
     <th>Challenge</th>
@@ -14,6 +15,7 @@
 
 <% @designs.each do |design| %>
   <tr>
+    <td><%= image_tag design.main_image.image.url(:thumb) if design.main_image %></td>
     <td><%= design.name %></td>
     <td><%= design.description %></td>
     <td><%= design.challenge.name if design.challenge %></td>
