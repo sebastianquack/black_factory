@@ -1,0 +1,33 @@
+<h1>Listing reward_codes</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Type</th>
+    <th>Points</th>
+    <th>Achievement</th>
+    <th>Status</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @reward_codes.each do |reward_code| %>
+  <tr>
+    <td><%= reward_code.code %></td>
+    <td><%= reward_code.type %></td>
+    <td><%= reward_code.points %></td>
+    <td><%= reward_code.achievement_id %></td>
+    <td><%= reward_code.status %></td>
+    <td><%= link_to 'Show', reward_code %></td>
+    <td><%= link_to 'Edit', edit_reward_code_path(reward_code) %></td>
+    <td><%= link_to 'Destroy', reward_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Reward code', new_reward_code_path %>
+
+<%= link_to "Generate", controller: "reward_codes", action: "generate_form" %><br/>

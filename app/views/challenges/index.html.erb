@@ -5,6 +5,7 @@
     <th>Name</th>
     <th>Time</th>
     <th>Description</th>
+    <th>Hidden</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,6 +16,7 @@
     <td><%= challenge.name %></td>
     <td><%= challenge.time %></td>
     <td><%= challenge.description %></td>
+    <td><%= challenge.hidden %></td>
     <td><%= link_to 'Show', challenge %></td>
     <td><%= link_to 'Edit', edit_challenge_path(challenge) %></td>
     <td><%= link_to 'Destroy', challenge, method: :delete, data: { confirm: 'Are you sure?' } %></td>

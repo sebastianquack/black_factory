@@ -1,4 +1,21 @@
 class CommentsController < ApplicationController
+
+	def create_public 
+    @comment = Comment.new(params[:comment])
+		@comment.save
+		
+		cookies.permanent[:username] = @comment.username
+		
+		if @comment.design 
+			redirect_to :controller => "designs", :action => "show_public", :id => @comment.design.id
+		elsif @comment.challenge
+			redirect_to :controller => "challenges", :action => "show_public", :id => @comment.challenge.id
+		else
+			redirect_to :controller => "home", :action => "welcome"
+	  end
+	end
+
+
   # GET /comments
   # GET /comments.json
   def index

@@ -7,6 +7,7 @@
     <th>Design</th>
     <th>Username</th>
     <th>Ip</th>
+    <th>Hidden</th>
     <th></th>
     <th></th>
     <th></th>
@@ -15,10 +16,11 @@
 <% @comments.each do |comment| %>
   <tr>
     <td><%= comment.content %></td>
-    <td><%= comment.challenge.name %></td>
+    <td><%= comment.challenge.name if comment.challenge %></td>
     <td><%= comment.design_id %></td>
     <td><%= comment.username %></td>
     <td><%= comment.ip %></td>
+    <td><%= comment.hidden %></td>
     <td><%= link_to 'Show', comment %></td>
     <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
     <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>

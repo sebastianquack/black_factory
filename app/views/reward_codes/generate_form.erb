@@ -1,0 +1,15 @@
+<%= form_tag(url_for controller: "reward_codes", action: "generate") do %>
+
+  <div class="field">
+    <%= label_tag :amount %><br />
+    <%= number_field_tag :amount %>
+  </div>
+  <div class="field">
+    <%= label_tag :points %><br />
+    <%= number_field_tag :points %>
+  </div>
+	<%= submit_tag "Generate" %>
+
+<% end %>
+
+<p><%= @message %></p>

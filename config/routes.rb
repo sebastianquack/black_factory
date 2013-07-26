@@ -1,22 +1,28 @@
 DarkFactory::Application.routes.draw do
 
-  match 'challenges/designs' => 'challenges#designs_public_urlparam'
-  match 'challenges/:id' => 'challenges#show_public'
-  match 'challenges/:id/designs' => 'challenges#designs_public'
-  match 'designs/create' => 'designs#create_public'
-  match 'designs/:id' => 'designs#show_public'
-  match 'designs/:id/vote' => 'designs#vote'
+	match 'challenges/designs' => 'challenges#designs_public_urlparam'
+	match 'challenges/:id' => 'challenges#show_public'
+	match 'challenges/:id/designs' => 'challenges#designs_public'
+	match 'designs/create' => 'designs#create_public'
+	match 'designs/:id' => 'designs#show_public'  
+	match 'designs/:id/vote' => 'designs#vote'
+	match 'comments/create' => 'comments#create_public'
+	match 'reward_codes/claim' => 'reward_codes#claim'
+	match 'highscores' => 'reward_codes#highscores'
 
   scope "admin" do
 	get "/", :controller => :admin, :action => :index
-	resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
+		resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
   	resources :username_cookies # watch out: singular helper methods are generated with cooky
-	resources :username_scores
+		resources :username_scores
   	resources :designs
-	resources :challenges
+		resources :challenges
   	resources :comments
   	resources :media_links
   	resources :images
+		match 'reward_codes/generate_form' => 'reward_codes#generate_form'
+		match 'reward_codes/generate' => 'reward_codes#generate'
+  	resources :reward_codes
   end
 
   # The priority is based upon order of creation:

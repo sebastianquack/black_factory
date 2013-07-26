@@ -1,0 +1,19 @@
+<%= link_to "Zurück", controller: "home", action: "welcome" %><br/>
+
+<h1>Highscores</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Points</th>
+  </tr>
+
+<% @scores.each do |score| %>
+  <tr>
+    <td><%= score.username %></td>
+    <td><%= score.score %></td>
+  </tr>
+<% end %>
+</table>
+
+<%= render 'claim_form' %>

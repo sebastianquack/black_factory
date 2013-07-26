@@ -1,3 +1,4 @@
+<%= link_to "Zurück", controller: "home", action: "welcome" %><br/>
 <p>
   <b>Name:</b>
   <%= @challenge.name %>
@@ -12,6 +13,9 @@
   <b>Description:</b>
   <%= @challenge.description %>
 </p>
+
+<% @comments = @challenge.comments %>
+<%= render 'comments/list_public' %>
 
 <p>
   <b>Designs:</b>

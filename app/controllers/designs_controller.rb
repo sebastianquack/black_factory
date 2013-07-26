@@ -11,6 +11,11 @@ class DesignsController < ApplicationController
 		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
 		@vote_cookie = VoteCookie.new if @vote_cookie.nil?
 
+		#prepare forms
+		@comment = Comment.new
+		@cookie_username = cookies[:username]
+		@cookie_username = 'Anonym' if @cookie_username.nil?
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @design }
@@ -22,6 +27,7 @@ class DesignsController < ApplicationController
 
     respond_to do |format|
       if @design.save
+      	cookies.permanent[:username] = @design.username
         format.html { 
         	redirect_to :controller => "challenges", :action => "show_public", :id => @design.challenge
         }
@@ -41,21 +47,19 @@ class DesignsController < ApplicationController
 		
 		@design = Design.find(params[:id])
 		
-		record = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
-		if record == nil
-			record = VoteCookie.new
-			record.design_id = @design.id
-			record.cookiehash = cookie_hash
-			record.vote = params[:value]			
-		elsif record.vote == 1 && params[:value].to_i == -1	
-			record.vote = -1
-		elsif record.vote == -1 && params[:value].to_i == 1 
-			record.vote = 1
+		if params[:value].to_i > 0 && params[:value].to_i < 6
+			record = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
+			if record == nil
+				record = VoteCookie.new
+				record.design_id = @design.id
+				record.cookiehash = cookie_hash
+			end
+			record.vote = params[:value]
+			record.save
 		end
-		record.save
 	
 		redirect_to :action => "show_public", :id => @design
-
+	
 	end
 
   # GET /designs
