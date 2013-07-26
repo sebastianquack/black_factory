@@ -2,7 +2,7 @@
 
 <%= image_tag @design.main_image.image.url(:large) if @design.main_image %></br>
 
-<% @design.images do |image| %>
+<% @design.images.each do |image| %>
 		<%= image_tag image.image.url(:thumb) %>
 <% end %><br/>
 

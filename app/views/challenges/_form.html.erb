@@ -26,7 +26,8 @@
     
   <div class="field">
   	<%= f.label "Main image" %>
-		<% @challenge.images do |image| %>
+  	
+		<% @challenge.images.each do |image| %>
 				<%= radio_button_tag "challenge[main_image_id]", image.id.to_s %>
 				<%= image_tag image.image.url(:thumb) %>
 		<% end %>

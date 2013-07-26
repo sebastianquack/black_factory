@@ -2,7 +2,7 @@
 
 <%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
 
-<% @challenge.images do |image| %>
+<% @challenge.images.each do |image| %>
 		<%= image_tag image.image.url(:thumb) %>
 <% end %><br/>
 
