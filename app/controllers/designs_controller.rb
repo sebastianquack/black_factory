@@ -11,7 +11,10 @@ class DesignsController < ApplicationController
 		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
 		@vote_cookie = VoteCookie.new if @vote_cookie.nil?
 
+		#prepare forms
 		@comment = Comment.new
+		@cookie_username = cookies[:username]
+		@cookie_username = 'Anonym' if @cookie_username.nil?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,6 +27,7 @@ class DesignsController < ApplicationController
 
     respond_to do |format|
       if @design.save
+      	cookies.permanent[:username] = @design.username
         format.html { 
         	redirect_to :controller => "challenges", :action => "show_public", :id => @design.challenge
         }

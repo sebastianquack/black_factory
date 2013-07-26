@@ -4,6 +4,8 @@ class CommentsController < ApplicationController
     @comment = Comment.new(params[:comment])
 		@comment.save
 		
+		cookies.permanent[:username] = @comment.username
+		
 		if @comment.design 
 			redirect_to :controller => "designs", :action => "show_public", :id => @comment.design.id
 		elsif @comment.challenge

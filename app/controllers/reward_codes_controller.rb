@@ -2,6 +2,8 @@ class RewardCodesController < ApplicationController
   
 	def highscores
 		@scores = UsernameScore.all
+		@cookie_username = cookies[:username]
+
 	end
   
   def claim  
@@ -22,6 +24,7 @@ class RewardCodesController < ApplicationController
 	 			score.save
 	 			code.status = 1
 	 			code.save
+	 			cookies.permanent[:username] = score.username
  				@message = 'yay!'
  			else
  				@message = 'schon benutzt'
@@ -30,6 +33,7 @@ class RewardCodesController < ApplicationController
  			@message = 'code nicht erkannt'
  		end
   	
+  	@cookie_username = cookies[:username]
 		@scores = UsernameScore.all
 		render action: "highscores"
   end

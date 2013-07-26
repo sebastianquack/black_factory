@@ -4,8 +4,12 @@ class ChallengesController < ApplicationController
   # GET /challenges/1.json
   def show_public
     @challenge = Challenge.find(params[:id])
+
+		# prepare forms
     @design = Design.new
 		@comment = Comment.new
+		@cookie_username = cookies[:username]
+		@cookie_username = 'Anonym' if @cookie_username.nil?
 		
 		@designs_sorted = []
 		@challenge.designs.each do |design|
