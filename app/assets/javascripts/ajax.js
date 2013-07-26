@@ -9,6 +9,8 @@ $(document).ready(function() {
 	  data: "challenge_id=" + $(this).val(),
 	  dataType: "json",
 	  success: function(data) {
+	    if (!selectbox2.attr("data-initialselection")) selectbox2.attr("data-initialselection", selectbox2.val());
+	    var initialselection = selectbox2.attr("data-initialselection");
 		selectbox2.empty();
 		var opt = $('<option/>');
 		opt.attr('value', "");
@@ -17,6 +19,7 @@ $(document).ready(function() {
 		$.each(data, function(index, value) {
 		  var opt = $('<option/>');
 		  // use "name" and "id" fields from JSON object
+		  if (initialselection == value.id) opt.attr('selected', 'selected');
 		  opt.attr('value', value.id);
 		  opt.text(value.name);
 		  opt.appendTo(selectbox2);
@@ -24,5 +27,7 @@ $(document).ready(function() {
 	  }
 	});
   });
+  $('select[data-targetselect]').trigger("change");
+  
 
 });
