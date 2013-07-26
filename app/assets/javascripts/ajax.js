@@ -1,5 +1,9 @@
 $(document).ready(function() {
 
+  $('#image_upload_form').on('ajax:success', function(evt, data) {
+		$('#upload_thumbs').html(data);
+	});
+
   // fill <select> values from another select that triggered ajax
   $('select[data-targetselect]').on('change', function() {
     // get second selectbox by its id

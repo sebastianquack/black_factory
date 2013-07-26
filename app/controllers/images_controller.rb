@@ -9,7 +9,7 @@ class ImagesController < ApplicationController
     @image = Image.new(params[:image])
 		
     if @image.save
-    	@images = Image.where(:uplaod_hash => @image.upload_hash)
+    	@images = Image.where(:upload_hash => @image.upload_hash)
 			render :partial => 'images/thumb_list'
 		end	
 	end

@@ -32,8 +32,10 @@
   
 <% end %>
 
-<%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true) do %>
+<%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "image_upload_form") do %>
 	<%= hidden_field_tag "image[upload_hash]", :value => @design_upload_hash %>
 	<%= file_field_tag "image[image]" %>
 	<%= submit_tag "Hochladen" %>
 <% end %>
+
+<div id="upload_thumbs"></div>
