@@ -1,18 +1,18 @@
 DarkFactory::Application.routes.draw do
 
-  match 'challenges/:id' => 'challenges#show_public'
-  match 'designs/create' => 'designs#create_public'
-  match 'designs/:id' => 'designs#show_public'
+	match 'challenges/designs' => 'challenges#designs_public_urlparam'
+	match 'challenges/:id' => 'challenges#show_public'
+	match 'challenges/:id/designs' => 'challenges#designs_public'
+	match 'designs/create' => 'designs#create_public'
+	match 'designs/:id' => 'designs#show_public'  
 	match 'designs/:id/vote' => 'designs#vote'
 	match 'comments/create' => 'comments#create_public'
 	match 'reward_codes/claim' => 'reward_codes#claim'
 	match 'highscores' => 'reward_codes#highscores'
-  
   match 'images/upload_public' => 'images#create_public'
-  
   match 'images/test' => 'images#test'
-  
-  scope "admin" do
+
+scope "admin" do
 	get "/", :controller => :admin, :action => :index
 		resources :vote_cookies # watch out: singular helper methods are generated with cooky, i.e. edit_vote_cooky_path
   	resources :username_cookies # watch out: singular helper methods are generated with cooky
