@@ -5,6 +5,7 @@ class ChallengesController < ApplicationController
   def show_public
     @challenge = Challenge.find(params[:id])
     @design = Design.new
+		@comment = Comment.new
 		
 		@designs_sorted = []
 		@challenge.designs.each do |design|

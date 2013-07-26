@@ -14,6 +14,9 @@
   <%= @challenge.description %>
 </p>
 
+<% @comments = @challenge.comments %>
+<%= render 'comments/list_public' %>
+
 <p>
   <b>Designs:</b>
   <ul>

@@ -11,6 +11,8 @@ class DesignsController < ApplicationController
 		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
 		@vote_cookie = VoteCookie.new if @vote_cookie.nil?
 
+		@comment = Comment.new
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @design }

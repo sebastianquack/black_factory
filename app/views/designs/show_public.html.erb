@@ -38,11 +38,5 @@
 				end
 		end %>
 	
-<p>
-  <b>Comments:</b><br/>
-  <% @design.comments.each do |comment| %>
-  	<% unless comment.hidden %>
-  	<%= comment.username + ': ' + comment.content %><br/>
-  	<% end %>
-  <% end %>
-</p>
+<% @comments = @design.comments %>
+<%= render 'comments/list_public' %>

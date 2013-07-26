@@ -1,0 +1,10 @@
+<p>
+<b>Comments:</b><br/>
+<% @comments.each do |comment| %>
+	<% unless comment.hidden %>
+	<%= comment.username + ': ' + comment.content %><br/>
+	<% end %>
+<% end %>
+
+<%= render 'comments/form_public' %>
+</p>

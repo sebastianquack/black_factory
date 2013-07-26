@@ -4,8 +4,10 @@ DarkFactory::Application.routes.draw do
   match 'designs/create' => 'designs#create_public'
   match 'designs/:id' => 'designs#show_public'
 	match 'designs/:id/vote' => 'designs#vote'
+	match 'comments/create' => 'comments#create_public'
 	match 'reward_codes/claim' => 'reward_codes#claim'
 	match 'highscores' => 'reward_codes#highscores'
+  
   
   scope "admin" do
 	get "/", :controller => :admin, :action => :index
