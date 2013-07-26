@@ -16,13 +16,20 @@
     <%= f.text_area :content %>
   </div>
   <div class="field">
-    <%= f.label :design_id %><br />
-    <%= f.select :design_id, Design.order("created_at").collect { |d| [d.name, d.id] }.insert(0, ["(choose either challenge or design)", nil]) %>
-  </div>
+	<%= f.label :challenge_id %><br />
+	<%# f.select :challenge_id, Challenge.order("time").collect { |c| [c.name, c.id] }.insert(0, ["-", nil]) %>
+	<%= 
+	f.select :challenge_id, 
+	Challenge.order("time").collect { |c| [c.name, c.id] }, 
+	{},
+	:data => { :"ajax-url" => url_for(:controller => "challenges", :action => "designs_public_urlparam") + ".json", :targetselect => "comment_design_id" }
+	%>
+	</div>
   <div class="field">
-    <%= f.label :challenge_id %><br />
-    <%= f.select :challenge_id, Challenge.order("time").collect { |c| [c.name, c.id] }.insert(0, ["(choose either challenge or design)", nil]) %>
-  </div>  
+	<%= f.label :design_id %><br />
+	<%= f.select :design_id, Design.order("created_at").collect { |d| [d.name, d.id] }.insert(0, ["-", nil]) %>
+	<%# f.select :design_id, Design.order("challenge_id").order("created_at").collect {|d| [d.challenge.name + ": " + d.name, d.id]}.insert(0, ["-", nil]) %>
+  </div>
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username %>

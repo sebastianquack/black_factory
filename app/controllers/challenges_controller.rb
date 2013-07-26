@@ -20,7 +20,30 @@ class ChallengesController < ApplicationController
     end
   end
 
- # GET /challenges
+  # GET /challenges/1/designs
+  # GET /challenges/1/designs.json
+  def designs_public
+    @designs = Challenge.find(params[:id]).designs
+
+    respond_to do |format|
+      #format.html # show.html.erb
+      format.json { render json: @designs }
+    end
+  end
+
+  # GET /challenges/designs
+  # GET /challenges/designs.json?challenge_id=1
+  def designs_public_urlparam
+  
+    @designs = Challenge.find(params[:challenge_id]).designs
+
+    respond_to do |format|
+      # format.html # show.html.erb
+      format.json { render json: @designs }
+    end
+  end
+
+  # GET /challenges
   # GET /challenges.json
   def index
     @challenges = Challenge.all

@@ -1,9 +1,11 @@
 DarkFactory::Application.routes.draw do
 
+  match 'challenges/designs' => 'challenges#designs_public_urlparam'
   match 'challenges/:id' => 'challenges#show_public'
+  match 'challenges/:id/designs' => 'challenges#designs_public'
   match 'designs/create' => 'designs#create_public'
   match 'designs/:id' => 'designs#show_public'
-	match 'designs/:id/vote' => 'designs#vote'
+  match 'designs/:id/vote' => 'designs#vote'
 
   scope "admin" do
 	get "/", :controller => :admin, :action => :index
