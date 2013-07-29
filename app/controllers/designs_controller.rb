@@ -31,13 +31,30 @@ def creator
 end
 
 def create_public 
-    @design = Design.new(params[:design])
 
+    @design = Design.new(params[:design].except(:upload_hash))		
+		
     respond_to do |format|
       if @design.save
+			
+				images = Image.where(:upload_hash => params[:design][:upload_hash])
+      	images.each do |image|
+					image.design_id = @design.id
+					image.upload_hash = ''
+					image.save
+				end
+				
+				if params[:images]
+					params[:images].each do |id, values|				
+						image = Image.find(id)
+						image.description = values[:description]
+						image.save
+					end
+				end
+				
       	cookies.permanent[:username] = @design.username
         format.html { 
-        	redirect_to :controller => "challenges", :action => "show_public", :id => @design.challenge
+        	redirect_to :controller => "designs", :action => "show_public", :id => @design.id
         }
         format.json { render json: @design, status: :created, location: @design }
       else

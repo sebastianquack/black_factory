@@ -1,5 +1,5 @@
 class Image < ActiveRecord::Base
-  attr_accessible :image, :challenge_id, :design_id, :ip, :hidden, :upload_hash
+  attr_accessible :image, :challenge_id, :design_id, :ip, :hidden, :upload_hash, :description
 	belongs_to :challenge
 	belongs_to :design
 

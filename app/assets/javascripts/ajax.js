@@ -1,25 +1,27 @@
+function reset_image_events() {
+	$('.image_preview_delete').unbind('click');
+	$('.image_preview_delete').click(function(e) {
+		e.preventDefault();
+		$(this).parent().remove();
+		$.ajax({
+			url: $(this).attr('data-ajax-url'),
+			dataType: "json",
+			method: 'DELETE',
+			success: function() {
+				console.log('image deleted');
+			}
+		});
+	});
+}
+
 $(document).ready(function() {
 
-/*  $('#image_upload_form').on('ajax:success', function(evt, data) {
-		$('#upload_thumbs').html(data);
-	});
-*/
-
-	// 
-	$('#imageupload').fileupload({
-//			dataType: 'json',
+	$('#imageupload_button').fileupload({
 			done: function (e, data) {
-					
-					/*
-					$.each(data.result.files, function (index, file) {
-					$('<img/>').attr({ 'src': file.thumb_url }).appendTo(document.body);
-							$('<p/>').text(file.name).appendTo(document.body);				
-					});*/
-					
-					$('#upload_thumbs').html(data.result);
+					$('#upload_thumbs').append(data.result);
 					$('#progress .bar').html('');
 					$('#progress .bar').css('width', '0%');
-
+					reset_image_events();
 			},
 			progressall: function (e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -32,8 +34,6 @@ $(document).ready(function() {
 				}
 		}
 	});
-
-
 
   // fill <select> values from another select that triggered ajax
   $('select[data-targetselect]').on('change', function() {

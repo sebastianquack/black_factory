@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130726115802) do
+ActiveRecord::Schema.define(:version => 20130729173644) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130726115802) do
     t.datetime "image_updated_at"
     t.boolean  "hidden",             :default => false
     t.string   "upload_hash"
+    t.text     "description"
   end
 
   create_table "media_links", :force => true do |t|

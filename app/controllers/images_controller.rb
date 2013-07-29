@@ -7,10 +7,10 @@ class ImagesController < ApplicationController
 
   def create_public
     @image = Image.new(params[:image])
+		@image.upload_hash = params[:design][:upload_hash]
 		
     if @image.save
-    	@images = Image.where(:upload_hash => @image.upload_hash)
-			render :partial => 'images/thumb_list'
+			render :partial => 'images/design_form_element'
 		end	
 	end
 

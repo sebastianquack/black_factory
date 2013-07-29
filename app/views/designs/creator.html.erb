@@ -23,6 +23,15 @@
     <%= f.label :description %><br />
     <%= f.text_area :description %>
   </div>
+
+	<input id="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public"/>
+	<div id="progress">
+  	  <div class="bar" style="width: 0%;"></div>
+	</div>
+	<div id="upload_thumbs"></div>
+
+	<br/>
+
   <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, :value => @cookie_username %>
@@ -36,16 +45,10 @@
   
 <% end %>
 
-<%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "imageupload") do %>
+<!--%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "imageupload") do %>
 	<%= hidden_field_tag "image[upload_hash]", @design_upload_hash %>
 	<%= file_field_tag "image[image]" %>
-	<!--%= submit_tag "Hochladen" %-->
-<% end %>
+<% end %--!>
 
-<div id="progress">
-    <div class="bar" style="width: 0%;"></div>
-</div>
-
-<div id="upload_thumbs"></div>
 
 
