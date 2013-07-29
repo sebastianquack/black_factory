@@ -6,15 +6,15 @@ class DesignsController < ApplicationController
   # GET /designs/1.json
   def show_public
     @design = Design.find(params[:id])
-		cookie_hash = cookies[:vote_hash]
-		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
-		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
-		@vote_cookie = VoteCookie.new if @vote_cookie.nil?
+	cookie_hash = cookies[:vote_hash]
+	cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
+	@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
+	@vote_cookie = VoteCookie.new if @vote_cookie.nil?
 
-		#prepare forms
-		@comment = Comment.new
-		@cookie_username = cookies[:username]
-		@cookie_username = 'Anonym' if @cookie_username.nil?
+	#prepare forms
+	@comment = Comment.new
+	@cookie_username = cookies[:username]
+	@cookie_username = 'Anonym' if @cookie_username.nil?
 
     respond_to do |format|
       format.html # show.html.erb
@@ -22,7 +22,15 @@ class DesignsController < ApplicationController
     end
   end
 
-	def create_public 
+def creator
+	@challenge = Challenge.find(params[:challenge_id])
+	@cookie_username = cookies[:username]
+	@cookie_username = 'Anonym' if @cookie_username.nil?
+  @design = Design.new
+  @design_upload_hash = SecureRandom.uuid
+end
+
+def create_public 
     @design = Design.new(params[:design])
 
     respond_to do |format|

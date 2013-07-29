@@ -20,6 +20,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'jquery-fileupload-rails'
 
 #gem 'aws-s3'
 gem 'aws-sdk'

@@ -7,10 +7,6 @@ class ChallengesController < ApplicationController
   def show_public
     @challenge = Challenge.find(params[:id])
 
-		# prepare forms
-    @design = Design.new
-    @design_upload_hash = SecureRandom.uuid
-				
 		@comment = Comment.new
 		@cookie_username = cookies[:username]
 		@cookie_username = 'Anonym' if @cookie_username.nil?

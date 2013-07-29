@@ -11,3 +11,13 @@
  *= require_self
  *= require_tree .
  */
+
+#progress {
+	width: 200px;
+	background: lightgray;
+}
+
+.bar {
+    height: 18px;
+    background: green;
+}

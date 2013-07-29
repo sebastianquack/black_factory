@@ -34,5 +34,4 @@
   </ul>
 </p>
 
-<b>New design</b>
-<%= render '/designs/form_public' %>
+<%= link_to "Create Design", controller: "designs", action: "creator", challenge_id: @challenge.id %>
