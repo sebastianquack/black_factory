@@ -33,6 +33,12 @@
 	<br/>
 
   <div class="field">
+    <%= label_tag "media_link", "Video URL" %><br />
+    <%= text_field_tag "media_link" %>
+    <div id="media_link_preview" class="oembed">...</div>
+  </div>
+
+  <div class="field">
     <%= f.label :username %><br />
     <%= f.text_field :username, :value => @cookie_username %>
   </div>  

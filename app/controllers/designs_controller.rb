@@ -52,6 +52,12 @@ def create_public
 					end
 				end
 				
+		ml = MediaLink.new
+		ml.design_id = @design.id
+		ml.url = params[:media_link]
+		ml.save
+		
+				
       	cookies.permanent[:username] = @design.username
         format.html { 
         	redirect_to :controller => "designs", :action => "show_public", :id => @design.id
