@@ -21,6 +21,7 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
+gem 'twitter-typeahead-rails'
 
 #gem 'aws-s3'
 gem 'aws-sdk'
