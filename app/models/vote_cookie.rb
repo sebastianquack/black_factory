@@ -7,16 +7,20 @@ class VoteCookie < ActiveRecord::Base
   
   def calculate_score
   	score = VoteCookie.where(design_id: self.design_id).sum('vote')
-  	d = Design.find(self.design_id)
-  	d.score = score
-  	d.save
+  	if Design.exists?(self.design_id)
+		d = Design.find(self.design_id)
+		d.score = score
+		d.save
+	end
   end
   
   def count_votes
   	vote_count = VoteCookie.where(design_id: self.design_id).length
-  	d = Design.find(self.design_id)
-  	d.vote_count = vote_count
-  	d.save
+  	if Design.exists?(self.design_id)
+  		d = Design.find(self.design_id)
+  		d.vote_count = vote_count
+  		d.save
+  	end
   end
   
 end
