@@ -14,12 +14,12 @@
 
   <div class="field">
     <%= f.label :comment %><br />
-    <%= f.text_field :content %>
+    <%= f.text_field :content, class: "form-control" %>
   </div>
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username" %>
+    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
   </div>
 
   <%= f.hidden_field :design_id, :value => @design.id if @design %>

@@ -13,6 +13,8 @@
  *= require twitter/bootstrap
  */
 
+@import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
+
 #progress {
 	width: 200px;
 	background: lightgray;
@@ -32,7 +34,22 @@ div.preview-link:hover {
 	cursor: pointer;
 }
 
+input.username {
+    border:none; 
+    box-shadow:none;
+    font-family: 'La Belle Aurore', cursive;
+    font-size:20px;
+}
 
+input.username, tt-hint {
+    font-family: 'La Belle Aurore', cursive;
+    font-size:25px;
+}
+
+input.username:focus {
+    border:none;
+    outline: none;
+}
 
 // change bootstrap variables below
 

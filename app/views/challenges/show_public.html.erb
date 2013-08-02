@@ -1,38 +1,56 @@
 <%= link_to "Zurück", controller: "home", action: "welcome" %><br/>
 
-<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
+<div class="row">
 
-<% @challenge.images.each do |image| %>
-		<%= image_tag image.image.url(:thumb) %>
-<% end %><br/>
-
-<p>
-  <b>Name:</b>
-  <%= @challenge.name %>
-</p>
-
-<p>
-  <b>Time:</b>
-  <%= @challenge.time %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @challenge.description %>
-</p>
-
-<% @comments = @challenge.comments %>
-<%= render 'comments/list_public' %>
-
-<p>
-  <b>Designs:</b>
-  <ul>
-  <% @designs_sorted.each do |design| %>
-
-		<%= render partial: "designs/preview", locals: {design: design} %>
+	<div class="col-lg-6">
+	
+		<div class="challenge">
 		
-  <% end %>
-  </ul>
-</p>
+			<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
+		
+			<% @challenge.images.each do |image| %>
+					<%= image_tag image.image.url(:thumb) %>
+			<% end %><br/>
+			
+			<p>
+			  <b>Name:</b>
+			  <%= @challenge.name %>
+			</p>
+			
+			<p>
+			  <b>Time:</b>
+			  <%= @challenge.time %>
+			</p>
+			
+			<p>
+			  <b>Description:</b>
+			  <%= @challenge.description %>
+			</p>
+		
+		</div>
+	
+		<div class="comments">
+			<% @comments = @challenge.comments %>
+			<%= render 'comments/list_public' %>
+		</div>
+		
+	</div>
+	
+	
+	<div class="designs col-lg-6">
+		
+		<a class="btn btn-danger" href="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">Create Design</a>
 
-<%= link_to "Create Design", controller: "designs", action: "creator", challenge_id: @challenge.id %>
+		<p>
+		  <b>Designs:</b>
+		  <ul class="media-list">
+		  <% @designs_sorted.each do |design| %>
+		
+				<%= render partial: "designs/preview", locals: {design: design} %>
+				
+		  <% end %>
+		  </ul>
+		</p>
+	</div>
+	
+</div>

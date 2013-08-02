@@ -16,7 +16,7 @@
 
 <p>
   <b>Video:</b>
-  <a class="oembed" href="<%= @design.media_link.url %>">...</a>
+  <a class="oembed" href="<%= @design.media_link.url if @design.media_link %>">...</a>
 </p>
 
 <p>
@@ -35,12 +35,9 @@
 </p>
 
 <p>
-  <b>Bewertung (Durchschnitt):</b>
-  <% 	votes = VoteCookie.where(design_id: @design.id)
-  		sum_votes = votes.sum('vote')
-  		num_votes = votes.size
-  %>
-  <%= sum_votes.to_f / num_votes.to_f %> (<%= num_votes %> Bewertungen)
+  <b>Bewertung:</b>
+
+  <%= @design.score %> (<%= @design.vote_count %> Bewertungen)
 </p>
 
 <p>

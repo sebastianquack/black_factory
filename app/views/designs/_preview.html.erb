@@ -1,18 +1,14 @@
 <div class="preview">
-	<%= design.id %>
-	<% if design.main_image %>
-		<%= image_tag design.main_image.image.url(:large), :alt => design.main_image.description %>
-	<% end %>
-	
-	<p>
-	  <%= design.name %>
-	</p>
-	
-	<p>
-	  <b>Bewertung:</b>
-	  <%= design.score %> (<%= design.vote_count %> Bewertungen)
-	</p>
-	
-	<%= link_to "Anschauen", controller: "designs", action: "show_public", id: design.id %><br/>
+
+	<li class="media">
+	  <a class="pull-left" href="<%= url_for controller: "designs", action: "show_public", id: design.id, only_path: true %>">
+		<img class="media-object" src="<%= design.main_image.image.url(:thumb) if design.main_image %>" alt="<%= design.main_image.description if design.main_image %>">
+	  </a>
+	  <div class="media-body">
+		<h4 class="media-heading"> <%= design.name %></h4>
+		  <b>Bewertung:</b>
+		  <%= design.score %> (<%= design.vote_count %> Bewertungen)
+	  </div>
+	</li>
 
 </div>
