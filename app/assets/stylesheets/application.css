@@ -21,3 +21,12 @@
     height: 18px;
     background: green;
 }
+
+div.preview-link {
+	width: 400px;
+}
+
+div.preview-link:hover {
+	background-color: #000;
+	cursor: pointer;
+}
