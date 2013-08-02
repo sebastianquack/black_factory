@@ -6,6 +6,9 @@ class CommentsController < ApplicationController
 		
 		cookies.permanent[:username] = @comment.username
 		
+		u = UsernameScore.where(:username => @comment.username).first_or_create :score => 0
+		u.save
+
 		if @comment.design 
 			redirect_to :controller => "designs", :action => "show_public", :id => @comment.design.id
 		elsif @comment.challenge

@@ -17,11 +17,11 @@
 
   <div class="field">
     <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: "form-control" %>
   </div>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
 
 	<input id="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public"/>
@@ -34,13 +34,13 @@
 
   <div class="field">
     <%= label_tag "media_link", "Video URL" %><br />
-    <%= text_field_tag "media_link" %>
-    <div id="media_link_preview" class="oembed">...</div>
+    <%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Video hier einfügen"  %>
+    <div id="media_link_preview" class="oembed"></div>
   </div>
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username" %>
+    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
   </div>  
 	<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
 	<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>

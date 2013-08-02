@@ -32,7 +32,7 @@ end
 
 def create_public 
 
-    @design = Design.new(params[:design].except(:upload_hash))		
+    @design = Design.new(params[:design].except(:upload_hash))
 		
     respond_to do |format|
       if @design.save
@@ -59,6 +59,10 @@ def create_public
 		
 				
       	cookies.permanent[:username] = @design.username
+      	
+    	u = UsernameScore.where(:username => @comment.username).first_or_create :score => 0
+		u.save      	
+      	
         format.html { 
         	redirect_to :controller => "designs", :action => "show_public", :id => @design.id
         }

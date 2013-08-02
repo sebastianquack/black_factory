@@ -51,8 +51,9 @@ input.username:focus {
     outline: none;
 }
 
-img[src*=large] {
+img[src*=large], #media_link_preview iframe, .media_link, .media_link iframe {
 	width: 100%;
+	/*height:auto;*/
 }
 
 // change bootstrap variables below
