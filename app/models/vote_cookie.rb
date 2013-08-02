@@ -2,8 +2,8 @@ class VoteCookie < ActiveRecord::Base
   attr_accessible :cookiehash, :design_id, :ip, :vote
   belongs_to :design
   
-  before_save :count_votes, :calculate_score
-  before_destroy :count_votes, :calculate_score
+  after_save :count_votes, :calculate_score
+  after_destroy :count_votes, :calculate_score
   
   def calculate_score
   	score1 = VoteCookie.where("design_id = ? AND vote = 1", self.design_id).count
