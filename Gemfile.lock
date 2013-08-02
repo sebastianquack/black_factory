@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 4ec1018b3dd8078f3489bc53f2ac92782b6442f2
+  branch: 3.0.0
+  specs:
+    anjlab-bootstrap-rails (3.0.0.rc1)
+      railties (>= 3.0)
+      sass (>= 3.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -33,8 +42,6 @@ GEM
       json (~> 1.4)
       nokogiri (< 1.6.0)
       uuidtools (~> 2.1)
-    bootstrap-rails (0.0.7)
-      railties (~> 3.1)
     builder (3.0.4)
     climate_control (0.0.3)
       activesupport (>= 3.0)
@@ -101,7 +108,7 @@ GEM
       json (~> 1.4)
     rename (1.0.0)
       rails (>= 3.0.0)
-    sass (3.2.9)
+    sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
@@ -130,8 +137,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  anjlab-bootstrap-rails!
   aws-sdk
-  bootstrap-rails
   coffee-rails (~> 3.2.1)
   jquery-fileupload-rails
   jquery-rails
