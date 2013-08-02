@@ -11,7 +11,7 @@ class ChallengesController < ApplicationController
 		@cookie_username = cookies[:username]
 		@cookie_username = 'Anonym' if @cookie_username.nil?
 		
-		@designs_sorted = @challenge.designs
+		@designs_sorted = @challenge.designs.order("score DESC")
 		#@designs_sorted.sort_by! {|d| - d[:score]}
 		
     respond_to do |format|
