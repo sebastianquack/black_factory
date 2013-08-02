@@ -1,0 +1,18 @@
+<div class="preview">
+	<%= design.id %>
+	<% if design.main_image %>
+		<%= image_tag design.main_image.image.url(:large), :alt => design.main_image.description %>
+	<% end %>
+	
+	<p>
+	  <%= design.name %>
+	</p>
+	
+	<p>
+	  <b>Bewertung:</b>
+	  <%= design.score %> (<%= design.vote_count %> Bewertungen)
+	</p>
+	
+	<%= link_to "Anschauen", controller: "designs", action: "show_public", id: design.id %><br/>
+
+</div>

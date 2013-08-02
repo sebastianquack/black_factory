@@ -2,15 +2,6 @@ class UsernameCookiesController < ApplicationController
   # GET /username_cookies
   # GET /username_cookies.json
   
-  def usernames_public
-  	@username_cookies = UsernameCookie.select("username").map {|c| c.username}
-  	
-    respond_to do |format|
-      #format.html # index.html.erb
-      format.json { render json: @username_cookies }
-    end
-  end
-  
   def index
     @username_cookies = UsernameCookie.all
 

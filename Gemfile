@@ -22,6 +22,9 @@ end
 gem 'jquery-rails'
 gem 'jquery-fileupload-rails'
 gem 'twitter-typeahead-rails'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails',
+                              :branch => '3.0.0'
 
 #gem 'aws-s3'
 gem 'aws-sdk'

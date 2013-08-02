@@ -19,7 +19,7 @@
 
   <div class="field">
     <%= f.label :username %><br />
-    <%= f.text_field :username, :value => @cookie_username %>
+    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username" %>
   </div>
 
   <%= f.hidden_field :design_id, :value => @design.id if @design %>

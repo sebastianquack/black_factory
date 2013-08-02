@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729173644) do
+ActiveRecord::Schema.define(:version => 20130802133303) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20130729173644) do
     t.string   "username"
     t.boolean  "hidden",        :default => false
     t.integer  "main_image_id"
+    t.float    "score"
+    t.integer  "vote_count"
   end
 
   create_table "images", :force => true do |t|

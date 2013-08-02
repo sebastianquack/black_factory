@@ -11,15 +11,8 @@ class ChallengesController < ApplicationController
 		@cookie_username = cookies[:username]
 		@cookie_username = 'Anonym' if @cookie_username.nil?
 		
-		@designs_sorted = []
-		@challenge.designs.each do |design|
-			unless design.hidden
-				@designs_sorted.push({ :design => design,
-					:votes => VoteCookie.where(design_id: design.id).sum('vote')
-				})
-			end
-		end
-		@designs_sorted.sort_by! {|d| - d[:votes]}
+		@designs_sorted = @challenge.designs
+		#@designs_sorted.sort_by! {|d| - d[:score]}
 		
     respond_to do |format|
       format.html # show.html.erb

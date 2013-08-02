@@ -8,6 +8,7 @@
     <th>Challenge</th>
     <th>Username</th>
     <th>Hidden</th>
+    <th>Score</th>    
     <th></th>
     <th></th>
     <th></th>
@@ -21,6 +22,7 @@
     <td><%= design.challenge.name if design.challenge %></td>
     <td><%= design.username %></td>
     <td><%= design.hidden %></td>
+    <td><%= design.score %></td>    
     <td><%= link_to 'Show', design %></td>
     <td><%= link_to 'Edit', edit_design_path(design) %></td>
     <td><%= link_to 'Destroy', design, method: :delete, data: { confirm: 'Are you sure?' } %></td>

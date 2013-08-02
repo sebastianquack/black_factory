@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require twitter/bootstrap
  */
 
 #progress {
@@ -21,3 +22,17 @@
     height: 18px;
     background: green;
 }
+
+
+
+
+
+
+
+// change bootstrap variables below
+
+// change colors
+$link-color: green;
+
+// import original bootstrap
+@import "twitter/bootstrap";

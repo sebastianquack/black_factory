@@ -1,4 +1,15 @@
 class UsernameScoresController < ApplicationController
+
+  def usernames_public
+  	@username_scores = UsernameScore.select("username").map {|c| c.username}
+  	
+    respond_to do |format|
+      #format.html # index.html.erb
+      format.json { render json: @username_scores }
+    end
+  end
+
+
   # GET /username_scores
   # GET /username_scores.json
   def index

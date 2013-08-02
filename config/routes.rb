@@ -12,7 +12,7 @@ DarkFactory::Application.routes.draw do
 	match 'highscores' => 'reward_codes#highscores'
 	match 'images/upload_public' => 'images#create_public'
 	match 'images/test' => 'images#test'
-	match 'usernames' => 'username_cookies#usernames_public'
+	match 'usernames' => 'username_scores#usernames_public'
 
 scope "admin" do
 	get "/", :controller => :admin, :action => :index
