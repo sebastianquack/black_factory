@@ -60,7 +60,7 @@ def create_public
 				
       	cookies.permanent[:username] = @design.username
       	
-    	u = UsernameScore.where(:username => @comment.username).first_or_create :score => 0
+    	u = UsernameScore.where(:username => @design.username).first_or_create :score => 0
 		u.save      	
       	
         format.html { 

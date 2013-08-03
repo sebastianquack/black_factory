@@ -61,4 +61,12 @@ $(document).ready(function() {
 		window.location = $(this).attr('data-url');
 	});
 	
+	label_new_decay_time = 72000;
+	$(".label-new").each( function () {
+		label_new = $(this);
+		label_new_age = label_new.attr("data-age");
+		label_new_opacity_int = 10 - Math.round( 10 * label_new_age / label_new_decay_time);
+		if (label_new_opacity_int > 1) label_new.css("opacity", "." + label_new_opacity_int);
+		else label_new.css("display", "none");
+	});
 });
