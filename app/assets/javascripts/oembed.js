@@ -16,8 +16,8 @@ $(document).ready(function() {
 				},
 				*/
 			afterEmbed: function(oembedData) {
-				console.log("done");
-				console.log(oembedData);
+				//console.log("done");
+				//console.log(oembedData);
 				if (oembedData.error_code) $("#media_link_preview").text("not ok");
 				},			
 			beforeEmbed: function() {
