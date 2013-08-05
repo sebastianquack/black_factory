@@ -3,13 +3,13 @@
 
   <div class="field">
     <%= label_tag :username %><br />
-    <%= text_field_tag :username, @cookie_username %>
+    <%= text_field_tag :username, @cookie_username, class: "typeahead-username username" %>
   </div>
   <div class="field">
     <%= label_tag :code %><br />
-    <%= text_field_tag :code %>
+    <%= text_field_tag :code, nil, class: "form-control input-large" %>
   </div>
-	<%= submit_tag "Einlösen" %>
+	<%= submit_tag "Einlösen", class: "btn btn-success" %>
 
 <% end %>
 

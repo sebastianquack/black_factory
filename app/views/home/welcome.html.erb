@@ -1,5 +1,10 @@
-<% @challenges.each do |challenge| %>
-<%= render partial: 'challenges/preview', locals: {challenge: challenge} %>
-<% end %>
 
-<%= link_to "Punkte Enlösen", controller: "reward_codes", action: "highscores" %>
+<div class="challenges row">
+	<% @challenges.each do |challenge| %>
+		<div class="col-lg-3">
+		<%= render partial: 'challenges/preview', locals: {challenge: challenge} %>
+		</div>
+	<% end %>
+</div>
+
+<%= link_to "Punkte Enlösen", highscores_path %>

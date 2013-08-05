@@ -26,7 +26,6 @@
 }
 
 div.preview-link {
-	width: 400px;
 }
 
 div.preview-link:hover {
@@ -51,9 +50,21 @@ input.username:focus {
     outline: none;
 }
 
-img[src*=large], #media_link_preview iframe, .media_link, .media_link iframe {
+img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .media_link iframe {
 	width: 100%;
 	/*height:auto;*/
+}
+
+#container {
+	max-width:1024px;
+	margin: auto;
+}
+
+.claim_points, .highscore, .designs, .challenge, .comments, .challenges .preview {
+	border-radius: 10px;
+	box-shadow:         5px 5px 22px rgba(50, 50, 50, 0.76);
+	margin-bottom:10px;
+	padding:10px;
 }
 
 // change bootstrap variables below

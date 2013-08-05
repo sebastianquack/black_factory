@@ -1,19 +1,31 @@
 <%= link_to "Zurück", controller: "home", action: "welcome" %><br/>
 
-<h1>Highscores</h1>
+<div class="row">
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Points</th>
-  </tr>
+	<div class="col-lg-6 claim_points">
 
-<% @scores.each do |score| %>
-  <tr>
-    <td><%= score.username %></td>
-    <td><%= score.score %></td>
-  </tr>
-<% end %>
-</table>
+		<%= render 'claim_form' %>
+	
+	</div>
+	
+	<div class="col-lg-6 highscore">
 
-<%= render 'claim_form' %>
+		<h1>Highscores</h1>
+		
+		<table>
+		  <tr>
+			<th>Name</th>
+			<th>Points</th>
+		  </tr>
+		
+		<% @scores.each do |score| %>
+		  <tr>
+			<td><%= score.username %></td>
+			<td><%= score.score %></td>
+		  </tr>
+		<% end %>
+		</table>
+		
+	</div>
+
+</div>

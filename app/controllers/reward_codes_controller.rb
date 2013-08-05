@@ -1,7 +1,7 @@
 class RewardCodesController < ApplicationController
   
 	def highscores
-		@scores = UsernameScore.all
+		@scores = UsernameScore.order("score DESC")
 		@cookie_username = cookies[:username]
 
 	end

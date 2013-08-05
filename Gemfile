@@ -23,6 +23,8 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
 
+# gem 'jquery-star-rating-rails' # usage: http://www.fyneworks.com/jquery/star-rating/
+
 #gem 'aws-s3'
 gem 'aws-sdk'
 
