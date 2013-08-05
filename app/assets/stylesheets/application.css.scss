@@ -55,11 +55,6 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	/*height:auto;*/
 }
 
-#container {
-	max-width:1024px;
-	margin: auto;
-}
-
 .claim_points, .highscore, .designs, .challenge, .comments, .challenges .preview {
 	border-radius: 10px;
 	box-shadow:         5px 5px 22px rgba(50, 50, 50, 0.76);
