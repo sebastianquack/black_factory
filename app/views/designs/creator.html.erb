@@ -1,60 +1,68 @@
-<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
-
-<h1>Design Creator</h1>
-
-<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
-  <% if @design.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@design.errors.count, "error") %> prohibited this design from being saved:</h2>
-
-      <ul>
-      <% @design.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description, class: "form-control" %>
-  </div>
-
-	<input id="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public"/>
-	<div id="progress">
-  	  <div class="bar" style="width: 0%;"></div>
-	</div>
-	<div id="upload_thumbs"></div>
-
-	<br/>
-
-  <div class="field">
-    <%= label_tag "media_link", "Video URL" %><br />
-    <%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Video hier einfügen"  %>
-    <div id="media_link_preview" class="oembed"></div>
-  </div>
-
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
-  </div>  
-	<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
-	<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-  
-<% end %>
-
-<!--%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "imageupload") do %>
-	<%= hidden_field_tag "image[upload_hash]", @design_upload_hash %>
-	<%= file_field_tag "image[image]" %>
-<% end %--!>
-
-
-
+<div class="row creator">
+	
+	<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
+	
+	<h1>Design Creator</h1>
+	
+	<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
+	  <% if @design.errors.any? %>
+		<div id="error_explanation">
+		  <h2><%= pluralize(@design.errors.count, "error") %> prohibited this design from being saved:</h2>
+	
+		  <ul>
+		  <% @design.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		  <% end %>
+		  </ul>
+		</div>
+	  <% end %>
+	
+	  <div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name, class: "form-control" %>
+	  </div>
+	  <div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description, class: "form-control" %>
+	  </div>
+	
+		<div id="upload_thumbs"></div>
+	
+		<div class="media-list">
+		
+		  <div class="media">
+			<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bild hochladen">
+			<div id="progress" class="progress progress-striped active">
+			  <div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
+			</div>
+		  </div>
+		  
+		</div>
+	
+	
+	  <div class="field">
+		<%= label_tag "media_link", "Video URL" %><br />
+		<%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Vimeo hier einfügen"  %>
+		<div id="media_link_preview" class="oembed"></div>
+	  </div>
+	
+	  <div class="field">
+		<%= f.label :username %><br />
+		<%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
+	  </div>  
+		<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
+		<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
+	
+	  <div class="actions">
+		<%= f.submit "Design einreichen", class: "btn btn-success" %>
+	  </div>
+	  
+	<% end %>
+	
+	<!--%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "imageupload") do %>
+		<%= hidden_field_tag "image[upload_hash]", @design_upload_hash %>
+		<%= file_field_tag "image[image]" %>
+	<% end %--!>
+	
+</div>
+	

@@ -5,10 +5,16 @@ $(document).ready(function() {
 	
 	// oembed preview
 	$("input#media_link").on("change keyup",function () {
+		var preview_tag = $("#media_link_preview");
+		var input_val = $(this).val();
 		if ($(this).attr("data-value-before") && $(this).attr("data-value-before") == $(this).val()) return;
 		else $(this).attr("data-value-before",$(this).val());
-		$("#media_link_preview").text("checking");
-		$("#media_link_preview").oembed($(this).val(), {
+		if (input_val == "") {
+			preview_tag.hide();
+			return;
+			}
+		else preview_tag.show().removeClass("failed").addClass("processing").text( "\"" + input_val + "\" wird geprüft" );
+		preview_tag.oembed($(this).val(), {
 			embedMethod: "fill",
 			/*
 			onError: function(url) {
@@ -18,10 +24,12 @@ $(document).ready(function() {
 			afterEmbed: function(oembedData) {
 				//console.log("done");
 				//console.log(oembedData);
-				if (oembedData.error_code) $("#media_link_preview").text("not ok");
+				preview_tag.show().removeClass("processing");
+				if (oembedData.error_code) preview_tag.show().addClass("failed").text( "\"" + input_val + "\"" + " nicht korrekt" );
+				if ($("input#media_link").val == "") preview_tag.hide();
 				},			
 			beforeEmbed: function() {
-				
+				preview_tag.show().text( input_val + " wird geladen" );
 				},					
 			});
 		});

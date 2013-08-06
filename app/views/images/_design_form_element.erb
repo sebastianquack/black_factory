@@ -1,4 +1,4 @@
-<div>
+<div class="media">
 <%= image_tag @image.image.url(:thumb) %>
 description <%= text_field_tag "images[" + @image.id.to_s + "][description]" %>
 main image? <%= radio_button_tag "design[main_image_id]", @image.id.to_s %> 

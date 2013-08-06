@@ -19,12 +19,24 @@ $(document).ready(function() {
 	$('#imageupload_button').fileupload({
 			done: function (e, data) {
 					$('#upload_thumbs').append(data.result);
+					$('#progress').hide();
+					$('#imageupload_button_wrapper').fadeIn();
+			},
+			fail: function (e, data) {
+				window.setTimeout(function () {
+					$('#progress').hide();
+					$('#imageupload_button_wrapper').fadeIn();
+				}, 1000);			
+			},
+			always: function (e, data) {
 					$('#progress .bar').html('');
 					$('#progress .bar').css('width', '0%');
 					reset_image_events();
 			},
 			progressall: function (e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);
+				$('#imageupload_button_wrapper').hide();
+				$('#progress').show();
 				$('#progress .bar').css(
 						'width',
 						progress + '%'
@@ -64,5 +76,29 @@ $(document).ready(function() {
   });
   $('select[data-targetselect]').trigger("change");
   
+  initUploadButton();
+  
 
 });
+
+function initUploadButton() {
+	btn = $("#imageupload_button");
+	wrapper = $("<div></div>");
+	//wrapper.attr("class", $("#imageupload_button").attr("class"));
+	wrapper.css({ 'position' : 'relative', 'cursor':'pointer', 'height' : btn.outerHeight(), 'width' : btn.outerWidth() });
+	wrapper.attr("id","imageupload_button_wrapper");
+	btn.wrap(wrapper);
+	console.log("cloned");
+	btn_clone = $("<div>"+btn.attr("value")+"</div>").insertAfter(btn);
+	btn_clone.attr("class", $("#imageupload_button").attr("class"));
+	btn.css({
+				'cursor':'pointer',
+				'position':'absolute',
+				'top':'0',
+				'right':'0',
+				'z-index':'99',
+				'opacity':'0',
+				'-moz-opacity':'0',
+				'filter':'progid:DXImageTransform.Microsoft.Alpha(opacity=0)'
+			});
+}

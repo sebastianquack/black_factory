@@ -16,8 +16,12 @@
 @import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
 
 #progress {
-	width: 200px;
+	width: 100%;
+	height: 90px;
+	line-height: 90px;
+	vertical-align: middle;
 	background: lightgray;
+	display:none;
 }
 
 .bar {
@@ -40,6 +44,14 @@ input.username {
     font-size:20px;
 }
 
+input.username:after {
+  content: "Unterschrift";
+  display: block;
+  width:100%;
+  border:dotted 1px;
+  border-width: 1px 0 0 0;
+}
+
 input.username, tt-hint {
     font-family: 'La Belle Aurore', cursive;
     font-size:25px;
@@ -55,11 +67,52 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	/*height:auto;*/
 }
 
-.claim_points, .highscore, .designs, .challenge, .comments, .challenges .preview {
+.claim_points, .highscore, .designs, .challenge, .comments, .creator {
+	border-radius: 10px;
+	box-shadow:         1px 1px 11px rgba(50, 50, 50, 0.76);
+	margin-bottom:10px;
+	padding:10px;
+}
+
+.challenges .preview {
 	border-radius: 10px;
 	box-shadow:         5px 5px 22px rgba(50, 50, 50, 0.76);
 	margin-bottom:10px;
 	padding:10px;
+}
+
+.creator #media_link_preview {
+	margin-top:10px;
+	width:100%;
+	text-align:center;
+	vertical-align:middle;
+}
+
+.creator #media_link_preview.processing, .creator #media_link_preview.failed {
+	padding:30px;
+	border:dotted 5px #ddd;
+	color:#999;
+}
+
+.creator #media_link_preview.processing {
+}
+
+.creator #media_link_preview.failed {
+}
+
+.creator .imageupload_button {
+	border:dotted 5px #ddd;
+	width:100%;
+	height:90px;
+	line-height: 85px;
+	text-decoration:underline;
+	text-align: center;
+	vertical-align: middle;
+	cursor:pointer;
+}
+
+.creator .imageupload_button:hover {
+	
 }
 
 // change bootstrap variables below
