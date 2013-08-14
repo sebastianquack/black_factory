@@ -1,7 +1,13 @@
 <div class="media">
-<%= image_tag @image.image.url(:thumb) %>
-description <%= text_field_tag "images[" + @image.id.to_s + "][description]" %>
-main image? <%= radio_button_tag "design[main_image_id]", @image.id.to_s %> 
-<a href="#" class="image_preview_delete" data-ajax-url="<%=url_for :controller=>'images', :action=>'destroy', :id=>@image.id %>">delete</a>
-</div>
+    <div class="input-group">
+		<span class="input-group-addon">
+		  main image? <%= radio_button_tag "design[main_image_id]", @image.id.to_s %> 
+		</span>
+		<%= image_tag @image.image.url(:thumb), class: "pull-left" %>
+		<div class="media-body form-control">
+			description <%= text_field_tag "images[" + @image.id.to_s + "][description]", nil, class: "form-control" %>
+			
+		</div>
+		<span class="input-group-addon"><a href="#" class="image_preview_delete" data-ajax-url="<%=url_for :controller=>'images', :action=>'destroy', :id=>@image.id %>">delete</a></span>
+	</div>
 <br/>

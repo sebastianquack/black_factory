@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: 4ec1018b3dd8078f3489bc53f2ac92782b6442f2
+  revision: 507323616c5a3e2fe6d9e60cc21cce7d58a639f5
   branch: 3.0.0
   specs:
-    anjlab-bootstrap-rails (3.0.0.rc1)
+    anjlab-bootstrap-rails (3.0.0.rc2)
       railties (>= 3.0)
       sass (>= 3.2)
 
@@ -58,7 +58,7 @@ GEM
     execjs (1.4.0)
       multi_json (~> 1.0)
     hike (1.2.3)
-    i18n (0.6.4)
+    i18n (0.6.5)
     journey (1.0.4)
     jquery-fileupload-rails (0.4.1)
       actionpack (>= 3.1)
@@ -72,7 +72,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    multi_json (1.7.7)
+    multi_json (1.7.9)
     nokogiri (1.5.10)
     paperclip (3.5.0)
       activemodel (>= 3.0.0)

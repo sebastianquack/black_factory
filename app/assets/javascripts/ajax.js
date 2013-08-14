@@ -2,7 +2,7 @@ function reset_image_events() {
 	$('.image_preview_delete').unbind('click');
 	$('.image_preview_delete').click(function(e) {
 		e.preventDefault();
-		$(this).parent().remove();
+		$(this).parents(".media").remove();
 		$.ajax({
 			url: $(this).attr('data-ajax-url'),
 			dataType: "json",
@@ -81,7 +81,7 @@ $(document).ready(function() {
 
 });
 
-function initUploadButton() {
+function initUploadButton() { // beautify button
 	btn = $("#imageupload_button");
 	wrapper = $("<div></div>");
 	//wrapper.attr("class", $("#imageupload_button").attr("class"));

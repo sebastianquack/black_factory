@@ -1,34 +1,15 @@
+
+.challenge + .comments {
+	border:1px dotted black;
+	border-width:1px 0 0 0;
+}
+
+.static-section {
+	background:#eee;
+}
+
 .designs .preview {
-	border:solid #ccc;
-	border-width: 1px 0 0 0;
-	padding:10px 0;
-}
-
-.designs .preview:first-child {
-	border-width:0;
-}
-
-.challenge, .designs, .comments {
-	border:solid #eee 1px;
-	margin-bottom:10px;
-	padding:10px;
-}
-
-.media {
-	padding:0;
-}
-
-.designs .preview .media .pull-left {
-	width:100px;
-	height:75px;
-	
-	text-align:left;
-	display:block;
-}
-
-.designs .preview .media-object {
-	vertical-align:middle;
-	display:inline;
+	outline:5px;
 }
 
 .creator-link {

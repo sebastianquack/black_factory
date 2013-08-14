@@ -1,7 +1,7 @@
 
 <div class="challenges row">
 	<% @challenges.each do |challenge| %>
-		<div class="col-lg-3">
+		<div class="col-lg-4 col-sm-4">
 		<%= render partial: 'challenges/preview', locals: {challenge: challenge} %>
 		</div>
 	<% end %>

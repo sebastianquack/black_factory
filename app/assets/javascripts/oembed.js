@@ -6,7 +6,7 @@ $(document).ready(function() {
 	// oembed preview
 	$("input#media_link").on("change keyup",function () {
 		var preview_tag = $("#media_link_preview");
-		var input_val = $(this).val();
+		var input_val = $(this).val().trim();
 		if ($(this).attr("data-value-before") && $(this).attr("data-value-before") == $(this).val()) return;
 		else $(this).attr("data-value-before",$(this).val());
 		if (input_val == "") {

@@ -44,17 +44,13 @@ input.username {
     font-size:20px;
 }
 
-input.username:after {
-  content: "Unterschrift";
-  display: block;
-  width:100%;
-  border:dotted 1px;
-  border-width: 1px 0 0 0;
-}
-
 input.username, tt-hint {
     font-family: 'La Belle Aurore', cursive;
     font-size:25px;
+}
+
+.tt-hint {
+	border-bottom:0;
 }
 
 input.username:focus {
@@ -67,14 +63,14 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	/*height:auto;*/
 }
 
-.claim_points, .highscore, .designs, .challenge, .comments, .creator {
+.claim_points, .highscore, .static-section, .creator {
 	border-radius: 10px;
 	box-shadow:         1px 1px 11px rgba(50, 50, 50, 0.76);
 	margin-bottom:10px;
 	padding:10px;
 }
 
-.challenges .preview {
+.challenges .preview, .designs .preview  {
 	border-radius: 10px;
 	box-shadow:         5px 5px 22px rgba(50, 50, 50, 0.76);
 	margin-bottom:10px;
@@ -118,7 +114,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 // change bootstrap variables below
 
 // change colors
-$link-color: green;
+$link-color: #E64A22;
 
 // import original bootstrap
 @import "twitter/bootstrap";
