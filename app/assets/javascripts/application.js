@@ -69,4 +69,34 @@ $(document).ready(function() {
 		if (label_new_opacity_int > 1) label_new.css("opacity", "." + label_new_opacity_int);
 		else label_new.css("display", "none");
 	});
+	
+	/*
+	$('.challenges .preview').on("mouseover", function () {
+		$(this).attr("style","position:relative; z-index:111");
+		$(".overlay").show();
+	});
+	
+	$('.challenges .preview').on("mouseleave", function () {
+		$(this).attr("style","position:relative; z-index:0");
+		$(".overlay").hide();
+	});
+	*/
+	
+	$('.preview-link .shade-highlight').removeClass('shade-highlight').addClass('shade-highlight-inactive');
+	
+	$('.preview-link').on("mouseenter", function () {
+		var w = $(this).outerWidth();
+		var h = $(this).outerHeight();
+		shade = $("<div></div>");
+		shade.attr("style","display:box; position:absolute; width:" + w + "px; height:" + h + "px;");
+		shade.addClass("shade");
+		$(this).prepend(shade);
+		$(this).find('.shade-highlight-inactive').addClass('shade-highlight');
+	});
+	
+	$('.preview-link').on("mouseleave", function () {
+		$(".shade").remove();
+		$(this).find('.shade-highlight').removeClass('shade-highlight');
+	});
+	
 });

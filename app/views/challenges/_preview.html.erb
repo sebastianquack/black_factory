@@ -4,9 +4,9 @@
 	
 	<div class="card-content">
 	
-		<h2><%= challenge.name %></h2>
+		<h2 class="shade-highlight"><%= challenge.name %></h2>
 		
-		<h3><%= l challenge.time, :format => :long %></h3>
+		<h3 class="shade-highlight"><%= l challenge.time, :format => :long %></h3>
 		<span class="countdown" data-time="<%= challenge.time.to_i %>"></span>
 		
 		<p><%= challenge.description %></p>

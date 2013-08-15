@@ -79,14 +79,30 @@ h2 a, h3 a, h4 a
     background: green;
 }
 
-div.preview-link {
+.preview-link {
+	overflow:hidden;
 }
 
+
 div.preview-link:hover {
-	background-color: #000;
+	background-color: #fff;
 	cursor: pointer;
 }
 
+.shade {
+	z-index:111; 
+	background:black; 
+	opacity:0.8;
+	border	:none;
+	border-radius:10px;
+}	
+
+
+.shade-highlight {
+	position:relative;
+	z-index:112; 
+	color:white;
+}	
 input.username {
     border:none; 
     box-shadow:none;
@@ -139,7 +155,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	border-radius: 10px;
 }
 
-.challenges .preview:hover, .designs .preview:hover  {
+.challenges .preview:active, .designs .preview:active  {
 	box-shadow: 3px 3px 16px rgba(50, 50, 50, 0.76);
 	position:relative;
 	left:2px;
@@ -222,6 +238,19 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .creator .twitter-typeahead input {
 	margin-bottom: 0px;
+}
+
+.creator .media {
+	margin-top:0;
+}
+
+.creator .media .form-border-fix {
+	border:1px solid #ccc;
+	border-width:1px 0 1px 1px;
+}
+
+.creator .media .media-body {
+	background: transparent;
 }
 
 .creator #media_link_preview {
