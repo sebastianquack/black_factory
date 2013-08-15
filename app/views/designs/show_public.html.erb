@@ -1,58 +1,63 @@
-<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
-
-<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
-<% if @design.main_image %>
-	<%= @design.main_image.description %></br>
-<% end %>
-
-<% @design.images.each do |image| %>
-<div>
-		<% unless image.id == @design.main_image_id %>
-		<%= image_tag image.image.url(:thumb) %><br/>
-		<%= image.description %>
-		<% end %>
-</div>
-<% end %><br/>
-
-<p class="media_link">
-  <b>Video:</b>
-  <a class="oembed" href="<%= @design.media_link.url if @design.media_link %>">...</a>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @design.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @design.description %>
-</p>
-
-<p>
-  <b>Challenge:</b>
-  <%= @design.challenge.name %>
-</p>
-
-<p>
-  <b>Bewertung:</b>
-
-  <%= @design.score %> (<%= @design.vote_count %> Bewertungen)
-</p>
-
-<p>
-	<b>Deine Bewertung:</b>
-	<% for i in 1..5
-				if @vote_cookie.vote
-					if i <= @vote_cookie.vote
-						concat link_to "★", controller: "designs", action: "vote", id: @design, value: i
-					else
-						concat link_to "☆", controller: "designs", action: "vote", id: @design, value: i	
-					end 
-				else 
-					concat link_to "☆", controller: "designs", action: "vote", id: @design, value: i	
-				end
-		end %>
+<div class="row design">
 	
-<% @comments = @design.comments %>
-<%= render 'comments/list_public' %>
+	<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
+	
+	<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
+	<% if @design.main_image %>
+		<%= @design.main_image.description %></br>
+	<% end %>
+	
+	<% @design.images.each do |image| %>
+	<div>
+			<% unless image.id == @design.main_image_id %>
+			<%= image_tag image.image.url(:thumb) %><br/>
+			<%= image.description %>
+			<% end %>
+	</div>
+	<% end %><br/>
+	
+	<% if !@design.media_link.url.blank? %>
+		<p class="media_link">
+		  <a class="oembed" href="<%= @design.media_link.url if @design.media_link %>"><%= image_tag("darkLoader.gif") %></a>
+		</p>
+	<% end %>
+	
+	<p>
+	  <b>Name:</b>
+	  <%= @design.name %>
+	</p>
+	
+	<p>
+	  <b>Description:</b>
+	  <%= @design.description %>
+	</p>
+	
+	<p>
+	  <b>Challenge:</b>
+	  <%= @design.challenge.name %>
+	</p>
+	
+	<p>
+	  <b>Bewertung:</b>
+	
+	  <%= @design.score %> (<%= @design.vote_count %> Bewertungen)
+	</p>
+	
+	<p>
+		<b>Deine Bewertung:</b>
+		<% for i in 1..5
+					if @vote_cookie.vote
+						if i <= @vote_cookie.vote
+							concat link_to "★", controller: "designs", action: "vote", id: @design, value: i
+						else
+							concat link_to "☆", controller: "designs", action: "vote", id: @design, value: i	
+						end 
+					else 
+						concat link_to "☆", controller: "designs", action: "vote", id: @design, value: i	
+					end
+			end %>
+		
+	<% @comments = @design.comments %>
+	<%= render 'comments/list_public' %>
+	
+</div>

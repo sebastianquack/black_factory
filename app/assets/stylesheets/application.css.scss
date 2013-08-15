@@ -10,10 +10,40 @@
  *
  *= require_self
  *= require_tree .
- *= require twitter/bootstrap
+ *= // require twitter/bootstrap
  */
 
+// BOOTSTRAP TESTS
+
+// change colors
+// $link-color: #E64A22;
+
+// import original bootstrap
+@import "twitter/bootstrap";
+
+$link-color: #E64A22;
+$font-family-base: 'Nixie One';
+
+// END BOOTSTRAP TESTS
+
+
 @import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
+@import url(http://fonts.googleapis.com/css?family=Nixie+One|Flamenco:300);
+/*
+font-family: 'Nixie One', cursive;
+font-family: 'Flamenco', cursive;
+*/
+
+body {
+	background-image:url(/assets/PIXEL.png);
+	background-repeat:repeat-x;
+	padding-top:10px;
+	padding-bottom:10px;	
+}
+
+p {
+	font-family: 'Nixie One', cursive;	
+}
 
 #progress {
 	width: 100%;
@@ -25,7 +55,7 @@
 }
 
 .bar {
-    height: 18px;
+    height: 90px;
     background: green;
 }
 
@@ -40,13 +70,15 @@ div.preview-link:hover {
 input.username {
     border:none; 
     box-shadow:none;
-    font-family: 'La Belle Aurore', cursive;
     font-size:20px;
 }
 
 input.username, tt-hint {
-    font-family: 'La Belle Aurore', cursive;
     font-size:25px;
+}
+
+.username {
+	font-family: 'La Belle Aurore', cursive;
 }
 
 .tt-hint {
@@ -63,18 +95,71 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	/*height:auto;*/
 }
 
-.claim_points, .highscore, .static-section, .creator {
+.claim_points, .highscore, .static-section, .creator, .design {
 	border-radius: 10px;
 	box-shadow:         1px 1px 11px rgba(50, 50, 50, 0.76);
 	margin-bottom:10px;
 	padding:10px;
+	background-color:white;
 }
 
+
 .challenges .preview, .designs .preview  {
-	border-radius: 10px;
-	box-shadow:         5px 5px 22px rgba(50, 50, 50, 0.76);
+	box-shadow: 5px 5px 22px rgba(50, 50, 50, 0.76);
 	margin-bottom:10px;
 	padding:10px;
+	background-color:white;
+}
+
+.challenges .preview {
+	border-radius: 10px;
+}
+
+.designs .preview  {
+	border-radius: 10px;
+}
+
+.challenges .preview:hover, .designs .preview:hover  {
+	box-shadow: 3px 3px 16px rgba(50, 50, 50, 0.76);
+	position:relative;
+	left:2px;
+	top:2px;
+}
+
+
+.challenge + .comments {
+	border:1px dotted black;
+	border-width:1px 0 0 0;
+}
+
+.comments q {
+	display: block;
+}
+
+.comment small.username {
+	font-size:130%;
+	margin-left:5%;
+}
+
+.static-section {
+	background:white;
+}
+
+.designs .preview {
+	background-image:url(/assets/Papierbackground_small.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
+}
+
+.creator-link {
+	width:100%;
+	margin-bottom:10px;
+}
+
+.creator, .design {
+	background-image:url(/assets/Papierbackground_large.jpg);
+	background-repeat:no-repeat;
+	background-size:100% 100%;
 }
 
 .creator #media_link_preview {
@@ -111,10 +196,8 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	
 }
 
-// change bootstrap variables below
+.typeahead-username-new, .typeahead-username-old {
+	display:none;
+}
 
-// change colors
-$link-color: #E64A22;
-
-// import original bootstrap
-@import "twitter/bootstrap";
+.clear { clear:both; }

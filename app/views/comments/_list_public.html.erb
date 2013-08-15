@@ -1,10 +1,17 @@
-<p>
-<b>Comments:</b><br/>
-<% @comments.each do |comment| %>
-	<% unless comment.hidden %>
-	<%= comment.username + ': ' + comment.content %><br/>
-	<% end %>
-<% end %>
+<div class="comments well">
 
-<%= render 'comments/form_public' %>
-</p>
+	<%= render 'comments/form_public' %>
+	
+	<% @comments.each do |comment| %>
+		<% unless comment.hidden %>
+		<div class="clearfix comment">
+			<q><%= comment.content %></q>
+			<small class="pull-right username"><%= comment.username %></small>
+			<small class="pull-right created_at"><%= l comment.created_at %></small>
+			<hr>
+		</div>
+		<br>
+		<% end %>
+	<% end %>
+
+</div>

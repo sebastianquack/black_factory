@@ -9,30 +9,25 @@
 			<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
 		
 			<% @challenge.images.each do |image| %>
-					<%= image_tag image.image.url(:thumb) %>
+					<%= image_tag image.image.url(:thumb) if !image==@challenge.main_image.image? %>
 			<% end %><br/>
 			
-			<p>
-			  <b>Name:</b>
+			<h2>
 			  <%= @challenge.name %>
+			</h2>
+			
+			<p>
+			  <%= l @challenge.time %>
 			</p>
 			
 			<p>
-			  <b>Time:</b>
-			  <%= @challenge.time %>
-			</p>
-			
-			<p>
-			  <b>Description:</b>
 			  <%= @challenge.description %>
 			</p>
 		
 		</div>
 	
-		<div class="comments">
-			<% @comments = @challenge.comments %>
-			<%= render 'comments/list_public' %>
-		</div>
+		<% @comments = @challenge.comments %>
+		<%= render 'comments/list_public' %>
 		
 	</div>
 	
