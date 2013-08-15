@@ -1,7 +1,8 @@
-<div class="row creator">
-	
-	<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
-	
+<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
+
+
+<div class="row creator card card-content">
+		
 	<h1>Design Creator</h1>
 	
 	<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
@@ -18,11 +19,11 @@
 	  <% end %>
 	
 	  <div class="field">
-		<%= f.label :name %><br />
+		<%= f.label :name, "Titel" %><br />
 		<%= f.text_field :name, class: "form-control" %>
 	  </div>
 	  <div class="field">
-		<%= f.label :description %><br />
+		<%= f.label :description, "Beschreibung" %><br />
 		<%= f.text_area :description, class: "form-control" %>
 	  </div>
 	
@@ -42,12 +43,12 @@
 	
 	  <div class="field">
 		<%= label_tag "media_link", "Video URL" %><br />
-		<%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Vimeo hier einfügen"  %>
+		<%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Vimeo hier einfügen, z.B. http://www.youtube.com/watch?v=UIUOS01WRvM"  %>
 		<div id="media_link_preview" class="oembed"></div>
 	  </div>
 	
 	  <div class="field">
-		<%= f.label :username %><br />
+		<%= f.label :username, class: "sr-only" %><br />
 		<%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
 	  </div>  
 		<%= f.hidden_field :challenge_id, :value => @challenge.id %>	

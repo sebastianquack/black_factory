@@ -85,7 +85,7 @@ function initUploadButton() { // beautify button
 	btn = $("#imageupload_button");
 	wrapper = $("<div></div>");
 	//wrapper.attr("class", $("#imageupload_button").attr("class"));
-	wrapper.css({ 'position' : 'relative', 'cursor':'pointer', 'height' : btn.outerHeight(), 'width' : btn.outerWidth() });
+	wrapper.css({ 'position' : 'relative', 'cursor':'pointer', 'height' : btn.outerHeight(), 'width' : '100%' /*btn.outerWidth()*/ });
 	wrapper.attr("id","imageupload_button_wrapper");
 	btn.wrap(wrapper);
 	console.log("cloned");

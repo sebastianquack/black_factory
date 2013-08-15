@@ -26,9 +26,7 @@ $font-family-base: 'Nixie One';
 
 // END BOOTSTRAP TESTS
 
-
-@import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
-@import url(http://fonts.googleapis.com/css?family=Nixie+One|Flamenco:300);
+@import url(http://fonts.googleapis.com/css?family=Nixie+One|La+Belle+Aurore);
 /*
 font-family: 'Nixie One', cursive;
 font-family: 'Flamenco', cursive;
@@ -50,16 +48,21 @@ body {
 	padding-bottom:10px;	
 }
 
-p {
-	/* font-family: 'Flamenco', sans-serif;	*/
+*  {
+	 font-family: 'Nixie One', sans-serif;
 }
 
-h1,h2 {
-	font-family: 'Kankin', sans-serif;	
+h1 {
+	font-family: 'Kankin', sans-serif;
+	letter-spacing:0.1ex;
 }
 
-h3 {
-	font-family: 'Neusa-Bold', sans-serif;	
+h2, h3, h4, 
+h2 a, h3 a, h4 a 
+{
+	font-family: 'Neusa-Bold', sans-serif;
+	color:black;
+	letter-spacing:0.2ex;
 }
 
 #progress {
@@ -143,8 +146,13 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	top:2px;
 }
 
-.preview > img:first-child, .challenge > img:first-child {
+.card > img:first-child {
 	border-radius: 10px 10px 0 0;
+	width:100%;
+}
+
+.card-content {
+	padding:3%;
 }
 
 .challenge + .comments {
@@ -168,6 +176,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 }
 
 .comment q {
+	letter-spacing:133%;
 	display: block;
 	border:solid #eee;
 	border-width:0 0 1px 0;
@@ -205,6 +214,14 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	background-image:url(/assets/Papierbackground_large.jpg);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
+}
+
+.creator input, .creator textarea, .creator .media-list, .creator .twitter-typeahead {
+	margin-bottom: 20px;
+}
+
+.creator .twitter-typeahead input {
+	margin-bottom: 0px;
 }
 
 .creator #media_link_preview {

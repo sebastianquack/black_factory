@@ -2,12 +2,12 @@
 
 <div class="row">
 
-	<div class="col-sm-6 col-md-6 col-lg-4 static-section">
+	<div class="col-sm-6 col-md-6 col-lg-4 static-section card">
 	
-		<div class="challenge">
-		
-			<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
-		
+		<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
+
+		<div class="challenge card-content">
+				
 			<% @challenge.images.each do |image| %>
 					<%= image_tag image.image.url(:thumb) if !image==@challenge.main_image.image? %>
 			<% end %><br/>
@@ -25,10 +25,10 @@
 			</p>
 		
 		</div>
-	
+
 		<% @comments = @challenge.comments %>
 		<%= render 'comments/list_public' %>
-		
+
 	</div>
 	
 	
