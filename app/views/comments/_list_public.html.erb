@@ -1,16 +1,14 @@
-<div class="comments well">
+<div class="comments">
 
 	<%= render 'comments/form_public' %>
 	
 	<% @comments.each do |comment| %>
 		<% unless comment.hidden %>
-		<div class="clearfix comment">
-			<q><%= comment.content %></q>
+		<div class="comment well-sm well">
+			<q class=""><%= comment.content %></q>
 			<small class="pull-right username"><%= comment.username %></small>
 			<small class="pull-right created_at"><%= l comment.created_at %></small>
-			<hr>
 		</div>
-		<br>
 		<% end %>
 	<% end %>
 
