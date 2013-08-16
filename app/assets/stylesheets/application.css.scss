@@ -171,6 +171,11 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	padding:3%;
 }
 
+.label-new {
+	font-size:60%;
+	font-weight:bold;
+}
+
 .challenge + .comments {
 	border:1px dotted black;
 	border-width:1px 0 0 0;

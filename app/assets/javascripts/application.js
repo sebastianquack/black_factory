@@ -64,9 +64,9 @@ $(document).ready(function() {
 	label_new_decay_time = 72000;
 	$(".label-new").each( function () {
 		label_new = $(this);
-		label_new_age = label_new.attr("data-age");
-		label_new_opacity_int = 10 - Math.round( 10 * label_new_age / label_new_decay_time);
-		if (label_new_opacity_int > 1) label_new.css("opacity", "." + label_new_opacity_int);
+		label_new_age = parseInt(label_new.attr("data-age"));
+		label_new_opacity_float = ((label_new_decay_time - label_new_age) / label_new_decay_time).toFixed(1);
+		if (label_new_opacity_float > 0.1) label_new.css("opacity", label_new_opacity_float);
 		else label_new.css("display", "none");
 	});
 	
@@ -98,5 +98,15 @@ $(document).ready(function() {
 		$(".shade").remove();
 		$(this).find('.shade-highlight').removeClass('shade-highlight');
 	});
+	
+	$('.challenges .preview').on("click", function () {
+		$(this).attr("style","position:relative; z-index:111");
+		$(".overlay").show();
+	});	
+	
+	$('.challenges .preview').on("mouseleave", function () {
+		$(this).attr("style","position:relative; z-index:0");
+		$(".overlay").hide();
+	});	
 	
 });

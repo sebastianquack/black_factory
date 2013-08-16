@@ -2,9 +2,9 @@
 
 	<img class="media-object" src="<%= design.main_image.image.url(:medium) if design.main_image %>" alt="<%= design.main_image.description if design.main_image %>">
 	  <div class="card-content">
-		<h4>
-			<a href="<%= url_for controller: "designs", action: "show_public", id: design.id, only_path: true %>"><%= design.name %></a> 
-			<span class="label label-new" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</label>
+		<h4 class="shade-highlight">
+			<a class="shade-highlight" href="<%= url_for controller: "designs", action: "show_public", id: design.id, only_path: true %>"><%= design.name %></a> 
+			<span class="label label-info label-new shade-highlight" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</label>
 		</h4>
 		<b>Bewertung:</b>
 		<%= design.score %> (<%= design.vote_count %> Bewertungen)
