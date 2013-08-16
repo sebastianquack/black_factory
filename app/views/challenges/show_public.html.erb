@@ -42,9 +42,9 @@
 		
 		<a class="creator-link btn btn-success btn-lg" href="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">Create Design</a>
 
-		  <% @designs_sorted.each do |design| %>
-		
-				<%= render partial: "designs/preview", locals: {design: design} %>
+		  <% @designs_sorted.each.with_index do |design,i| %>
+
+				<%= render partial: "designs/preview", locals: {design: design, index: i} %>
 				
 		  <% end %>
 
