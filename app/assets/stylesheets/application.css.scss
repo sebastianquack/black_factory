@@ -44,7 +44,7 @@ src: url("Kankin.otf") format("opentype");
 body {
 	background-image:url(PIXEL.png);
 	background-repeat:repeat-x;
-	padding-top:10px;
+	padding-top:0px;
 	padding-bottom:10px;	
 }
 
@@ -63,6 +63,16 @@ h2 a, h3 a, h4 a
 	font-family: 'Neusa-Bold', sans-serif;
 	color:black;
 	letter-spacing:0.2ex;
+}
+
+.navbar-brand {
+	font-family: Kankin;
+}
+
+.navbar {
+	background:white;
+	color:black;
+	box-shadow:         1px 1px 11px rgba(50, 50, 50, 0.76);
 }
 
 #progress {
