@@ -42,27 +42,39 @@ src: url("Kankin.otf") format("opentype");
 }
 
 body {
-	background-image:url(PIXEL.png);
-	background-repeat:repeat-x;
+	
 	padding-top:0px;
 	padding-bottom:10px;	
 }
 
+/*
 *  {
 	 font-family: 'Nixie One', sans-serif;
 }
+*/
 
 h1 {
-	font-family: 'Kankin', sans-serif;
+	font-family: 'Neusa-Bold', sans-serif;
 	letter-spacing:0.1ex;
 }
 
 h2, h3, h4, 
 h2 a, h3 a, h4 a 
 {
-	font-family: 'Neusa-Bold', sans-serif;
+	font-family: 'Kankin', sans-serif;
 	color:black;
-	letter-spacing:0.2ex;
+	/*letter-spacing:0.2ex;*/
+}
+
+header {
+	
+}
+
+.container-main {
+	background-image:url(PIXEL.png);
+	background-repeat:repeat-x;
+	margin-top:-20px;
+	padding-top:20px;
 }
 
 .navbar-brand {
@@ -72,7 +84,13 @@ h2 a, h3 a, h4 a
 .navbar {
 	background:white;
 	color:black;
+	opacity:0.8;
 	box-shadow:         1px 1px 11px rgba(50, 50, 50, 0.76);
+}
+
+.navbar a, .navbar li a {
+	color:black;
+	opacity:1.0;
 }
 
 #progress {
