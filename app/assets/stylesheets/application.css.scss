@@ -66,12 +66,22 @@ h2 a, h3 a, h4 a
 	/*letter-spacing:0.2ex;*/
 }
 
+.challenges .preview h2 {
+	font-size:200%;
+}
+
+
+.challenges .preview h3 {
+	font-size:123%%;
+}
+
 header {
 	
 }
 
 .container-main {
 	background-image:url(PIXEL.png);
+	background-attachment:fixed;
 	background-repeat:repeat-x;
 	margin-top:-20px;
 	padding-top:20px;
