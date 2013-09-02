@@ -30,6 +30,7 @@
 
   <div class="field">
   	<%= f.label "Main image" %>
+  	<%= radio_button_tag "design[main_image_id]", 0 %> keins
 		<% @design.images.each do |image| %>
 				<%= radio_button_tag "design[main_image_id]", image.id.to_s %>
 				<%= image_tag image.image.url(:thumb) %>

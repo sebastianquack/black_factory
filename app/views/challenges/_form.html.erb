@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :time %><br />
-    <%= f.datetime_select :time %>
+    <%= f.datetime_select :time %>  	<%= radio_button_tag "design[main_image_id]", 0 %> keins
   </div>
   <div class="field">
     <%= f.label :description %><br />
@@ -28,6 +28,7 @@
   	<%= f.label "Main image" %>
   	
 		<% @challenge.images.each do |image| %>
+		  	<%= radio_button_tag "challenge[main_image_id]", 0 %> keins
 				<%= radio_button_tag "challenge[main_image_id]", image.id.to_s %>
 				<%= image_tag image.image.url(:thumb) %>
 		<% end %>

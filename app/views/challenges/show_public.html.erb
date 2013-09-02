@@ -9,9 +9,24 @@
 			<div class="challenge card-content">
 					
 				<% @challenge.images.each do |image| %>
-						<%= image_tag image.image.url(:thumb) if !image==@challenge.main_image.image? %>
+						<%= image_tag image.image.url(:thumb) if image.id != @challenge.main_image_id %>
 				<% end %><br/>
 				
+				<% if @challenge.time > Time.now %>
+				
+				<div id="upload_thumbs"></div>
+	
+				<div class="media-list">
+					<div class="media">
+						<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bild hochladen">
+						<div id="progress" class="progress progress-striped active">
+							<div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
+						</div>
+					</div>
+			  </div>
+				
+				<% end %>
+								
 				<h2>
 				  <%= @challenge.name %>
 				</h2>
@@ -36,19 +51,21 @@
 	
 	<div class="designs col-sm-6 col-md-6 col-lg-8">
 		
-		<div class="col-sx-6 col-sm-6 col-md-4 col-lg-4">
-			<div class="preview card preview-link" data-url="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">
-				<div class="card-content">
-					<h4 class="shade-highlight">Create Design</h4>
+		<% if @challenge.time > Time.now %>
+			<div class="col-sx-6 col-sm-6 col-md-4 col-lg-4">
+				<div class="preview card preview-link" data-url="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">
+					<div class="card-content">
+						<h4 class="shade-highlight">Create Design</h4>
+					</div>
 				</div>
 			</div>
-		</div>
+		<% end %>
 		
-		  <% @designs_sorted.each.with_index do |design,i| %>
+		<% @designs_sorted.each.with_index do |design,i| %>
 
-				<%= render partial: "designs/preview", locals: {design: design, index: i} %>
+			<%= render partial: "designs/preview", locals: {design: design, index: i} %>
 				
-		  <% end %>
+		<% end %>
 
 	</div>
 	

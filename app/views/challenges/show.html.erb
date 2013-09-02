@@ -1,6 +1,16 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+<b>Main image:</b>
 <%= image_tag @challenge.main_image.image.url(:thumb) if @challenge.main_image %>
+<p>
+
+<p>
+<b>Other Images:</b>
+<% @challenge.images.each do |image| %>
+	<%= image_tag image.image.url(:thumb) if image.id != @challenge.main_image_id %>
+<% end %><br/>
+</p>
 
 <p>
   <b>Name:</b>
