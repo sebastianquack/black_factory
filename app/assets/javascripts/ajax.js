@@ -18,7 +18,7 @@ $(document).ready(function() {
 
 	$('#imageupload_button').fileupload({
 			done: function (e, data) {
-					$('#upload_thumbs').append(data.result);
+					$('#image_thumbs').append(data.result);
 					$('#progress').hide();
 					$('#imageupload_button_wrapper').fadeIn();
 			},

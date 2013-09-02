@@ -1,0 +1,50 @@
+
+	<div class="design card">
+
+		<%= image_tag design.main_image.image.url(:large) if design.main_image %><br/>
+	
+		<div class="card-content">
+		
+			<% if design.main_image %>
+				<%= design.main_image.description %></br>
+			<% end %>
+			
+			<% design.images.each do |image| %>
+			<div>
+					<% unless image.id == design.main_image_id %>
+					<%= image_tag image.image.url(:thumb) %><br/>
+					<%= image.description %>
+					<% end %>
+			</div>
+			<% end %><br/>
+			
+			<% if design.media_link && !design.media_link.url.blank? %>
+				<p class="media_link">
+				  <a class="oembed" href="<%= design.media_link.url if design.media_link %>"><%= image_tag("darkLoader.gif") %></a>
+				</p>
+			<% end %>
+			
+			<h2>
+			  <%= design.name %>
+			</h2>
+			
+			<p>
+			  <b>Description:</b>
+			  <%= design.description %>
+			</p>
+			
+			<p>
+			  <b>Challenge:</b>
+			  <%= design.challenge.name %>
+			</p>
+			
+			<p>
+			  <b>Bewertung:</b>
+			
+			  <%= design.score %> (<%= design.vote_count %> Bewertungen)
+			</p>
+			
+				
+		</div>
+		
+	</div>

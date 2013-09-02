@@ -8,22 +8,25 @@
 	
 			<div class="challenge card-content">
 					
+				<div id="image_thumbs">	
 				<% @challenge.images.each do |image| %>
 						<%= image_tag image.image.url(:thumb) if image.id != @challenge.main_image_id %>
-				<% end %><br/>
+				<% end %>
+				</div>
 				
-				<% if @challenge.time > Time.now %>
-				
-				<div id="upload_thumbs"></div>
+				<% if Time.now > @challenge.time %>
 	
+				<form>
 				<div class="media-list">
 					<div class="media">
 						<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bild hochladen">
+						<%= hidden_field_tag :challenge_id, @challenge.id %>
 						<div id="progress" class="progress progress-striped active">
 							<div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
 						</div>
 					</div>
 			  </div>
+			  </form>
 				
 				<% end %>
 								
@@ -59,11 +62,17 @@
 					</div>
 				</div>
 			</div>
+		<% else %>
+	
+			<%= render partial: "designs/winner_preview", locals: {design: @designs_sorted[0] } %>
+	
 		<% end %>
 		
 		<% @designs_sorted.each.with_index do |design,i| %>
 
-			<%= render partial: "designs/preview", locals: {design: design, index: i} %>
+			<% unless @challenge.time < Time.now && i == 0 %>
+				<%= render partial: "designs/preview", locals: {design: design, index: i} %>
+			<% end %>
 				
 		<% end %>
 
