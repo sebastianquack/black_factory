@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/anjlab/bootstrap-rails.git
-  revision: 507323616c5a3e2fe6d9e60cc21cce7d58a639f5
-  branch: 3.0.0
+  revision: a4e33463d3689443702c5868dafea4a1a92e439e
+  branch: master
   specs:
-    anjlab-bootstrap-rails (3.0.0.rc2)
+    anjlab-bootstrap-rails (3.0.0.2)
       railties (>= 3.0)
       sass (>= 3.2)
 

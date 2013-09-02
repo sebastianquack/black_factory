@@ -21,7 +21,7 @@ gem 'jquery-fileupload-rails'
 gem 'twitter-typeahead-rails'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
-                              :branch => '3.0.0'
+                              :branch => 'master'
 
 # gem 'jquery-star-rating-rails' # usage: http://www.fyneworks.com/jquery/star-rating/
 
