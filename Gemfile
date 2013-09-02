@@ -28,6 +28,8 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
 #gem 'aws-s3'
 gem 'aws-sdk'
 
+gem 'friendly_id', '~> 4.0.1'
+
 gem "paperclip", "~> 3.5.0"
 
 #gem "paperclip", "~> 3.0"

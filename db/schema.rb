@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806084831) do
+ActiveRecord::Schema.define(:version => 20130902124415) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
@@ -71,6 +71,16 @@ ActiveRecord::Schema.define(:version => 20130806084831) do
     t.datetime "updated_at",                      :null => false
     t.boolean  "hidden",       :default => false
   end
+
+  create_table "pages", :force => true do |t|
+    t.string   "title"
+    t.string   "slug"
+    t.text     "content"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
   create_table "reward_codes", :force => true do |t|
     t.string   "code"
