@@ -1,5 +1,7 @@
 DarkFactory::Application.routes.draw do
 
+	match '/tutorial' => 'home#tutorial'
+
 	match 'challenges/designs' => 'challenges#designs_public_urlparam'
 	match 'challenges/:id' => 'challenges#show_public', 'as' => 'challenge'
 	match 'challenges/:id/designs' => 'challenges#designs_public'

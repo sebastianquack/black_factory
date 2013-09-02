@@ -1,12 +1,12 @@
-<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
-
 <div class="row">
 
 	<div class="design card">
-		
+
 		<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
 	
 		<div class="card-content">
+
+		<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
 		
 			<% if @design.main_image %>
 				<%= @design.main_image.description %></br>

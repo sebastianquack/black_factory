@@ -1,14 +1,35 @@
 
 <div class="challenges row">
-	<% @challenges.each do |challenge| %>
+
+	<div class="col-lg-4 col-sm-4">
+		<div class="preview-link preview card" data-url="<%= url_for controller: "home", action: "tutorial" %>">
+			<div class="card-content">
+				<h2 class="shade-highlight">Tutorial</h2>
+				<h3 class="shade-highlight">So geht das.</h3>
+				<p>tralala</p>
+			</div>
+		</div>
+	</div>
+
+	<% @challenges[0, 2].each do |challenge| %>
 		<div class="col-lg-4 col-sm-4">
 		<%= render partial: 'challenges/preview', locals: {challenge: challenge} %>
 		</div>
 	<% end %>
+
 </div>
 
-<%= link_to "Punkte Enlösen", highscores_path %>
+<div class="challenges row">
 
+	<% @challenges[2, 3].each do |challenge| %>
+		<div class="col-lg-4 col-sm-4">
+		<%= render partial: 'challenges/preview', locals: {challenge: challenge} %>
+		</div>
+	<% end %>
+
+</div>
+
+<!--
 <address>
   <strong>Twitter, Inc.</strong><br>
   795 Folsom Ave, Suite 600<br>
@@ -20,6 +41,7 @@
   <strong>Full Name</strong><br>
   <a href="mailto:#">first.last@example.com</a>
 </address>
+-->
 
 <div class="overlay" style="position:fixed; background:#fff; background-image:url(assets/PIXEL.png); background-repeat:repeat-x; opacity:0.95; width:100%; height:100%; top:0; left:0; display:none">
 </div>
