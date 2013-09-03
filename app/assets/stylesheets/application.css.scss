@@ -149,8 +149,18 @@ input.username {
     background-color:transparent;
 }
 
-input.username, tt-hint {
+input.username {
     font-size:25px;
+}
+
+input.username:after {
+	display:block;
+	content: "Unterschrift (Benutzername)";
+	border:0 solid black;
+	border-width:1px 0 0 0;
+	width:33%;
+	text-align:center;
+	font-size:85%;
 }
 
 .username {
@@ -173,12 +183,11 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .claim_points, .highscore, .static-section, .creator, .design {
 	border-radius: 10px;
-	box-shadow:         1px 1px 11px rgba(50, 50, 50, 0.76);
+	box-shadow:         0px 0px 4px rgba(50, 50, 50, 0.66);
 	margin-bottom:10px;
 	padding:10px;
 	background-color:white;
 }
-
 
 .challenges .preview, .designs .preview {
 	box-shadow: 5px 5px 22px rgba(50, 50, 50, 0.76);
@@ -256,11 +265,6 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .star-form {
 	display: inline;
-}
-
-
-.static-section {
-	background:white;
 }
 
 .designs .preview {

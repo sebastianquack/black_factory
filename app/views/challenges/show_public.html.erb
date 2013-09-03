@@ -62,23 +62,23 @@
 					</div>
 				</div>
 			</div>
-		<% else %>
+			<%= render partial: "first_vote_modal", locals: {final_date: @challenge.time}  %>if !@has_voted
+		<% end %>
 	
-			<% i = 1 %>
-			
-			<% if @challenge.winner_design %>
-				<%= render partial: "designs/winner_preview", locals: {design: @challenge.winner_design } %>
-				<% i = 2 %>
-			<% end %> 
+		<% i = 1 %>
 		
-			<% @designs_sorted.each.with_index do |design| %>
+		<% if @challenge.winner_design %>
+			<%= render partial: "designs/winner_preview", locals: {design: @challenge.winner_design } %>
+			<% i = 2 %>
+		<% end %> 
+	
+		<% @designs_sorted.each do |design| %>
 
-				<% unless design.id == @challenge.winner_design_id %>
-					<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
-					<% i = i + 1 %>
-				<% end %>
-							
+			<% unless design.id == @challenge.winner_design_id %>
+				<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
+				<% i = i + 1 %>
 			<% end %>
+						
 		<% end %>
 
 	</div>
