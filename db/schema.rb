@@ -11,16 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902124415) do
+ActiveRecord::Schema.define(:version => 20130903101017) do
 
   create_table "challenges", :force => true do |t|
     t.string   "name"
     t.datetime "time"
     t.text     "description"
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-    t.boolean  "hidden",        :default => true
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.boolean  "hidden",           :default => true
     t.integer  "main_image_id"
+    t.integer  "winner_design_id"
   end
 
   create_table "comments", :force => true do |t|

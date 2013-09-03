@@ -35,6 +35,11 @@
 	</div>
 
   <div class="field">
+    <%= f.label :winner_design_id, "Winner Design" %><br />
+    <%= f.select :winner_design_id, @designs_sorted.collect {|d| [d.name + ' ' + d.score.to_s, d.id]}.insert(0, ["-", nil]) %>
+  </div>
+
+  <div class="field">
     <%= f.label :hidden %><br />
     <%= f.check_box :hidden %>
   </div>

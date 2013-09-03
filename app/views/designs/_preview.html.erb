@@ -1,8 +1,12 @@
 
 <div class=" col-sx-6 col-sm-6 col-md-4 col-lg-4">
 
+	<% if Time.now > design.challenge.time && index < 4 %>
+		<h4>Rang <%= index %></h4>
+	<% end %> 
+
 	<div class="preview card preview-link" data-url="<%= url_for controller: "designs", action: "show_public", id: design.id, only_path: true %>">
-	
+		
 		<img class="media-object" src="<%= design.main_image.image.url(:medium) if design.main_image %>" alt="<%= design.main_image.description if design.main_image %>">
 		<div class="card-content">
 			<h4 class="shade-highlight">
@@ -13,49 +17,43 @@
 		</div>
 	
 	</div>
+
+	<% if Time.now < design.challenge.time %>
 	
-	<%= form_tag((url_for controller: "designs", action: "vote", id: design.id), :class => 'star-form') do %>
-		<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
-			<% if current_vote >= 1 %>
-				checked="checked"
-			<% end %>		
-			<% if design.challenge.time < Time.now %>
-				disabled="disabled"
-			<% end %>
-		/>
-		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
-			<% if current_vote >= 2 %>
-				checked="checked"
-			<% end %>		
-			<% if design.challenge.time < Time.now %>
-				disabled="disabled"
-			<% end %>
-		/>
-		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
-			<% if current_vote >= 3 %>
-				checked="checked"
-			<% end %>		
-			<% if design.challenge.time < Time.now %>
-				disabled="disabled"
-			<% end %>
-		/>
-		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
-			<% if current_vote >= 4 %>
-				checked="checked"
-			<% end %>	
-			<% if design.challenge.time < Time.now %>
-				disabled="disabled"
-			<% end %>
-		/>
-		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="5"/
-			<% if current_vote == 5 %>
-				checked="checked"
-			<% end %>		
-			<% if design.challenge.time < Time.now %>
-				disabled="disabled"
-			<% end %>
-		/>
+		<%= form_tag((url_for controller: "designs", action: "vote", id: design.id), :class => 'star-form') do %>
+			<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
+				<% if current_vote >= 1 %>
+					checked="checked"
+				<% end %>		
+			/>
+			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
+				<% if current_vote >= 2 %>
+					checked="checked"
+				<% end %>		
+			/>
+			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
+				<% if current_vote >= 3 %>
+					checked="checked"
+				<% end %>		
+			/>
+			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
+				<% if current_vote >= 4 %>
+					checked="checked"
+				<% end %>	
+			/>
+			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="5"/
+				<% if current_vote == 5 %>
+					checked="checked"
+				<% end %>		
+			/>
+		<% end %>
 
 	<% end %>
 	
 </div>
+
+<% if Time.now > design.challenge.time && index == 3 %>
+	<div style="clear:both; height: 100px;"></div>
+<% end %> 
+
+

@@ -82,6 +82,7 @@ class ChallengesController < ApplicationController
   # GET /challenges/new.json
   def new
     @challenge = Challenge.new
+   	@designs_sorted = @challenge.designs.order("score DESC")
 
     respond_to do |format|
       format.html # new.html.erb
@@ -91,7 +92,9 @@ class ChallengesController < ApplicationController
 
   # GET /challenges/1/edit
   def edit
-    @challenge = Challenge.find(params[:id])
+    @challenge = Challenge.find(params[:id])    
+   	@designs_sorted = @challenge.designs.order("score DESC")[0, 3]
+    
   end
 
   # POST /challenges

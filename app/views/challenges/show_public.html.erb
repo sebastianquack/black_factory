@@ -14,19 +14,19 @@
 				<% end %>
 				</div>
 				
-				<% if Time.now > @challenge.time %>
+				<% if @challenge.winner_design %>
 	
-				<form>
-				<div class="media-list">
-					<div class="media">
-						<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bild hochladen">
-						<%= hidden_field_tag :challenge_id, @challenge.id %>
-						<div id="progress" class="progress progress-striped active">
-							<div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
+					<form>
+					<div class="media-list">
+						<div class="media">
+							<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bild hochladen">
+							<%= hidden_field_tag :challenge_id, @challenge.id %>
+							<div id="progress" class="progress progress-striped active">
+								<div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
+							</div>
 						</div>
 					</div>
-			  </div>
-			  </form>
+					</form>
 				
 				<% end %>
 								
@@ -64,16 +64,21 @@
 			</div>
 		<% else %>
 	
-			<%= render partial: "designs/winner_preview", locals: {design: @designs_sorted[0] } %>
-	
-		<% end %>
+			<% i = 1 %>
+			
+			<% if @challenge.winner_design %>
+				<%= render partial: "designs/winner_preview", locals: {design: @challenge.winner_design } %>
+				<% i = 2 %>
+			<% end %> 
 		
-		<% @designs_sorted.each.with_index do |design,i| %>
+			<% @designs_sorted.each.with_index do |design| %>
 
-			<% unless @challenge.time < Time.now && i == 0 %>
-				<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
+				<% unless design.id == @challenge.winner_design_id %>
+					<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
+					<% i = i + 1 %>
+				<% end %>
+							
 			<% end %>
-				
 		<% end %>
 
 	</div>
