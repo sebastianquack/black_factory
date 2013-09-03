@@ -9,10 +9,16 @@
 				<%= design.name %>
 				<span class="label label-info label-new shade-highlight" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</span>
 			</h4>
-			<b>Bewertung:</b>
-			<%= design.score %> (<%= design.vote_count %> Bewertungen)
+			<b>Bewertung:</b><%= design.score %> (<%= design.vote_count %>)<br/>
 		</div>
 	
 	</div>
+	<form>
+			<input class="star required" type="radio" name="test-1-rating-5" value="1"/>
+	    <input class="star" type="radio" name="test-1-rating-5" value="2"/>
+  	  <input class="star" type="radio" name="test-1-rating-5" value="3"/>
+    	<input class="star" type="radio" name="test-1-rating-5" value="4"/>
+	    <input class="star" type="radio" name="test-1-rating-5" value="5"/>
+	</form>
 	
 </div>

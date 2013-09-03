@@ -2,35 +2,38 @@ require 'securerandom'
 
 class DesignsController < ApplicationController
 
-  # GET /designs/1
-  # GET /designs/1.json
-  def show_public
-    @design = Design.find(params[:id])
-	cookie_hash = cookies[:vote_hash]
-	cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
-	@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
-	@vote_cookie = VoteCookie.new if @vote_cookie.nil?
+	# GET /designs/1
+	# GET /designs/1.json
+	def show_public
+		@design = Design.find(params[:id])
+		cookie_hash = cookies[:vote_hash]
+		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
+		@vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
+		if @vote_cookie.nil?
+			@vote_cookie = VoteCookie.new 
+			@vote_cookie.vote = 0
+		end
 
-	#prepare forms
-	@comment = Comment.new
-	@cookie_username = cookies[:username]
-	@cookie_username = 'Anonym' if @cookie_username.nil?
+		#prepare forms
+		@comment = Comment.new
+		@cookie_username = cookies[:username]
+		@cookie_username = 'Anonym' if @cookie_username.nil?
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @design }
-    end
-  end
+		respond_to do |format|
+			format.html # show.html.erb
+			format.json { render json: @design }
+		end
+	end
 
-def creator
-	@challenge = Challenge.find(params[:challenge_id])
-	@cookie_username = cookies[:username]
-	@cookie_username = 'Anonym' if @cookie_username.nil?
-  @design = Design.new
-  @design_upload_hash = SecureRandom.uuid
-end
+	def creator
+		@challenge = Challenge.find(params[:challenge_id])
+		@cookie_username = cookies[:username]
+		@cookie_username = 'Anonym' if @cookie_username.nil?
+		@design = Design.new
+		@design_upload_hash = SecureRandom.uuid
+	end
 
-def create_public 
+	def create_public 
 
     @design = Design.new(params[:design].except(:upload_hash))
 		
@@ -93,7 +96,8 @@ def create_public
 			record.save
 		end
 	
-		redirect_to :action => "show_public", :id => @design
+		#redirect_to :action => "show_public", :id => @design
+		render json: {status: 'ok'}
 	
 	end
 

@@ -48,19 +48,36 @@
 			</p>
 			
 			<p>
-				<b>Deine Bewertung:</b>
-				<% for i in 1..5
-						if @vote_cookie.vote
-							if i <= @vote_cookie.vote
-								concat link_to "★", controller: "designs", action: "vote", id: @design, value: i
-							else
-								concat link_to "☆", controller: "designs", action: "vote", id: @design, value: i	
-							end 
-						else 
-							concat link_to "☆", controller: "designs", action: "vote", id: @design, value: i	
-						end
-				end %>
-				
+				<b>Deine Bewertung:</b>				
+				<%= form_tag((url_for controller: "designs", action: "vote"), :remote => true) do %>
+
+					<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
+						<% if @vote_cookie.vote >= 1 %>
+							checked="checked"
+						<% end %>		
+					/>
+	  	  	<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
+						<% if @vote_cookie.vote >= 2 %>
+							checked="checked"
+						<% end %>		
+					/>
+  	  		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
+						<% if @vote_cookie.vote >= 3 %>
+							checked="checked"
+						<% end %>		
+					/>
+		    	<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
+						<% if @vote_cookie.vote >= 4 %>
+							checked="checked"
+						<% end %>		
+					/>
+	  		  <input class="auto-submit-star" type="radio" name="test-1-rating-5" value="5"/
+						<% if @vote_cookie.vote == 5 %>
+							checked="checked"
+						<% end %>		
+					/>
+
+				<% end %>
 		</div>
 		
 	</div>

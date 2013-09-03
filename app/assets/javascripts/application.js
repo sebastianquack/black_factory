@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-fileupload/basic
+//= require jquery-star-rating
 //= require twitter/typeahead
 //= require twitter/bootstrap/transition
 //= require twitter/bootstrap/alert
@@ -26,6 +27,7 @@
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/carousel
 //= require twitter/bootstrap/affix
+
 //= require_tree .
 
 

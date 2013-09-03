@@ -78,6 +78,19 @@ $(document).ready(function() {
   
   initUploadButton();
   
+  $('.auto-submit-star').rating({
+ 		callback: function(value, link){	 
+			$.ajax({
+				url: this.form.action,
+				data: "value=" + value,
+				dataType: "json",
+				success: function(data) {
+					//alert(data);
+					// TODO: update general score
+				}
+			});
+		}
+	});
 
 });
 
