@@ -1,0 +1,16 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: Hilfe
+  slug: hilfe
+  content: TODO
+
+two:
+  title: Willkommen
+  slug: willkommen
+  content: TODO
+
+three:
+  title: Kontakt
+  slug: kontakt
+  content: TODO

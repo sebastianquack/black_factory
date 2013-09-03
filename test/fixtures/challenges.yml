@@ -1,11 +1,31 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  name: MyString
-  time: 2013-07-18 14:38:37
-  description: MyText
+  name: Fabrik 1
+  time: 2013-09-13 18:00:00
+  description: TODO
+  hidden: false
 
 two:
-  name: MyString
-  time: 2013-07-18 14:38:37
-  description: MyText
+  name: Fabrik 2
+  time: 2013-09-14 12:00:00
+  description: TODO
+  hidden: false
+
+three:
+  name: Fabrik 3
+  time: 2013-09-18 18:00:00
+  description: TODO
+  hidden: false
+
+four:
+  name: Fabrik 4
+  time: 2013-09-20 18:00:00
+  description: TODO
+  hidden: false
+
+five:
+  name: Fabrik 5
+  time: 2013-09-21 12:00:00
+  description: TODO
+  hidden: false
