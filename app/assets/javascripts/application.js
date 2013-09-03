@@ -127,5 +127,17 @@ $(document).ready(function() {
 			return true;
 		});
 	}
+
+	var anonymous_modal_done = false;
 	
+	if ($('#anonymous_modal')) {
+		$('.comment-form').on("submit", function () {
+			if (anonymous_modal_done) return true;
+			$('#anonymous_modal').modal(); 
+			anonymous_modal_done = true;
+			return false;
+		});
+		
+	}
+
 });

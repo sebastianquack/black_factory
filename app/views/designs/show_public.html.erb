@@ -1,7 +1,8 @@
 <div class="row">
 
+	<%= link_to "Zurück zur Übersicht", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
+
 	<div class="design card">
-		<%= link_to "Zurück zur Übersicht", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
 
 		<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
 	
