@@ -34,4 +34,6 @@
   <%= f.hidden_field :design_id, :value => @design.id if @design %>
   <%= f.hidden_field :challenge_id, :value => @challenge.id if @challenge %>
 
+  <%= render partial: "anonymous_modal", locals: {} if !@has_username %>
+
 <% end %>
