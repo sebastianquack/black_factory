@@ -4,8 +4,10 @@
 
 	<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
 		
-	<h1>Design Creator</h1>
-	
+	<h1>Entwirf deine <%= @challenge.name %></h1><br/>
+	<p>Schritt 1: Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst oder andere Materialien!</p>
+	<br/>
+	<p>Schritt 2: Mache Photos und Videos, um dein Modell zu zeigen!</p>
 	<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
 	  <% if @design.errors.any? %>
 		<div id="error_explanation">
@@ -19,21 +21,12 @@
 		</div>
 	  <% end %>
 	
-	  <div class="field">
-		<%= f.label :name, "Titel" %><br />
-		<%= f.text_field :name, class: "form-control" %>
-	  </div>
-	  <div class="field">
-		<%= f.label :description, "Beschreibung" %><br />
-		<%= f.text_area :description, class: "form-control" %>
-	  </div>
-	
 		<div id="image_thumbs"></div>
 	
 		<div class="media-list">
 		
 		  <div class="media">
-			<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bild hochladen">
+			<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bilder hochladen">
 			<div id="progress" class="progress progress-striped active">
 			  <div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
 			</div>
@@ -43,20 +36,33 @@
 	
 	
 	  <div class="field">
-		<%= label_tag "media_link", "Video URL" %><br />
+		<!--%= label_tag "media_link", "Video URL" %><br /-->
 		<%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Vimeo hier einfügen, z.B. http://www.youtube.com/watch?v=UIUOS01WRvM"  %>
 		<div id="media_link_preview" class="oembed"></div>
 	  </div>
 	
+	  <!--div class="field">
+		<%= f.label :name, "Titel" %><br />
+		<%= f.text_field :name, class: "form-control" %>
+	  </div-->
+	  <br/>
+	  <p>Schritt 3: Beschreibe, wie deine Fabrik funktioniert! Warum soll es diese Fabrik geben? Warum nicht?</p>
+	  
 	  <div class="field">
-		<%= f.label :username, class: "sr-only" %><br />
+		<!--%= f.label :description, "Beschreibung" %><br /-->
+		<%= f.text_area :description, class: "form-control" %>
+	  </div>
+	
+		Jetzt nur noch unterschreiben! Unter diesem Namen wird dein Entwurf zur Abstimmung gestellt.
+	  <div class="field">
+		<!--%= f.label :username, "Deine Signatur" %><br /-->
 		<%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
 	  </div>  
 		<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
 		<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
 	
 	  <div class="actions">
-		<%= f.submit "Design einreichen", class: "btn btn-success" %>
+		<%= f.submit "Modell einreichen", class: "btn btn-success" %>
 	  </div>
 	  
 	<% end %>

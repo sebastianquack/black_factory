@@ -10,7 +10,7 @@
 		<img class="media-object" src="<%= design.main_image.image.url(:medium) if design.main_image %>" alt="<%= design.main_image.description if design.main_image %>">
 		<div class="card-content">
 			<h4 class="shade-highlight">
-				<%= design.name %>
+				<%= design.username %>s Fabrik
 				<span class="label label-info label-new shade-highlight" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</span>
 			</h4>
 			<b>Bewertung: </b> <%= design.score %> (<%= design.vote_count %> Stimmen)<br/>
