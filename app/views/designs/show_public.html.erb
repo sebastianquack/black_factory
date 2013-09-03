@@ -1,12 +1,11 @@
 <div class="row">
 
 	<div class="design card">
+		<%= link_to "Zurück zur Übersicht", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
 
 		<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
 	
 		<div class="card-content">
-
-		<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @design.challenge %><br/>
 		
 			<% if @design.main_image %>
 				<%= @design.main_image.description %></br>
@@ -27,28 +26,18 @@
 				</p>
 			<% end %>
 			
-			<h2>
-			  <%= @design.name %>
-			</h2>
-			
 			<p>
-			  <b>Description:</b>
 			  <%= @design.description %>
-			</p>
-			
-			<p>
-			  <b>Challenge:</b>
-			  <%= @design.challenge.name %>
 			</p>
 			
 			<p>
 			  <b>Bewertung: </b>
 			
-			  <%= @design.score %> (<%= @design.vote_count %> Stimmen)
+			  <%= @design.score %> (Durchschnitt aus <%= @design.vote_count %> Meinung<% if @design.vote_count > 1 %>en<% end %>)
 			</p>
 			
 			<p>
-				<b>Deine Stimme: </b>				
+				<b>Deine Meinung: </b>				
 				<%= form_tag((url_for controller: "designs", action: "vote"), :remote => true, :class => 'star-form') do %>
 
 					<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
