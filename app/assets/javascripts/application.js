@@ -118,10 +118,14 @@ $(document).ready(function() {
 $(document).ready(function() {
 
 	var first_vote_modal_done = false;
-	$('.star-form').on("click", function () {
-		if (first_vote_modal_done) return true;
-		$('#first_vote_modal').modal(); 
-		first_vote_modal_done = true;
-		return true;
-	});
+	
+	if ($('#first_vote_modal')) {
+		$('.star-form').on("click", function () {
+			if (first_vote_modal_done) return true;
+			$('#first_vote_modal').modal(); 
+			first_vote_modal_done = true;
+			return true;
+		});
+	}
+	
 });

@@ -62,7 +62,7 @@
 					</div>
 				</div>
 			</div>
-			<%= render partial: "first_vote_modal", locals: {final_date: @challenge.time}  %>if !@has_voted
+			<%= render partial: "first_vote_modal", locals: {final_date: @challenge.time} if !@has_voted %>
 		<% end %>
 	
 		<% i = 1 %>
