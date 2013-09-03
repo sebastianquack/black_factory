@@ -25,7 +25,7 @@ DarkFactory::Application.routes.draw do
 	match 'designs/:id/vote' => 'designs#vote'
 	match 'comments/create' => 'comments#create_public'
 	match 'reward_codes/claim' => 'reward_codes#claim'
-	match 'highscores' => 'reward_codes#highscores', 'as' => 'highscores'
+	match 'punkte' => 'reward_codes#highscores', 'as' => 'punkte'
 	match 'images/upload_public' => 'images#create_public'
 	match 'images/test' => 'images#test'
 	match 'usernames' => 'username_scores#usernames_public'
