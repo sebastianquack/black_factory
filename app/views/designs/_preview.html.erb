@@ -9,16 +9,53 @@
 				<%= design.name %>
 				<span class="label label-info label-new shade-highlight" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</span>
 			</h4>
-			<b>Bewertung:</b><%= design.score %> (<%= design.vote_count %>)<br/>
+			<b>Bewertung: </b> <%= design.score %> (<%= design.vote_count %> Stimmen)<br/>
 		</div>
 	
 	</div>
-	<form>
-			<input class="star required" type="radio" name="test-1-rating-5" value="1"/>
-	    <input class="star" type="radio" name="test-1-rating-5" value="2"/>
-  	  <input class="star" type="radio" name="test-1-rating-5" value="3"/>
-    	<input class="star" type="radio" name="test-1-rating-5" value="4"/>
-	    <input class="star" type="radio" name="test-1-rating-5" value="5"/>
-	</form>
+	
+	<%= form_tag((url_for controller: "designs", action: "vote", id: design.id), :class => 'star-form') do %>
+		<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
+			<% if current_vote >= 1 %>
+				checked="checked"
+			<% end %>		
+			<% if design.challenge.time < Time.now %>
+				disabled="disabled"
+			<% end %>
+		/>
+		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
+			<% if current_vote >= 2 %>
+				checked="checked"
+			<% end %>		
+			<% if design.challenge.time < Time.now %>
+				disabled="disabled"
+			<% end %>
+		/>
+		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
+			<% if current_vote >= 3 %>
+				checked="checked"
+			<% end %>		
+			<% if design.challenge.time < Time.now %>
+				disabled="disabled"
+			<% end %>
+		/>
+		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
+			<% if current_vote >= 4 %>
+				checked="checked"
+			<% end %>	
+			<% if design.challenge.time < Time.now %>
+				disabled="disabled"
+			<% end %>
+		/>
+		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="5"/
+			<% if current_vote == 5 %>
+				checked="checked"
+			<% end %>		
+			<% if design.challenge.time < Time.now %>
+				disabled="disabled"
+			<% end %>
+		/>
+
+	<% end %>
 	
 </div>

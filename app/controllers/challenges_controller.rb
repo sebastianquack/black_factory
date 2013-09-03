@@ -13,6 +13,19 @@ class ChallengesController < ApplicationController
 		
 		@designs_sorted = @challenge.designs.order("score DESC")
 		#@designs_sorted.sort_by! {|d| - d[:score]}
+
+		cookie_hash = cookies[:vote_hash]
+		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
+		
+		@vote_cookies = {}
+		@designs_sorted.each do |design|
+			vote_cookie = VoteCookie.where(cookiehash: cookie_hash, design_id: design.id).first
+			if vote_cookie.nil?
+				vote_cookie = VoteCookie.new 
+				vote_cookie.vote = 0
+			end
+			@vote_cookies[design.id] = vote_cookie.vote
+		end		
 		
     respond_to do |format|
       format.html # show.html.erb

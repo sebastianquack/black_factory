@@ -71,7 +71,7 @@
 		<% @designs_sorted.each.with_index do |design,i| %>
 
 			<% unless @challenge.time < Time.now && i == 0 %>
-				<%= render partial: "designs/preview", locals: {design: design, index: i} %>
+				<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
 			<% end %>
 				
 		<% end %>
