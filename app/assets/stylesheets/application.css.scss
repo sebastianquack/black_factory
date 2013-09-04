@@ -208,6 +208,11 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	border-radius: 10px;
 }
 
+.designs .create-design {
+	border:dotted 5px #ddd;
+	background-image:none !important;
+}
+
 .challenges .preview:active, .designs .preview:active  {
 	box-shadow: 3px 3px 16px rgba(50, 50, 50, 0.76);
 	position:relative;

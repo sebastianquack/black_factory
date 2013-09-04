@@ -114,6 +114,7 @@ $(document).ready(function() {
   	},
     //sortOnLoad: ['data-score-onload','asc']
   });
+  
 });
 
 initStarRating = function() {
