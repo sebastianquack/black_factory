@@ -101,6 +101,7 @@ initShadeHighlighter = function() {
 		$(this).find('.shade-highlight').removeClass('shade-highlight');
 	});
 	
+	/*
 	$('.challenges .preview').on("click", function () {
 		$(this).attr("style","position:relative; z-index:111");
 		$(".overlay").show();
@@ -110,6 +111,8 @@ initShadeHighlighter = function() {
 		$(this).attr("style","position:relative; z-index:0");
 		$(".overlay").hide();
 	});	
+	*/
+	
 }
 
 var initPreviewLink = function() {
