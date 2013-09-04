@@ -1,4 +1,4 @@
-<%= form_for(@comment, :url => { controller: "comments", action: "create_public" }, :html => { :class => "well" } ) do |f| %>
+<%= form_for(@comment, :url => { controller: "comments", action: "create_public" }, :html => { :class => "well comment-form" } ) do |f| %>
 
   <% if @comment.errors.any? %>
     <div id="error_explanation">
@@ -30,7 +30,7 @@
  <div class="field form-group">
     <%= f.submit "Kommentar abschicken", :class => "btn btn-default btn-sm" %>
   </div>
-  
+
   <%= f.hidden_field :design_id, :value => @design.id if @design %>
   <%= f.hidden_field :challenge_id, :value => @challenge.id if @challenge %>
 

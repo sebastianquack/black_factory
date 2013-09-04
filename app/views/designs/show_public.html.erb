@@ -31,7 +31,7 @@
 			<p>
 			  <b>Bewertung: </b>
 			
-			  <%= @design.score %> (Durchschnitt aus <%= @design.vote_count %> Meinung<% if @design.vote_count > 1 %>en<% end %>)
+			  <span class="design-score"><%= @design.score %></span> (Durchschnitt aus <span class="design-vote_count"><%= @design.vote_count %></span> Meinung<% if @design.vote_count > 1 %>en<% end %>)
 			</p>
 			
 			<p>

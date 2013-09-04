@@ -22,7 +22,7 @@ class ChallengesController < ApplicationController
 		cookie_hash = cookies.permanent[:vote_hash] = SecureRandom.uuid if cookie_hash.nil?
 		
 		@has_voted = VoteCookie.exists?(cookiehash: cookie_hash)
-		@has_username = UsernameCookie.exists?(cookiehash: cookies[:vote_hash])
+		@has_username = !cookies[:username].nil?
 		
 		@vote_cookies = {}
 		@designs_sorted.each do |design|

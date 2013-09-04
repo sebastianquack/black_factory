@@ -113,9 +113,11 @@ class DesignsController < ApplicationController
 			record.vote = params[:value]
 			record.save
 		end
+		
+		@design = Design.find(params[:id]) # updated with scores!
 	
 		#redirect_to :action => "show_public", :id => @design
-		render json: {status: 'ok'}
+		render json: {status: 'ok', score: @design.score, id: @design.id, vote_count: @design.vote_count}
 	
 	end
 

@@ -58,10 +58,6 @@ $(document).ready(function() {
 		update_time_left(e);
 		setInterval(function() { update_time_left(e) }, 1000);
 	});
-
-	$('.preview-link').click(function() {
-		window.location = $(this).attr('data-url');
-	});
 	
 	label_new_decay_time = 72000;
 	$(".label-new").each( function () {
@@ -72,7 +68,6 @@ $(document).ready(function() {
 		else label_new.css("display", "none");
 	});
 	
-	/*
 	$('.challenges .preview').on("mouseover", function () {
 		$(this).attr("style","position:relative; z-index:111");
 		$(".overlay").show();
@@ -82,8 +77,13 @@ $(document).ready(function() {
 		$(this).attr("style","position:relative; z-index:0");
 		$(".overlay").hide();
 	});
-	*/
 	
+	initShadeHighlighter();
+	initPreviewLink();
+	
+});
+
+initShadeHighlighter = function() {
 	$('.preview-link .shade-highlight').removeClass('shade-highlight').addClass('shade-highlight-inactive');
 	
 	$('.preview-link').on("mouseenter", function () {
@@ -110,8 +110,13 @@ $(document).ready(function() {
 		$(this).attr("style","position:relative; z-index:0");
 		$(".overlay").hide();
 	});	
-	
-});
+}
+
+var initPreviewLink = function() {
+	$('.preview-link').click(function() {
+		window.location = $(this).attr('data-url');
+	});
+}
 
 ////////// modals
 
@@ -119,7 +124,7 @@ $(document).ready(function() {
 
 	var first_vote_modal_done = false;
 	
-	if ($('#first_vote_modal')) {
+	if ($('#first_vote_modal').length > 0) {
 		$('.star-form').on("click", function () {
 			if (first_vote_modal_done) return true;
 			$('#first_vote_modal').modal(); 
@@ -127,5 +132,27 @@ $(document).ready(function() {
 			return true;
 		});
 	}
+
+	var anonymous_modal_done = false;
 	
+	if ($('#anonymous_modal').length > 0) {
+		$('.comment-form').on("submit", function () {
+			username=$(this).find("input.username").val();
+			if (anonymous_modal_done || username!="Anonym") return true;
+			$('#anonymous_modal').modal(); 
+			//anonymous_modal_done = true;
+			return false;
+		});
+	}
+
+	$('#anonymous_modal button.anonymous-yes').click(function () {
+		anonymous_modal_done = true;
+		$('.comment-form').submit();
+	});
+
+	$('#anonymous_modal button.anonymous-no').click(function () {
+		$('.comment-form input.username').focus();
+	});
 });
+
+
