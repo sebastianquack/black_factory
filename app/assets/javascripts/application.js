@@ -68,6 +68,7 @@ $(document).ready(function() {
 		else label_new.css("display", "none");
 	});
 	
+	/*
 	$('.challenges .preview').on("mouseover", function () {
 		$(this).attr("style","position:relative; z-index:111");
 		$(".overlay").show();
@@ -77,6 +78,7 @@ $(document).ready(function() {
 		$(this).attr("style","position:relative; z-index:0");
 		$(".overlay").hide();
 	});
+	*/
 	
 	initShadeHighlighter();
 	initPreviewLink();
