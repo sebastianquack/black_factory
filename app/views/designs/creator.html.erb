@@ -4,10 +4,11 @@
 
 	<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
 		
-	<h2>Entwirf deine <%= @challenge.name %></h2><br/>
-	<p>Schritt 1: Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst oder andere Materialien!</p>
+	<h2>Entwirf deine <%= @challenge.name %></h2>
+	<p><%= formatize @challenge.description %></p>
 	<br/>
-	<p>Schritt 2: Mache Photos und Videos, um dein Modell zu zeigen!</p>
+	<p><b>Schritt 1</b> Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst, oder ganz andere Materialien!</p>
+	<p><b>Schritt 2</b> Mache Photos und Videos, um dein Modell zu zeigen!</p>
 	<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
 	  <% if @design.errors.any? %>
 		<div id="error_explanation">
@@ -46,7 +47,7 @@
 		<%= f.text_field :name, class: "form-control" %>
 	  </div-->
 	  <br/>
-	  <p>Schritt 3: Beschreibe, wie deine Fabrik funktioniert! Warum soll es diese Fabrik geben? Warum nicht?</p>
+	  <p><b>Schritt 3</b> Beschreibe, wie deine Fabrik funktioniert! Warum soll es diese Fabrik geben? Warum nicht?</p>
 	  
 	  <div class="field">
 		<!--%= f.label :description, "Beschreibung" %><br /-->

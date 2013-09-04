@@ -44,7 +44,7 @@
 				</p>
 				
 				<p>
-				  <%= @challenge.description %>
+				  <%= formatize @challenge.description %>
 				</p>
 			
 			</div>
@@ -58,11 +58,19 @@
 	
 	
 	<div id="designs" class="designs col-sm-6 col-md-6 col-lg-8">
-		<% if @challenge.time > Time.now %>
+		<% if @challenge.time > Time.now && @first_challenge != true %>
 			<div class="col-sx-6 col-sm-6 col-md-4 col-lg-4" data-id="-1" data-score="100000">
-				<div class="create-design preview card preview-link" data-url="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">
+
+				<div class="preview card preview-link create-design" data-url="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">
+
+				<% image = Image.where(description: 'creator_button').first %>
+				<% if image %>
+				<img class="media-object" src="<%= image.image.url(:medium) if image.image %>" alt="creator_button">
+				<% end %>
+
 					<div class="card-content">
-						<h4 class="shade-highlight">Entwirf deine Fabrik!</h4>
+						<h4 class="shade-highlight">Meine Fabrik</h4>
+						<p>Klicke hier um ein Modell zu bauen!</p>
 					</div>
 				</div>
 			</div>

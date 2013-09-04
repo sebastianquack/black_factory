@@ -7,11 +7,13 @@
 		<h2 class="shade-highlight"><%= challenge.name %></h2>
 		
 		<h3 class="shade-highlight"><%= l challenge.time, :format => :long %></h3>
-		<span class="countdown" data-time="<%= challenge.time.to_i %>"></span><br/><br/>
+		Noch <span class="countdown" data-time="<%= challenge.time.to_i %>"></span> bis zum Umbau.<br/><br/>
 		
 		<!--p><%= challenge.description %></p-->
 		
-		<span class="badge"><%= challenge.designs.count %></span>
+		<% if @first_challenge.id != challenge.id %>
+		<span class="badge"><%= challenge.designs.count %></span> Fabrik-Modelle zur Abstimmung
+		<% end %>
 		
 	</div>
 
