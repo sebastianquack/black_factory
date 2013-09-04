@@ -6,6 +6,10 @@ class ChallengesController < ApplicationController
   # GET /challenges/1.json
   def show_public
     @challenge = Challenge.find(params[:id])
+	
+		if Challenge.order('time ASC').first.id == @challenge.id
+			@first_challenge = true
+		end
 
 		@comment = Comment.new
 		@cookie_username = cookies[:username]
