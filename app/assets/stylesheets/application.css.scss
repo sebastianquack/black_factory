@@ -286,6 +286,20 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
+ 
+.arrow-navigation-fixed {
+	position:fixed;
+	top:45%;
+
+}
+
+.arrow-navigation-fixed.arrow-navigation-previous {
+	left:0;
+}
+
+.arrow-navigation-fixed.arrow-navigation-next {
+	right:0;
+}
 
 .creator-link {
 /*	width:100%;

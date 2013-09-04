@@ -1,91 +1,129 @@
+<div class="row" style="padding-bottom:15px;">
+	<div class="col-md-12" style="text-align:center;">
+		<%= link_to controller: "challenges", action: "show_public", id: @design.challenge do %> 
+			<%= image_tag("info-black.png", :style => "width:3%") %>
+		<% end %> 
+		<br>
+		<%= link_to controller: "challenges", action: "show_public", id: @design.challenge do %> 
+			<span style="vertical-align:bottom; color:#555;"><%= @challenge.name %></span>
+		<% end %> 		
+	</div>
+	<div class="visible-xs col-xs-6 col-xs-6 arrow-navigation arrow-navigation-next">
+		<%= link_to controller: "designs", action: "show_previous", id: @design.id do %>
+			<%= image_tag("arrow-black-left.png", :class => "img-responsive pull-left") %>
+		<% end %> 
+	</div>
+	<div class="visible-xs col-xs-6 col-xs-6 arrow-navigation arrow-navigation-previous">
+		<%= link_to controller: "designs", action: "show_next", id: @design.id do %>
+			<%= image_tag("arrow-black-right.png", :class => "img-responsive pull-right") %>
+		<% end %> 
+	</div>	
+</div>
+
 <div class="row">
 
-		<%= link_to "Vorheriges", controller: "designs", action: "show_previous", id: @design.id %> 
-		<%= link_to "Übersicht", controller: "challenges", action: "show_public", id: @design.challenge %> 
-		<%= link_to "Nächstes", controller: "designs", action: "show_next", id: @design.id %> 
-
-	<div class="design card">
-		
-		<!--%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/-->
+	<div class="visible-md visible-lg visible-sm col-sm-2 arrow-navigation arrow-navigation-fixed arrow-navigation-previous">
+		<%= link_to controller: "designs", action: "show_previous", id: @design.id do %>
+			<%= image_tag("arrow-black-left.png", :class => "img-responsive") %>
+		<% end %> 
+	</div>
 	
-		<div class="card-content">
+	<div class="col-sm-8 col-sm-offset-2">
+	
+		<div class="design card">
 		
+			<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
+	
 			<% @design.images.each do |image| %>
-			<div class="image-preview">
-					<%= image_tag image.image.url(:medium) %><br/>
-					<%= image.description %>
-			</div>
+				<div class="image-preview">
+						<%= image_tag image.image.url(:squaredmedium) %><br/>
+						<%= image.description %>
+				</div>
 			<% end %>
+	
 			<div style="clear:both"></div>
-
+	
 			<% if @design.media_link && !@design.media_link.url.blank? %>
 				<p class="media_link">
 				  <a class="oembed" href="<%= @design.media_link.url if @design.media_link %>"><%= image_tag("darkLoader.gif") %></a>
 				</p>
 			<% end %>
-			
-			<p>
-			  <%= @design.description %>
-			</p>
-			
-			<p>
-			  <b>Bewertung: </b>
-			
-			  <span class="design-score"><%= @design.score %></span> (Durchschnitt aus <span class="design-vote_count"><%= @design.vote_count %></span> Meinung<% if @design.vote_count > 1 %>en<% end %>)
-			</p>
-			
-			<p>
-				<b>Deine Meinung: </b>				
-				<%= form_tag((url_for controller: "designs", action: "vote"), :remote => true, :class => 'star-form') do %>
-
-					<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
-						<% if @vote_cookie.vote >= 1 %>
-							checked="checked"
-						<% end %>		
-						<% if @design.challenge.time < Time.now %>
-							disabled="disabled"
-						<% end %>
-					/>
-	  	  	<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
-						<% if @vote_cookie.vote >= 2 %>
-							checked="checked"
-						<% end %>		
-						<% if @design.challenge.time < Time.now %>
-							disabled="disabled"
-						<% end %>
-					/>
-  	  		<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
-						<% if @vote_cookie.vote >= 3 %>
-							checked="checked"
-						<% end %>		
-						<% if @design.challenge.time < Time.now %>
-							disabled="disabled"
-						<% end %>
-					/>
-		    	<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
-						<% if @vote_cookie.vote >= 4 %>
-							checked="checked"
-						<% end %>		
-						<% if @design.challenge.time < Time.now %>
-							disabled="disabled"
-						<% end %>
-					/>
-	  		  <input class="auto-submit-star" type="radio" name="test-1-rating-5" value="5"/
-						<% if @vote_cookie.vote == 5 %>
-							checked="checked"
-						<% end %>		
-						<% if @design.challenge.time < Time.now %>
-							disabled="disabled"
-						<% end %>
-					/>
-			
-				<% end %>
+	
+			<div class="card-content">
+				
+				<p>
+				  <%= @design.description %>
 				</p>
+				
+				<p>
+				  <b>Gesamtwertung: </b>
+				
+				  <span class="design-score"><%= @design.score %></span> (Berechnet aus <span class="design-vote_count"><%= @design.vote_count %></span> Meinung<span class="plural" <% if @design.vote_count == 1 %>style="display:none"<% end %>>en</span>)
+				</p>
+				
+				<p>
+					<b>Deine Meinung: </b>				
+					<%= form_tag((url_for controller: "designs", action: "vote"), :remote => true, :class => 'star-form') do %>
+	
+						<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
+							<% if @vote_cookie.vote >= 1 %>
+								checked="checked"
+							<% end %>		
+							<% if @design.challenge.time < Time.now %>
+								disabled="disabled"
+							<% end %>
+						/>
+				<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
+							<% if @vote_cookie.vote >= 2 %>
+								checked="checked"
+							<% end %>		
+							<% if @design.challenge.time < Time.now %>
+								disabled="disabled"
+							<% end %>
+						/>
+				<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
+							<% if @vote_cookie.vote >= 3 %>
+								checked="checked"
+							<% end %>		
+							<% if @design.challenge.time < Time.now %>
+								disabled="disabled"
+							<% end %>
+						/>
+					<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
+							<% if @vote_cookie.vote >= 4 %>
+								checked="checked"
+							<% end %>		
+							<% if @design.challenge.time < Time.now %>
+								disabled="disabled"
+							<% end %>
+						/>
+				  <input class="auto-submit-star" type="radio" name="test-1-rating-5" value="5"/
+							<% if @vote_cookie.vote == 5 %>
+								checked="checked"
+							<% end %>		
+							<% if @design.challenge.time < Time.now %>
+								disabled="disabled"
+							<% end %>
+						/>
+				
+					<% end %>
+					</p>
+			</div>
+		
 		</div>
 		
 	</div>
-		
-	<% @comments = @design.comments %>
-	<%= render 'comments/list_public' %>
 	
+	<div class="visible-md visible-lg visible-sm col-sm-2 arrow-navigation arrow-navigation-fixed arrow-navigation-next">
+		<%= link_to controller: "designs", action: "show_next", id: @design.id do %>
+			<%= image_tag("arrow-black-right.png", :class => "img-responsive arrow-right") %>
+		<% end %> 	</div>	
+
+</div>
+
+<div class="row">
+	<div class="col-sm-8 col-sm-offset-2">
+		<% @comments = @design.comments %>
+		<%= render 'comments/list_public' %>
+	</div>	
 </div>

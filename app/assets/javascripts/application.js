@@ -156,6 +156,17 @@ $(document).ready(function() {
 	$('#anonymous_modal button.anonymous-no').click(function () {
 		$('.comment-form input.username').focus();
 	});
+	
+	
+	$('.thumbnail').click(function(){
+		$('#imageModal .modal-body').empty();
+		var title = $(this).parent('a').attr("title");
+		$('#imageModal .modal-title').html(title);
+		$($(this).parents('div').html()).appendTo('.modal-body');
+		$('#imageModal').modal({show:true});
+	});	
+	
+	
 });
 
 

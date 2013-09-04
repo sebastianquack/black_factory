@@ -13,7 +13,9 @@ class DesignsController < ApplicationController
 			@vote_cookie = VoteCookie.new 
 			@vote_cookie.vote = 0
 		end
-
+		
+		@challenge = @design.challenge
+		
 		#prepare forms
 		@comment = Comment.new
 		@cookie_username = cookies[:username]
