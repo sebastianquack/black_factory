@@ -77,24 +77,66 @@ $(document).ready(function() {
   $('select[data-targetselect]').trigger("change");
   
   initUploadButton();
+
+  $(".star-form").each( function(i,obj) {
+		$(obj).attr('data-orig-html', $(obj).html());
+	});
   
+  initStarRating();
+
+  $('#designs').mixitup({
+  	onMixStart: function () {
+		$(".shade").remove();
+  	},  	
+	onMixEnd: function () {
+
+	  $(".star-form").each( function(i,obj) {
+			$(obj).html($(obj).attr('data-orig-html'));
+			var selected = $(obj).attr('data-selected');
+			if (typeof selected != "undefined") {
+				$(obj).find(".auto-submit-star").each( function (i,radio) {
+					if ($(radio).val() <= selected){
+						$(radio).attr("checked","checked");
+						console.log($(radio).val() + "checked");
+						}
+					else {
+						$(radio).removeAttr("checked");
+						}
+				});
+				$(obj).attr('data-orig-html', $(obj).html());
+			}
+		});
+  
+		initStarRating();
+		initShadeHighlighter();
+		initPreviewLink();
+	  	//window.location.reload();
+  	},
+    //sortOnLoad: ['data-score-onload','asc']
+  });
+});
+
+initStarRating = function() {
   $('.auto-submit-star').rating({
- 		callback: function(value, link){	 
+ 		callback: function(value, link){
+ 		$(this).parents(".star-form").attr("data-selected",value);
 			$.ajax({
 				url: this.form.action,
 				data: "value=" + value,
 				dataType: "json",
 				success: function(data) {
-					//alert(data);
-					// TODO: update general score
+					$(".designs [data-id=" + data.id + "], .design").find(".design-score").text(data.score);
+					$(".designs [data-id=" + data.id + "]").attr("data-score",data.score);
+					$('#designs').mixitup('sort',['data-score','asc']);
 				}
 			});
 		}
 	});
+}
 
-});
+//////// beautify file upload button
 
-function initUploadButton() { // beautify button
+function initUploadButton() {
 	btn = $("#imageupload_button");
 	wrapper = $("<div></div>");
 	//wrapper.attr("class", $("#imageupload_button").attr("class"));
