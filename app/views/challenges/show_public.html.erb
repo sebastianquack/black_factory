@@ -64,7 +64,9 @@
 				<div class="preview card preview-link create-design" data-url="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">
 
 				<% image = Image.where(description: 'creator_button').first %>
+				<% if image %>
 				<img class="media-object" src="<%= image.image.url(:medium) if image.image %>" alt="creator_button">
+				<% end %>
 
 					<div class="card-content">
 						<h4 class="shade-highlight">Meine Fabrik</h4>
