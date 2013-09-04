@@ -1,18 +1,23 @@
 <div class="row">
 
 	<div class="col-sm-6 col-md-6 col-lg-4">
-
-		<div class="static-section card">
 	
+		<div class="static-section card">
+
 			<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
 	
 			<div class="challenge card-content">
 					
 				<div id="image_thumbs">	
 				<% @challenge.images.each do |image| %>
-						<%= image_tag image.image.url(:thumb) if image.id != @challenge.main_image_id %>
+						<% if image.id != @challenge.main_image.id %>
+							<div class="image-preview">
+							<%= image_tag image.image.url(:medium) %>
+							</div>
+						<% end %>
 				<% end %>
 				</div>
+				<div style="clear:both"></div>
 				
 				<% if @challenge.winner_design %>
 	
@@ -54,7 +59,7 @@
 	
 	<div class="designs col-sm-6 col-md-6 col-lg-8">
 		
-		<% if @challenge.time > Time.now %>
+		<% if @challenge.time > Time.now && @first_challenge != true %>
 			<div class="col-sx-6 col-sm-6 col-md-4 col-lg-4">
 				<div class="preview card preview-link" data-url="<%= url_for controller: "designs", action: "creator", challenge_id: @challenge.id %>">
 					<div class="card-content">

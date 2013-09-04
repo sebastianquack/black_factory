@@ -25,6 +25,24 @@ class DesignsController < ApplicationController
 		end
 	end
 
+	def show_previous #higher score
+		current_design = Design.find(params[:id])		
+		@design = Design.where("score >= ? AND id != ? AND challenge_id = ?", current_design.score, current_design.id, current_design.challenge_id).order('score DESC').last
+		if @design.nil?
+			@design = Design.where(challenge_id: current_design.challenge_id).order('score DESC').last
+		end
+	  redirect_to :controller => "designs", :action => "show_public", :id => @design.id	
+	end
+	
+	def show_next #lower score
+		current_design = Design.find(params[:id])		
+		@design = Design.where("score <= ? AND id != ? AND challenge_id = ?", current_design.score, current_design.id, current_design.challenge_id).order('score DESC').first
+		if @design.nil?
+			@design = Design.where(challenge_id: current_design.challenge_id).order('score DESC').first
+		end
+	  redirect_to :controller => "designs", :action => "show_public", :id => @design.id	
+	end
+
 	def creator
 		@challenge = Challenge.find(params[:challenge_id])
 		@cookie_username = cookies[:username]
