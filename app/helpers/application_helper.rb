@@ -6,7 +6,9 @@ module ApplicationHelper
     text = text.gsub(/<image (\S+)>/) {
       begin
         image = Image.find("#{$1}")
-        image_tag image.image.url(:thumb)
+          link_to image.image.url(:large), :title => (image.description if image.description)  do 
+	        image_tag image.image.url(:thumb), :class => "image-modal", :title => (image.description if image.description) 
+	     end
       rescue
         "<strong>Image with id #{$1} not found.</strong>"
       end      

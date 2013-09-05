@@ -162,15 +162,21 @@ $(document).ready(function() {
 		//if (title == "") title = "&nbsp";
 		//$('#imageModal .modal-title').html("Bildanzeige");
 		html = $(imgObj).parent().html() + title + '<div style="clear:both">';
+		parent_src = $(imgObj).parents("a").attr("href");		
+		if (parent_src != undefined && parent_src.length >1) 
+			$(html).find("img").attr("src",parent_src);
+		console.log($(html).find("img"));
 		$(html).appendTo('.modal-body');
+		console.log(modal_image_collection_pointer++);
 	}
 
 	$('img.image-modal').click(function(){
-		modal_image_collection = $("img.image-modal");
-		modal_image_collection_pointer = $("img.image-modal").index($(this));
+		if (typeof modal_image_collection == "undefined")
+			modal_image_collection = $("img.image-modal");
+		modal_image_collection_pointer = $("img.image-modal").index($(this))-1;
 		imageModalFill(this);
 		$('#imageModal').modal({show:true});
-		console.log(modal_image_collection.length);
+		console.log("length " + modal_image_collection.length);
 		return false;
 	});	
 	
