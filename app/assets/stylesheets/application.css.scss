@@ -67,6 +67,7 @@ h2 a, h3 a, h4 a
 	/*letter-spacing:0.2ex;*/
 }
 
+
 .challenges .preview h2 {
 	font-size:200%;
 }
@@ -211,9 +212,17 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .challenges .preview, .designs .preview {
 	box-shadow: 5px 5px 22px rgba(50, 50, 50, 0.76);
-	margin-bottom:10px;
+	margin-bottom:20px;
 	padding:0px;
 	background-color:white;
+}
+
+.designs .preview {
+	margin-bottom:10px;
+}
+
+.designs .card-container {
+	margin-bottom:20px;
 }
 
 .challenges .preview {
