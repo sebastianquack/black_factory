@@ -41,11 +41,13 @@
 			<% end %>
 	
 			<% @design.images.each do |image| %>
+				<% if image.id != @design.main_image_id %>
 				<div class="image-preview">
 					<%= link_to image.image.url(:large), :title => image.description do %>
 						<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
 					<% end %>
 				</div>
+				<% end %>
 			<% end %>
 	
 			<div style="clear:both"></div>

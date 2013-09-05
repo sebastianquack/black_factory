@@ -1,5 +1,5 @@
 
-<div class="mix card-container col-sx-6 col-sm-6 col-md-4 col-lg-4" data-id="<%= design.id %>" data-score="<%= design.score %>" data-score-onload="<%= design.score %>">
+<div class="mix card-container col-sx-6 col-sm-6 col-md-4 col-lg-4" data-id="<%= design.id %>" data-score="<%= (design.score + design.id * 0.001).to_s %>" data-score-onload="<%= design.score %>">
 
 	<% if Time.now > design.challenge.time && index < 4 %>
 		<h4>Rang <%= index %></h4>

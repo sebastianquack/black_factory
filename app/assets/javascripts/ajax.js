@@ -19,6 +19,9 @@ $(document).ready(function() {
 	$('#imageupload_button').fileupload({
 			done: function (e, data) {
 					$('#image_thumbs').append(data.result);
+					if($('#image_thumbs input[type=radio]').length == 1) {
+						$('#image_thumbs input[type=radio]').attr('checked', 'checked');
+					}
 					$('#progress').hide();
 					$('#imageupload_button_wrapper').fadeIn();
 			},
@@ -129,12 +132,12 @@ initStarRating = function() {
 				dataType: "json",
 				success: function(data) {
 					$(".designs [data-id=" + data.id + "], .design").find(".design-score").text(data.score);
-					$(".designs [data-id=" + data.id + "]").attr("data-score", data.score);
-/*
+					$(".designs [data-id=" + data.id + "]").attr("data-score", data.score_sort);
+
 					$(".designs [data-id=" + data.id + "], .design").find(".design-vote_count").text(data.vote_count);	
 					if (data.vote_count != 1) $(".designs [data-id=" + data.id + "], .design").find(".plural").show();
 					else $(".designs [data-id=" + data.id + "], .design").find(".plural").hide();
-*/
+
 					$('#designs').mixitup('sort',['data-score','asc']);
 				}
 			});
