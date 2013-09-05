@@ -1,6 +1,8 @@
 class VoteCookiesController < ApplicationController
   # GET /vote_cookies
   # GET /vote_cookies.json
+	before_filter :authenticate
+
   def index
     @vote_cookies = VoteCookie.all
 

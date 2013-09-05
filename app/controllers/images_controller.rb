@@ -1,5 +1,7 @@
 class ImagesController < ApplicationController
 
+	before_filter :authenticate, except: [:create_public]
+
 	def test
 		@images = Image.all
 		render :partial => 'images/thumb_list'

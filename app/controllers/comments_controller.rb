@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+ before_filter :authenticate, except: [:create_public]
+
 	def create_public 
     @comment = Comment.new(params[:comment])
 		@comment.save

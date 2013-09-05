@@ -1,5 +1,7 @@
 class UsernameScoresController < ApplicationController
 
+	before_filter :authenticate, except: [:usernames_public]
+
   def usernames_public
   	@username_scores = UsernameScore.select("username").map {|c| c.username}
   	

@@ -1,5 +1,7 @@
 class RewardCodesController < ApplicationController
   
+  before_filter :authenticate, except: [:highscores, :claim]
+
 	def highscores
 		@scores = UsernameScore.order("score DESC")
 		@cookie_username = cookies[:username]

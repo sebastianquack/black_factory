@@ -2,6 +2,8 @@ require 'securerandom'
 
 class ChallengesController < ApplicationController
  
+ before_filter :authenticate, except: [:show_public, :designs_public, :designs_public_urlparam]
+ 
   # GET /challenges/1
   # GET /challenges/1.json
   def show_public
@@ -66,6 +68,7 @@ class ChallengesController < ApplicationController
   # GET /challenges
   # GET /challenges.json
   def index
+
     @challenges = Challenge.all
 
     respond_to do |format|
