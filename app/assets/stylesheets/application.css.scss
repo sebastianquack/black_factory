@@ -429,6 +429,16 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .clear { clear:both; }
 
+.navbar-toggle {
+	border-color:#000;
+	opacity:0.6;
+	background-color:#eee;
+}
+
+.navbar-toggle .icon-bar{
+	background-color:#000;
+}
+
 .image-preview {
 	padding:0;
 	border:none;
@@ -445,7 +455,6 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	clear:both;
 	font-weight:bold;
 }
-
 
 #imageModal .modal-footer {
 	margin-top:0;
