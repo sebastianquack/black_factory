@@ -133,8 +133,22 @@ $(document).ready(function() {
 
 	var anonymous_modal_done = false;
 	
+	$('.comment-form').on("submit", function () {
+			if($("#comment_content").val().trim() == "") {
+				$("#comment_content").focus();
+				return false;
+			}
+			
+			if($("input.username").val().trim() == "") {
+				$("input.username").focus();
+				return false;
+			}
+
+	});	
+	
 	if ($('#anonymous_modal').length > 0) {
 		$('.comment-form').on("submit", function () {
+		
 			username=$(this).find("input.username").val();
 			if (anonymous_modal_done || username!="Anonym") return true;
 			$('#anonymous_modal').modal(); 
