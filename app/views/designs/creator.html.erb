@@ -3,10 +3,8 @@
 	<div class="col-sm-8 col-sm-offset-2 creator card card-content">
 			
 		<h2>Entwirf deine <%= @challenge.name %></h2>
-		<div class="panel panel-default directives">
-			<div class="panel-body">
-				<%= formatize @challenge.description %>
-			</div>
+		<div class="well directives">
+			<%= formatize @challenge.description %>
 		</div>
 		
 		<p><b>Schritt 1</b> Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst, oder ganz andere Materialien!</p>

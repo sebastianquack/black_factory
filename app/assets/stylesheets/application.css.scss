@@ -256,7 +256,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 }
 
 .creator.card-content {
-	padding:20px;
+	padding:3%;
 }
 
 .label-new {
@@ -373,13 +373,14 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 }
 
 .creator .directives {
-	background-image: url("/assets/baustelle-y.jpg");
-	background-repeat:repeat-y;
+	background-image: url("/assets/baustelle-x.jpg");
+	background-repeat:repeat-x;
 	background-position:0 0;
-	background-size:5%;
-	padding-left:8%;
-	/*margin-left:10%;*/
+	background-size:220px 25px;
+	padding-top:40px;
+	border-width:1px 2px 2px 2px;
 }
+
 
 .creator input[type=text], .creator textarea, .creator .media-list, .creator .twitter-typeahead {
 	margin-bottom: 20px;

@@ -177,7 +177,7 @@ $(document).ready(function() {
 		//$('#imageModal .modal-title').html("Bildanzeige");
 		html = $(imgObj).parent().html() + title + '<div style="clear:both">';
 		parent_src = $(imgObj).parents("a").attr("href");		
-		$(html).appendTo('.modal-body');		
+		$(html).appendTo('#imageModal .modal-body');		
 		if (parent_src != undefined && parent_src.length >1) {
 			$('#imageModal .modal-body').find("img").attr("src", parent_src);
 		}
