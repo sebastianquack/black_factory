@@ -194,6 +194,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	background-color:white;
 }
 
+.highscore-table td, th {
+	padding-right: 10px;
+}
+
 .claim_points, .highscore {
 	padding:10px;
 }
