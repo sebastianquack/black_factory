@@ -12,28 +12,22 @@
     </div>
   <% end %>
   
-  <div class="field form-group">
-    <%= f.label :comment, :class => "sr-only" %><br />
+    <%= f.label :comment, :class => "sr-only" %>
     <%= f.text_area :content, class: "form-control", :placeholder => "Kommentar", :rows => 3 %>
-  </div>
 
+	<!--hr class="" style=""-->
 
-	<hr class="" style="">
-
-  <div class="field form-group">
-    <%= f.label :username, :class => "sr-only" %><br />
-    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
+    <%= f.label :username, :class => "sr-only" %>
+    <%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username pull-left", autocomplete: "off" %>
+    <%= f.submit "Absenden", :class => "btn btn-default btn-sm pull-right" %>
+	<div style="clear:both;"></div>
     <span class="typeahead-username-new label label-info">Neuer Benutzername</span>
     <span class="typeahead-username-old label label-success">Bekannter Benutzername</span>  
-  </div>
 
- <div class="field form-group">
-    <%= f.submit "Kommentar abschicken", :class => "btn btn-default btn-sm" %>
-  </div>
 
   <%= f.hidden_field :design_id, :value => @design.id if @design %>
   <%= f.hidden_field :challenge_id, :value => @challenge.id if @challenge %>
-
+<div style="clear:both;"></div>
   <%= render partial: "comments/anonymous_modal", locals: {} if !@has_username %>
 
 <% end %>

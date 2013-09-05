@@ -6,12 +6,14 @@
 		<% unless comment.hidden %>
 		<div class="comment well-sm well">
 			<q class=""><%= comment.content %></q>
-			<small class="pull-right username"><%= comment.username %></small>
-			<small class="pull-right created_at"><%= l comment.created_at %></small>
+			<div class="pull-right">
+			<small class="username"><%= comment.username %></small>
+			<small class="created_at">vor <%= time_ago_in_words(comment.created_at).sub(" eine "," einer ") %></small>
+			</div>
 		</div>
 		<% end %>
 	<% end %>
 	
-	<button type="button" class="btn btn-default btn-lg btn-block">Alle Kommentare anzeigen</button>
+	<!--button type="button" class="btn btn-default btn-lg btn-block">Alle Kommentare anzeigen</button-->
 	
 </div>

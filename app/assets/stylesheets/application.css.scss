@@ -159,10 +159,7 @@ input.username {
     box-shadow:none;
     font-size:20px;
     background-color:transparent;
-}
-
-input.username {
-    font-size:25px;
+    width:50%;
 }
 
 input.username:after {
@@ -200,7 +197,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .claim_points, .highscore, .static-section, .creator, .design {
 	border-radius: 10px;
-	box-shadow:         0px 0px 6px rgba(50, 50, 50, 0.56);
+	box-shadow: 0px 0px 6px rgba(50, 50, 50, 0.56);
 	margin-bottom:10px;
 	background-color:white;
 	overflow:hidden;
@@ -275,6 +272,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 .comment {
 	height:100%;
 	overflow:visible;
+	padding:10px 20px;
 }
 
 .comment:after {
@@ -290,15 +288,34 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	border-width:0 0 1px 0;
 	padding-bottom:5px;
 	margin-bottom:5px;
+	letter-spacing:0.2ex;
 }
 
 .comment small {
-	display:block;
+	/*display:block;*/
+	color:#555;
 }
 
 .comment small.username {
-	font-size:130%;
+	font-size:120%;
 	margin-left:5%;
+}
+
+.comment-form input.username {
+	margin-top:10px;
+    font-size:20px;
+    margin-bottom:0px;
+	border: solid black;
+	border-width: 0 0 1px 0;
+}
+
+.typeahead-username-new, .typeahead-username-old {
+	margin-top:20px;
+	float:left;
+}
+
+.comment-form input[type=submit] {
+	margin-top:20px;
 }
 
 .design .star-form , .deine_meinung{
@@ -353,6 +370,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .creator .twitter-typeahead input {
 	margin-bottom: 0px;
+}
+
+.creator input.username {
+    font-size:25px;
 }
 
 .creator .media {
