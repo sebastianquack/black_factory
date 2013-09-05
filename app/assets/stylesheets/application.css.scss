@@ -120,7 +120,9 @@ header {
 
 .preview-link {
 	overflow:hidden;
+	position:relative;
 }
+
 
 
 div.preview-link:hover {
@@ -134,10 +136,18 @@ div.preview-link:hover {
 	opacity:0.8;
 	border	:none;
 	border-radius:10px;
+	display:box; 
+	position:absolute; 
+	width:100%; 
+	height:100%;
+	visibility:hidden;
 }	
 
+.preview-link:hover .shade {
+	visibility:visible;
+}
 
-.shade-highlight {
+.preview-link:hover .shade-highlight {
 	position:relative;
 	z-index:112; 
 	color:white;
@@ -192,6 +202,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	box-shadow:         0px 0px 6px rgba(50, 50, 50, 0.56);
 	margin-bottom:10px;
 	background-color:white;
+	overflow:hidden;
 }
 
 .highscore-table td, th {
@@ -215,6 +226,11 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .designs .preview  {
 	border-radius: 10px;
+}
+
+.designs .create-design {
+	border:dotted 5px #ddd;
+	background-image:none !important;
 }
 
 .challenges .preview:active, .designs .preview:active  {
@@ -276,14 +292,38 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	margin-left:5%;
 }
 
-.star-form {
-	display: inline;
+.design .star-form , .deine_meinung{
+	display: inline-block;
 }
 
 .designs .preview {
 	background-image:url(/assets/Papierbackground_small.jpg);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
+}
+ 
+.design .main_image {
+	margin-bottom:10px;
+}
+
+.design .main_image {
+	margin-bottom:10px;
+}
+ 
+.design img.image-preview {
+}
+
+.arrow-navigation-fixed {
+	position:fixed;
+	top:45%;
+}
+
+.arrow-navigation-fixed.arrow-navigation-previous {
+	left:0;
+}
+
+.arrow-navigation-fixed.arrow-navigation-next {
+	right:0;
 }
 
 .creator-link {
@@ -358,3 +398,25 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 }
 
 .clear { clear:both; }
+
+.image-preview {
+	padding:0;
+	border:none;
+	border-radius:0;
+	cursor:pointer;
+	}
+
+#imageModal .modal-body {
+	padding:0;
+}
+
+#imageModal .modal-body p {
+	padding:10px 20px 0px 20px;
+	clear:both;
+	font-weight:bold;
+}
+
+
+#imageModal .modal-footer {
+	margin-top:0;
+}

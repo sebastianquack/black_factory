@@ -108,12 +108,13 @@ $(document).ready(function() {
 		});
   
 		initStarRating();
-		initShadeHighlighter();
 		initPreviewLink();
+		initShadeHighlighter();
 	  	//window.location.reload();
   	},
     //sortOnLoad: ['data-score-onload','asc']
   });
+  
 });
 
 initStarRating = function() {
@@ -127,6 +128,9 @@ initStarRating = function() {
 				success: function(data) {
 					$(".designs [data-id=" + data.id + "], .design").find(".design-score").text(data.score);
 					$(".designs [data-id=" + data.id + "]").attr("data-score",data.score);
+					$(".designs [data-id=" + data.id + "], .design").find(".design-vote_count").text(data.vote_count);	
+					if (data.vote_count != 1) $(".designs [data-id=" + data.id + "], .design").find(".plural").show();
+					else $(".designs [data-id=" + data.id + "], .design").find(".plural").hide();
 					$('#designs').mixitup('sort',['data-score','asc']);
 				}
 			});

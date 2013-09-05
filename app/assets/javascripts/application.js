@@ -68,6 +68,7 @@ $(document).ready(function() {
 		else label_new.css("display", "none");
 	});
 	
+	/*
 	$('.challenges .preview').on("mouseover", function () {
 		$(this).attr("style","position:relative; z-index:111");
 		$(".overlay").show();
@@ -77,30 +78,25 @@ $(document).ready(function() {
 		$(this).attr("style","position:relative; z-index:0");
 		$(".overlay").hide();
 	});
+	*/
 	
-	initShadeHighlighter();
+	
 	initPreviewLink();
+	initShadeHighlighter();
+	
 	
 });
 
 initShadeHighlighter = function() {
-	$('.preview-link .shade-highlight').removeClass('shade-highlight').addClass('shade-highlight-inactive');
-	
-	$('.preview-link').on("mouseenter", function () {
-		var w = $(this).outerWidth();
-		var h = $(this).outerHeight();
-		shade = $("<div></div>");
-		shade.attr("style","display:box; position:absolute; width:" + w + "px; height:" + h + "px;");
+
+	$('.preview-link').each( function (i, elem) {
+		shade = $("<a href=" + $(elem).attr('data-url') + "></a>");
 		shade.addClass("shade");
-		$(this).prepend(shade);
-		$(this).find('.shade-highlight-inactive').addClass('shade-highlight');
+		$(elem).prepend(shade);
 	});
 	
-	$('.preview-link').on("mouseleave", function () {
-		$(".shade").remove();
-		$(this).find('.shade-highlight').removeClass('shade-highlight');
-	});
 	
+	/*
 	$('.challenges .preview').on("click", function () {
 		$(this).attr("style","position:relative; z-index:111");
 		$(".overlay").show();
@@ -110,6 +106,8 @@ initShadeHighlighter = function() {
 		$(this).attr("style","position:relative; z-index:0");
 		$(".overlay").hide();
 	});	
+	*/
+	
 }
 
 var initPreviewLink = function() {
@@ -153,6 +151,45 @@ $(document).ready(function() {
 	$('#anonymous_modal button.anonymous-no').click(function () {
 		$('.comment-form input.username').focus();
 	});
+	
+	var modal_image_collection;
+	var modal_image_collection_pointer = 0;
+
+	imageModalFill = function(imgObj){
+		$('#imageModal .modal-body').empty();
+		var title = $(imgObj).parent('a').attr("title");
+		if (title != "") title = '<p>' + title + '</p>';
+		//if (title == "") title = "&nbsp";
+		//$('#imageModal .modal-title').html("Bildanzeige");
+		html = $(imgObj).parent().html() + title + '<div style="clear:both">';
+		$(html).appendTo('.modal-body');
+	}
+
+	$('img.image-modal').click(function(){
+		modal_image_collection = $("img.image-modal");
+		modal_image_collection_pointer = $("img.image-modal").index($(this));
+		imageModalFill(this);
+		$('#imageModal').modal({show:true});
+		console.log(modal_image_collection.length);
+		return false;
+	});	
+	
+	$('button.btn-modal-image-next').click( function () {
+		modal_image_collection_pointer++;
+		if (modal_image_collection_pointer >= modal_image_collection.length-1) modal_image_collection_pointer = 0;
+		imageModalFill($(modal_image_collection).eq(modal_image_collection_pointer));
+	});
+	
+	$('button.btn-modal-image-previous').click( function () {
+		modal_image_collection_pointer--;
+		if (modal_image_collection_pointer < 0) modal_image_collection_pointer = modal_image_collection.length-1;
+		imageModalFill($(modal_image_collection).eq(modal_image_collection_pointer));
+	});	
+	
+	$('.creator-submit-yes').click( function () {
+		$("form.new_design").submit();
+	});	
+	
 });
 
 
