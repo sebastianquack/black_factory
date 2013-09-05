@@ -78,6 +78,7 @@ $(document).ready(function() {
   
   initUploadButton();
 
+	// save star form html for later reconstruction
   $(".star-form").each( function(i,obj) {
 		$(obj).attr('data-orig-html', $(obj).html());
 	});
@@ -86,16 +87,17 @@ $(document).ready(function() {
 
   $('#designs').mixitup({
   	onMixStart: function () {
-		$(".shade").remove();
+			$(".shade").remove();
   	},  	
-	onMixEnd: function () {
+		onMixEnd: function () {
 
+		// reconstruct html, upadte to new state and reinitialize star-rating plugin
 	  $(".star-form").each( function(i,obj) {
 			$(obj).html($(obj).attr('data-orig-html'));
 			var selected = $(obj).attr('data-selected');
 			if (typeof selected != "undefined") {
 				$(obj).find(".auto-submit-star").each( function (i,radio) {
-					if ($(radio).val() <= selected){
+					if ($(radio).val() == selected){
 						$(radio).attr("checked","checked");
 						console.log($(radio).val() + "checked");
 						}
@@ -110,7 +112,7 @@ $(document).ready(function() {
 		initStarRating();
 		initPreviewLink();
 		initShadeHighlighter();
-	  	//window.location.reload();
+	  	//window.location.reload();*/
   	},
     //sortOnLoad: ['data-score-onload','asc']
   });
@@ -127,10 +129,12 @@ initStarRating = function() {
 				dataType: "json",
 				success: function(data) {
 					$(".designs [data-id=" + data.id + "], .design").find(".design-score").text(data.score);
-					$(".designs [data-id=" + data.id + "]").attr("data-score",data.score);
+					$(".designs [data-id=" + data.id + "]").attr("data-score", data.score);
+/*
 					$(".designs [data-id=" + data.id + "], .design").find(".design-vote_count").text(data.vote_count);	
 					if (data.vote_count != 1) $(".designs [data-id=" + data.id + "], .design").find(".plural").show();
 					else $(".designs [data-id=" + data.id + "], .design").find(".plural").hide();
+*/
 					$('#designs').mixitup('sort',['data-score','asc']);
 				}
 			});
