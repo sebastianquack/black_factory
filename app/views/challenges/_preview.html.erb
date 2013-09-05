@@ -6,8 +6,11 @@
 	
 		<h2 class="shade-highlight"><%= challenge.name %></h2>
 		
-		<h3 class="shade-highlight"><%= l challenge.time, :format => :long %></h3>
-		Noch <span class="countdown" data-time="<%= challenge.time.to_i %>"></span> bis zum Umbau.<br/><br/>
+		<h3><%= l challenge.time, :format => :long %></h3>
+		
+		<p class="shade-highlight">
+		Noch <span class="countdown" data-time="<%= challenge.time.to_i %>"></span> bis zum Umbau.
+		</p>
 		
 		<!--p><%= challenge.description %></p-->
 		

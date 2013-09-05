@@ -108,8 +108,8 @@ $(document).ready(function() {
 		});
   
 		initStarRating();
-		initShadeHighlighter();
 		initPreviewLink();
+		initShadeHighlighter();
 	  	//window.location.reload();
   	},
     //sortOnLoad: ['data-score-onload','asc']
