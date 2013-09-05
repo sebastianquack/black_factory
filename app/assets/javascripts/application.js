@@ -163,11 +163,10 @@ $(document).ready(function() {
 		//$('#imageModal .modal-title').html("Bildanzeige");
 		html = $(imgObj).parent().html() + title + '<div style="clear:both">';
 		parent_src = $(imgObj).parents("a").attr("href");		
-		if (parent_src != undefined && parent_src.length >1) 
-			$(html).find("img").attr("src",parent_src);
-		console.log($(html).find("img"));
-		$(html).appendTo('.modal-body');
-		console.log(modal_image_collection_pointer++);
+		$(html).appendTo('.modal-body');		
+		if (parent_src != undefined && parent_src.length >1) {
+			$('#imageModal .modal-body').find("img").attr("src", parent_src);
+		}
 	}
 
 	$('img.image-modal').click(function(){
