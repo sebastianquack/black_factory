@@ -255,6 +255,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	padding:6%;
 }
 
+.creator.card-content {
+	padding:20px;
+}
+
 .label-new {
 	font-size:60%;
 	font-weight:bold;
@@ -358,13 +362,26 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 */
 }
 
+.creator h2{
+	margin-top:0px;
+}
+
 .creator, .design {
 	background-image:url(/assets/Papierbackground_large.jpg);
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
 
-.creator input, .creator textarea, .creator .media-list, .creator .twitter-typeahead {
+.creator .directives {
+	background-image: url("/assets/baustelle-y.jpg");
+	background-repeat:repeat-y;
+	background-position:0 0;
+	background-size:5%;
+	padding-left:8%;
+	/*margin-left:10%;*/
+}
+
+.creator input[type=text], .creator textarea, .creator .media-list, .creator .twitter-typeahead {
 	margin-bottom: 20px;
 }
 

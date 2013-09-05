@@ -3,8 +3,12 @@
 	<div class="col-sm-8 col-sm-offset-2 creator card card-content">
 			
 		<h2>Entwirf deine <%= @challenge.name %></h2>
-		<p><%= formatize @challenge.description %></p>
-		<br/>
+		<div class="panel panel-default directives">
+			<div class="panel-body">
+				<%= formatize @challenge.description %>
+			</div>
+		</div>
+		
 		<p><b>Schritt 1</b> Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst, oder ganz andere Materialien!</p>
 		<p><b>Schritt 2</b> Mache Photos und Videos, um dein Modell zu zeigen!</p>
 		<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
@@ -44,7 +48,6 @@
 			<%= f.label :name, "Titel" %><br />
 			<%= f.text_field :name, class: "form-control" %>
 		  </div-->
-		  <br/>
 		  <p><b>Schritt 3</b> Beschreibe, wie deine Fabrik funktioniert! Warum soll es diese Fabrik geben? Warum nicht?</p>
 		  
 		  <div class="field">
@@ -62,7 +65,7 @@
 		
 		  <div class="actions">
 			<%= f.submit "Modell einreichen", class: "btn btn-success" %>
-			<%= link_to "Abbrechen", url_options = { controller: "challenges", action: "show_public", id: @challenge.id }, html_options = {class: "btn btn-default pull-right"} %><br/>
+			<%= link_to "Abbrechen", url_options = { controller: "challenges", action: "show_public", id: @challenge.id }, html_options = {class: "btn btn-default pull-right"} %>
 		  </div>
 		  
 		  <%= render partial: "creator_submit_modal", locals: {} %>
