@@ -1,5 +1,5 @@
 
-<div class="mix card-container col-sx-6 col-sm-6 col-md-4 col-lg-4" data-id="<%= design.id %>" data-score="<%= design.score %>" data-score-onload="<%= design.score %>">
+<div class="mix card-container col-sx-6 col-sm-6 col-md-4 col-lg-4" data-id="<%= design.id %>" data-score="<%= (design.score + design.id * 0.001).to_s %>" data-score-onload="<%= design.score %>">
 
 	<% if Time.now > design.challenge.time && index < 4 %>
 		<h4>Rang <%= index %></h4>
@@ -13,7 +13,7 @@
 				<%= design.username %>s Fabrik
 				<span class="label label-info label-new shade-highlight" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</span>
 			</h4>
-			<b>Bewertung: </b> <span class="design-score"><%= design.score %></span> (<span class="design-vote_count"><%= design.vote_count %></span> Meinungen)<br/>
+			Beliebtheit: <b><span class="design-score"><%= design.score %></span></b><!-- (<span class="design-vote_count"><%= design.vote_count %></span> Meinungen)<br/>-->
 		</div>
 	
 	</div>
@@ -22,22 +22,22 @@
 	
 		<%= form_tag((url_for controller: "designs", action: "vote", id: design.id), :class => 'star-form') do %>
 			<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
-				<% if current_vote >= 1 %>
+				<% if current_vote == 1 %>
 					checked="checked"
 				<% end %>		
 			/>
 			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="2"/
-				<% if current_vote >= 2 %>
+				<% if current_vote == 2 %>
 					checked="checked"
 				<% end %>		
 			/>
 			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="3"/
-				<% if current_vote >= 3 %>
+				<% if current_vote == 3 %>
 					checked="checked"
 				<% end %>		
 			/>
 			<input class="auto-submit-star" type="radio" name="test-1-rating-5" value="4"/
-				<% if current_vote >= 4 %>
+				<% if current_vote == 4 %>
 					checked="checked"
 				<% end %>	
 			/>

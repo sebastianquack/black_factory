@@ -25,12 +25,15 @@ class RewardCodesController < ApplicationController
 	 			code.status = 1
 	 			code.save
 	 			cookies.permanent[:username] = score.username
- 				@message = 'yay!'
+ 				@message_class = 'alert-success'
+ 				@message = '<strong>Gratulation!</strong> ' + score.username + ' wurden ' + code.points.to_s + ' Punkte gutgeschrieben.'
  			else
- 				@message = 'schon benutzt'
+ 				@message_class = 'alert-warning'
+ 				@message = '<strong>Hinweis</strong> Code schon benutzt!'
  			end
  		else
- 			@message = 'code nicht erkannt'
+ 		 	@message_class = 'alert-warning'
+ 			@message = '<strong>Hinweis</strong> Code nicht erkannt!'
  		end
   	
   	@cookie_username = cookies[:username]

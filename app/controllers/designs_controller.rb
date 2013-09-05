@@ -31,7 +31,7 @@ class DesignsController < ApplicationController
 		current_design = Design.find(params[:id])		
 		@design = Design.where("score >= ? AND id != ? AND challenge_id = ?", current_design.score, current_design.id, current_design.challenge_id).order('score DESC').last
 		if @design.nil?
-			@design = Design.where(challenge_id: current_design.challenge_id).order('score DESC').last
+			@design = Design.where(challenge_id: current_design.challenge_id).order('score DESC, id DESC').last
 		end
 	  redirect_to :controller => "designs", :action => "show_public", :id => @design.id	
 	end
@@ -40,7 +40,7 @@ class DesignsController < ApplicationController
 		current_design = Design.find(params[:id])		
 		@design = Design.where("score <= ? AND id != ? AND challenge_id = ?", current_design.score, current_design.id, current_design.challenge_id).order('score DESC').first
 		if @design.nil?
-			@design = Design.where(challenge_id: current_design.challenge_id).order('score DESC').first
+			@design = Design.where(challenge_id: current_design.challenge_id).order('score DESC, id DESC').first
 		end
 	  redirect_to :controller => "designs", :action => "show_public", :id => @design.id	
 	end
@@ -119,7 +119,7 @@ class DesignsController < ApplicationController
 		@design = Design.find(params[:id]) # updated with scores!
 	
 		#redirect_to :action => "show_public", :id => @design
-		render json: {status: 'ok', score: @design.score, id: @design.id, vote_count: @design.vote_count}
+		render json: {status: 'ok', score: @design.score, score_sort: (@design.score + @design.id * 0.001).to_s, id: @design.id, vote_count: @design.vote_count}
 	
 	end
 
