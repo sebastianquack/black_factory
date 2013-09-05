@@ -61,7 +61,7 @@
 			<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
 		
 		  <div class="actions">
-			<%= f.submit "Modell einreichen", class: "btn btn-success", data: { "toggle" => "modal"}, href: "#creator_submit_modal" %>
+			<%= f.submit "Modell einreichen", class: "btn btn-success" %>
 			<%= link_to "Abbrechen", url_options = { controller: "challenges", action: "show_public", id: @challenge.id }, html_options = {class: "btn btn-default pull-right"} %><br/>
 		  </div>
 		  

@@ -191,6 +191,16 @@ $(document).ready(function() {
 		if (modal_image_collection_pointer < 0) modal_image_collection_pointer = modal_image_collection.length-1;
 		imageModalFill($(modal_image_collection).eq(modal_image_collection_pointer));
 	});	
+
+	$("#new_design input.btn-success").click( function(event) {
+		event.preventDefault();
+		
+		if($('#image_thumbs img').length > 0 && $('#design_description').val().trim() != "") {
+			$('#creator_submit_modal').modal({show:true});		
+		} else {
+			$('#creator_submit_error_modal').modal({show:true});		
+		}	
+	});
 	
 	$('.creator-submit-yes').click( function () {
 		$("form.new_design").submit();
