@@ -159,15 +159,39 @@ $(document).ready(function() {
 		$('.comment-form input.username').focus();
 	});
 	
-	
-	$('.thumbnail').click(function(){
+	var modal_image_collection;
+	var modal_image_collection_pointer = 0;
+
+	imageModalFill = function(imgObj){
 		$('#imageModal .modal-body').empty();
-		var title = $(this).parent('a').attr("title");
-		$('#imageModal .modal-title').html(title);
-		$($(this).parents('div').html()).appendTo('.modal-body');
+		var title = $(imgObj).parent('a').attr("title");
+		if (title != "") title = '<p>' + title + '</p>';
+		//if (title == "") title = "&nbsp";
+		//$('#imageModal .modal-title').html("Bildanzeige");
+		html = $(imgObj).parent().html() + title + '<div style="clear:both">';
+		$(html).appendTo('.modal-body');
+	}
+
+	$('img.image-modal').click(function(){
+		modal_image_collection = $("img.image-modal");
+		modal_image_collection_pointer = $("img.image-modal").index($(this));
+		imageModalFill(this);
 		$('#imageModal').modal({show:true});
+		console.log(modal_image_collection.length);
+		return false;
 	});	
 	
+	$('button.btn-modal-image-next').click( function () {
+		modal_image_collection_pointer++;
+		if (modal_image_collection_pointer >= modal_image_collection.length-1) modal_image_collection_pointer = 0;
+		imageModalFill($(modal_image_collection).eq(modal_image_collection_pointer));
+	});
+	
+	$('button.btn-modal-image-previous').click( function () {
+		modal_image_collection_pointer--;
+		if (modal_image_collection_pointer < 0) modal_image_collection_pointer = modal_image_collection.length-1;
+		imageModalFill($(modal_image_collection).eq(modal_image_collection_pointer));
+	});	
 	
 });
 

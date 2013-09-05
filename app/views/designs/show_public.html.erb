@@ -32,12 +32,19 @@
 	
 		<div class="design card">
 		
-			<%= image_tag @design.main_image.image.url(:large) if @design.main_image %><br/>
+			<% if @design.main_image %>
+				<div class="main_image">
+					<%= link_to @design.main_image.image.url(:large), :title => (@design.main_image.description if @design.main_image.description) do %>
+						<%= image_tag @design.main_image.image.url(:large), :class => "image-modal" %><br/>
+					<% end %>
+				</div>
+			<% end %>
 	
 			<% @design.images.each do |image| %>
 				<div class="image-preview">
-						<%= image_tag image.image.url(:squaredmedium) %><br/>
-						<%= image.description %>
+					<%= link_to image.image.url(:large), :title => image.description do %>
+						<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
+					<% end %>
 				</div>
 			<% end %>
 	
@@ -61,8 +68,8 @@
 				  <span class="design-score"><%= @design.score %></span> (Berechnet aus <span class="design-vote_count"><%= @design.vote_count %></span> Meinung<span class="plural" <% if @design.vote_count == 1 %>style="display:none"<% end %>>en</span>)
 				</p>
 				
-				<p>
-					<b>Deine Meinung: </b>				
+				<p class="deine_meinung">
+					<b>Deine Meinung:&nbsp&nbsp</b>				
 					<%= form_tag((url_for controller: "designs", action: "vote"), :remote => true, :class => 'star-form') do %>
 	
 						<input class="auto-submit-star required" type="radio" name="test-1-rating-5" value="1"
