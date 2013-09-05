@@ -1,77 +1,79 @@
+<div class="row">
 
-
-<div class="row creator card card-content">
-
-	<%= link_to "Zurück", controller: "challenges", action: "show_public", id: @challenge.id %><br/>
+	<div class="col-sm-8 col-sm-offset-2 creator card card-content">
+			
+		<h2>Entwirf deine <%= @challenge.name %></h2>
+		<p><%= formatize @challenge.description %></p>
+		<br/>
+		<p><b>Schritt 1</b> Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst, oder ganz andere Materialien!</p>
+		<p><b>Schritt 2</b> Mache Photos und Videos, um dein Modell zu zeigen!</p>
+		<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
+		  <% if @design.errors.any? %>
+			<div id="error_explanation">
+			  <h2><%= pluralize(@design.errors.count, "error") %> prohibited this design from being saved:</h2>
 		
-	<h2>Entwirf deine <%= @challenge.name %></h2>
-	<p><%= formatize @challenge.description %></p>
-	<br/>
-	<p><b>Schritt 1</b> Baue ein Modell! Nutze dazu die Baukarten, die du in der Dezentrale erhältst, oder ganz andere Materialien!</p>
-	<p><b>Schritt 2</b> Mache Photos und Videos, um dein Modell zu zeigen!</p>
-	<%= form_for(@design, :url => { controller: "designs", action: "create_public" }) do |f| %>
-	  <% if @design.errors.any? %>
-		<div id="error_explanation">
-		  <h2><%= pluralize(@design.errors.count, "error") %> prohibited this design from being saved:</h2>
-	
-		  <ul>
-		  <% @design.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
-		  <% end %>
-		  </ul>
-		</div>
-	  <% end %>
-	
-		<div id="image_thumbs"></div>
-	
-		<div class="media-list">
-		
-		  <div class="media">
-			<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bilder hochladen">
-			<div id="progress" class="progress progress-striped active">
-			  <div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
+			  <ul>
+			  <% @design.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			  <% end %>
+			  </ul>
 			</div>
+		  <% end %>
+		
+			<div id="image_thumbs"></div>
+		
+			<div class="media-list">
+			
+			  <div class="media">
+				<input id="imageupload_button" class="imageupload_button" type="file" name="image[image]" data-url="/images/upload_public" value="Bilder hochladen">
+				<div id="progress" class="progress progress-striped active">
+				  <div class="bar progress-bar progress-bar-info" style="width: 0%;"></div>
+				</div>
+			  </div>
+			  
+			</div>
+		
+		
+		  <div class="field">
+			<!--%= label_tag "media_link", "Video URL" %><br /-->
+			<%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Vimeo hier einfügen, z.B. http://www.youtube.com/watch?v=UIUOS01WRvM"  %>
+			<div id="media_link_preview" class="oembed"></div>
+		  </div>
+		
+		  <!--div class="field">
+			<%= f.label :name, "Titel" %><br />
+			<%= f.text_field :name, class: "form-control" %>
+		  </div-->
+		  <br/>
+		  <p><b>Schritt 3</b> Beschreibe, wie deine Fabrik funktioniert! Warum soll es diese Fabrik geben? Warum nicht?</p>
+		  
+		  <div class="field">
+			<!--%= f.label :description, "Beschreibung" %><br /-->
+			<%= f.text_area :description, class: "form-control" %>
+		  </div>
+		
+			Jetzt nur noch unterschreiben! Unter diesem Namen wird dein Entwurf zur Abstimmung gestellt.
+		  <div class="field">
+			<!--%= f.label :username, "Deine Signatur" %><br /-->
+			<%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
+		  </div>  
+			<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
+			<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
+		
+		  <div class="actions">
+			<%= f.submit "Modell einreichen", class: "btn btn-success", data: { "toggle" => "modal"}, href: "#creator_submit_modal" %>
+			<%= link_to "Abbrechen", url_options = { controller: "challenges", action: "show_public", id: @challenge.id }, html_options = {class: "btn btn-default pull-right"} %><br/>
 		  </div>
 		  
-		</div>
-	
-	
-	  <div class="field">
-		<!--%= label_tag "media_link", "Video URL" %><br /-->
-		<%= text_field_tag "media_link", nil, class: "form-control", placeholder: "URL zu youTube oder Vimeo hier einfügen, z.B. http://www.youtube.com/watch?v=UIUOS01WRvM"  %>
-		<div id="media_link_preview" class="oembed"></div>
-	  </div>
-	
-	  <!--div class="field">
-		<%= f.label :name, "Titel" %><br />
-		<%= f.text_field :name, class: "form-control" %>
-	  </div-->
-	  <br/>
-	  <p><b>Schritt 3</b> Beschreibe, wie deine Fabrik funktioniert! Warum soll es diese Fabrik geben? Warum nicht?</p>
-	  
-	  <div class="field">
-		<!--%= f.label :description, "Beschreibung" %><br /-->
-		<%= f.text_area :description, class: "form-control" %>
-	  </div>
-	
-		Jetzt nur noch unterschreiben! Unter diesem Namen wird dein Entwurf zur Abstimmung gestellt.
-	  <div class="field">
-		<!--%= f.label :username, "Deine Signatur" %><br /-->
-		<%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
-	  </div>  
-		<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
-		<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
-	
-	  <div class="actions">
-		<%= f.submit "Modell einreichen", class: "btn btn-success" %>
-	  </div>
-	  
-	<% end %>
-	
-	<!--%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "imageupload") do %>
-		<%= hidden_field_tag "image[upload_hash]", @design_upload_hash %>
-		<%= file_field_tag "image[image]" %>
-	<% end %--!>
+		  <%= render partial: "creator_submit_modal", locals: {} %>
+		  
+		<% end %>
+		
+		<!--%= form_tag((url_for controller: "images", action: "create_public"), multipart: true, :remote => true, :id => "imageupload") do %>
+			<%= hidden_field_tag "image[upload_hash]", @design_upload_hash %>
+			<%= file_field_tag "image[image]" %>
+		<% end %--!>
+		
+	</div>
 	
 </div>
-	

@@ -186,6 +186,10 @@ $(document).ready(function() {
 		imageModalFill($(modal_image_collection).eq(modal_image_collection_pointer));
 	});	
 	
+	$('.creator-submit-yes').click( function () {
+		$("form.new_design").submit();
+	});	
+	
 });
 
 
