@@ -379,6 +379,11 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	display: inline-block;
 }
 
+.design .card-content{
+	padding-bottom:0; /* because of star-rating at the end */
+}
+
+
 .designs .preview {
 	background-image:url(/assets/Papierbackground_small.jpg);
 	background-repeat:no-repeat;
