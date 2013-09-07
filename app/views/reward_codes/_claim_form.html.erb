@@ -1,20 +1,34 @@
 <h2>Punkte einlösen</h2>
-<%= form_tag(url_for controller: "reward_codes", action: "claim") do %>
+<%= form_tag url_for(:controller => "reward_codes", :action => "claim"), :class => "claim-form" do %>
 
-  <div class="field">
-    <%= label_tag 'Name' %><br />
+  <div class="field username-container">
     <%= text_field_tag :username, @cookie_username, class: "typeahead-username username" %>
+    <%= label_tag 'Benutzername', nil, :class => "sr-only" %>
   </div>
-  <div class="field">
-    <%= label_tag :code %><br />
-    <%= text_field_tag :code, nil, class: "form-control input-large" %>
-  </div><br/>
-	<%= submit_tag "Einlösen", class: "btn btn-success" %>
+
+	<div class="pull-right">
+	
+		<%= submit_tag "Einlösen", class: "btn btn-success " %>
+	
+	  <div class="field has-success input-code-container">
+		<%= label_tag :code, 'nil', :class => "sr-only" %>
+		<%= text_field_tag :code, nil, class: "form-control input-code ", :placeholder => "Code", :size => 	6, :maxlength => 6 %>
+	  </div>
+  
+  </div>
+  
+  <div class="clear"></div>
+
+      <span class="typeahead-username-new label label-info">Neuer Benutzername</span>
+    <span class="typeahead-username-old label label-success">Bekannter Benutzername</span>  
+
+	<div class="clear"></div>
+
 
 <% end %>
 
 <% if @message %>
-<br/>
+
 <div class="alert <%= @message_class %> alert-dismissable">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
   <%= @message.html_safe %>

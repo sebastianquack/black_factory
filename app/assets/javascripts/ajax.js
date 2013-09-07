@@ -45,7 +45,7 @@ $(document).ready(function() {
 						progress + '%'
 				);
 				if(data.loaded == data.total) {
-					$('#progress .bar').html('finishing...');
+					$('#progress .bar').html('Einen Moment noch...');
 				}
 		}
 	});

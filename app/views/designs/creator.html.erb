@@ -54,10 +54,17 @@
 		  </div>
 		
 			Jetzt nur noch unterschreiben! Unter diesem Namen wird dein Entwurf zur Abstimmung gestellt.
-		  <div class="field">
-			<!--%= f.label :username, "Deine Signatur" %><br /-->
+		  <div class="field username-container">
 			<%= f.text_field :username, :value => @cookie_username, class: "typeahead-username username" %>
+			<%= f.label :username, "Unterschrift (Benutzername)" %>
+
+		    <span class="typeahead-username-new label label-info">Neuer Benutzername</span>
+			<span class="typeahead-username-old label label-success">Bekannter Benutzername</span>  
+
 		  </div>  
+		  
+		  <div class="clear"></div>
+		  
 			<%= f.hidden_field :challenge_id, :value => @challenge.id %>	
 			<%= f.hidden_field :upload_hash, :value => 	@design_upload_hash %>
 		

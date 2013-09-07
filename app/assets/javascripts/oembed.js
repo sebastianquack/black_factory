@@ -13,7 +13,7 @@ $(document).ready(function() {
 			preview_tag.hide();
 			return;
 			}
-		else preview_tag.show().removeClass("failed").addClass("processing").text( "\"" + input_val + "\" wird geprüft" );
+		else preview_tag.show().removeClass("failed").addClass("processing").text( "" + input_val + " <b>wird geprüft</b>" );
 		preview_tag.oembed($(this).val(), {
 			embedMethod: "fill",
 			/*
@@ -25,7 +25,7 @@ $(document).ready(function() {
 				//console.log("done");
 				//console.log(oembedData);
 				preview_tag.show().removeClass("processing");
-				if (oembedData.error_code) preview_tag.show().addClass("failed").text( "\"" + input_val + "\"" + " nicht korrekt" );
+				if (oembedData.error_code) preview_tag.show().addClass("failed").text( "\"" + input_val + "\"" + " <b>nicht korrekt</b>" );
 				if ($("input#media_link").val == "") preview_tag.hide();
 				},			
 			beforeEmbed: function() {

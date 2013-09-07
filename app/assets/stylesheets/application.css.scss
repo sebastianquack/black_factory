@@ -162,12 +162,38 @@ input.username {
     width:50%;
 }
 
-input.username:after {
+.comment-form input.username,
+.claim-form input.username
+{
+	margin-top:10px;
+    font-size:20px;
+    margin-bottom:0px;
+	border: solid black;
+	border-width: 0 0 1px 0;
+}
+
+.claim-form input.username
+{
+	margin-top:0px;
+}
+
+.username-container {
+	width:50%;
+}
+
+
+.username-container .username, .username-container label {
+	width:100%;
+}
+
+.username-container .username {
+	margin-bottom:0 !important;
+}
+
+.username-container label {
 	display:block;
-	content: "Unterschrift (Benutzername)";
 	border:0 solid black;
 	border-width:1px 0 0 0;
-	width:33%;
 	text-align:center;
 	font-size:85%;
 }
@@ -176,12 +202,24 @@ input.username:after {
 	font-family: 'La Belle Aurore', cursive;
 }
 
+.creator .username-container {
+	margin-bottom:30px;
+	margin-top:20px;
+	width:36%;
+}
+
+.creator .username-container .typeahead-username-new, 
+.creator .username-container .typeahead-username-old {
+	margin:auto;
+	margin-bottom:20px;
+}
+
+
 .tt-hint {
 	border-bottom:0;
 }
 
 input.username:focus {
-    border:none;
     outline: none;
 }
 
@@ -203,12 +241,34 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	overflow:hidden;
 }
 
-.highscore-table td, th {
-	padding-right: 10px;
+.highscore .alert {
+	clear:both;
+	margin-top:20px;
+	margin-bottom:0px;
 }
 
 .claim_points, .highscore {
-	padding:10px;
+	padding:0 20px 20px 20px;
+}
+
+.claim-form input.input-code {
+	width:8em;
+	text-transform:uppercase;
+}
+
+.claim-form .username-container {
+	float:left;
+	width:40%;
+}
+
+.claim-form .input-code-container,
+.claim-form input[type=submit] {
+	float:right;
+	display:inline-block;
+	vertical-align:bottom;
+	margin-left:20px;
+	position:relative;
+	top:8px;
 }
 
 .challenges .preview, .designs .preview {
@@ -255,8 +315,8 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	padding:6%;
 }
 
-.creator.card-content {
-	padding:3%;
+.creator.card-content, .design .card-content {
+	padding:4%;
 }
 
 .label-new {
@@ -305,17 +365,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	margin-left:5%;
 }
 
-.comment-form input.username {
-	margin-top:10px;
-    font-size:20px;
-    margin-bottom:0px;
-	border: solid black;
-	border-width: 0 0 1px 0;
-}
-
 .typeahead-username-new, .typeahead-username-old {
 	margin-top:20px;
 	float:left;
+	display:none;
 }
 
 .comment-form input[type=submit] {
@@ -331,13 +384,9 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	background-repeat:no-repeat;
 	background-size:100% 100%;
 }
- 
-.design .main_image {
-	margin-bottom:10px;
-}
 
 .design .main_image {
-	margin-bottom:10px;
+	margin-bottom:20px;
 }
  
 .design img.image-preview {
@@ -373,16 +422,16 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 }
 
 .creator .directives {
-	background-image: url("/assets/baustelle-x.jpg");
-	background-repeat:repeat-x;
+	background-image: url("/assets/baustelle-y.jpg");
+	background-repeat:repeat-y;
 	background-position:0 0;
-	background-size:220px 25px;
-	padding-top:40px;
+	background-size:25px 220px;
+	padding-left:45px;
 	border-width:1px 2px 2px 2px;
 }
 
 
-.creator input[type=text], .creator textarea, .creator .media-list, .creator .twitter-typeahead {
+.creator input[type=text], .creator textarea, .creator .media-list {
 	margin-bottom: 20px;
 }
 
@@ -439,10 +488,6 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .imageupload_button:hover {
 	
-}
-
-.typeahead-username-new, .typeahead-username-old {
-	display:none;
 }
 
 .clear { clear:both; }

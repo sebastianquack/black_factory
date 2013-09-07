@@ -8,7 +8,7 @@
 			<q class=""><%= comment.content %></q>
 			<div class="pull-right">
 			<small class="username"><%= comment.username %></small>
-			<small class="created_at">vor <%= time_ago_in_words(comment.created_at).sub(" eine "," einer ") %></small>
+			<small class="created_at">vor <%= time_ago_in_words(comment.created_at).sub(" eine "," einer ").sub(" Tage"," Tagen") %></small>
 			</div>
 		</div>
 		<% end %>

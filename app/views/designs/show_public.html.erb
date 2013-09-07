@@ -1,7 +1,7 @@
 <div class="row" style="padding-bottom:15px;">
 	<div class="col-md-12" style="text-align:center;">
 		<%= link_to controller: "challenges", action: "show_public", id: @design.challenge do %> 
-			<%= image_tag("info-black.png", :style => "width:3%") %>
+			<%= image_tag("arrow-black-top2.png", :style => "width:3%") %>
 		<% end %> 
 		<br>
 		<%= link_to controller: "challenges", action: "show_public", id: @design.challenge do %> 
@@ -32,33 +32,34 @@
 	
 		<div class="design card">
 		
-			<% if @design.main_image %>
-				<div class="main_image">
-					<%= link_to @design.main_image.image.url(:large), :title => (@design.main_image.description if @design.main_image.description) do %>
-						<%= image_tag @design.main_image.image.url(:large), :class => "image-modal" %><br/>
-					<% end %>
-				</div>
-			<% end %>
-	
-			<% @design.images.each do |image| %>
-				<% if image.id != @design.main_image_id %>
-				<div class="image-preview">
-					<%= link_to image.image.url(:large), :title => image.description do %>
-						<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
-					<% end %>
-				</div>
-				<% end %>
-			<% end %>
-	
-			<div style="clear:both"></div>
-	
-			<% if @design.media_link && !@design.media_link.url.blank? %>
-				<p class="media_link">
-				  <a class="oembed" href="<%= @design.media_link.url if @design.media_link %>"><%= image_tag("darkLoader.gif") %></a>
-				</p>
-			<% end %>
-	
 			<div class="card-content">
+			
+				<% if @design.main_image %>
+					<div class="main_image">
+						<%= link_to @design.main_image.image.url(:large), :title => (@design.main_image.description if @design.main_image.description) do %>
+							<%= image_tag @design.main_image.image.url(:large), :class => "image-modal" %><br/>
+						<% end %>
+					</div>
+				<% end %>
+		
+				<% @design.images.each do |image| %>
+					<% if image.id != @design.main_image_id %>
+					<div class="image-preview">
+						<%= link_to image.image.url(:large), :title => image.description do %>
+							<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
+						<% end %>
+					</div>
+					<% end %>
+				<% end %>
+		
+				<div style="clear:both"></div>
+		
+				<% if @design.media_link && !@design.media_link.url.blank? %>
+					<p class="media_link">
+					  <a class="oembed" href="<%= @design.media_link.url if @design.media_link %>"><%= image_tag("darkLoader.gif") %></a>
+					</p>
+				<% end %>
+				
 				
 				<p>
 				  <%= @design.description %>
