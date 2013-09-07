@@ -160,6 +160,7 @@ input.username {
     font-size:20px;
     background-color:transparent;
     width:50%;
+    text-transform: capitalize;
 }
 
 .comment-form input.username,
@@ -200,6 +201,11 @@ input.username {
 
 .username {
 	font-family: 'La Belle Aurore', cursive;
+	text-transform: capitalize;
+}
+
+.highscore .username {
+	font-size:130%;
 }
 
 .creator .username-container {

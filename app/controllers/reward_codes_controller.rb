@@ -5,41 +5,44 @@ class RewardCodesController < ApplicationController
 	def highscores
 		@scores = UsernameScore.order("score DESC")
 		@cookie_username = cookies[:username]
-
+		@cookie_username = 'Anonym' if @cookie_username.nil?
 	end
   
   def claim  
-  		
-  	score = UsernameScore.where(:username => params[:username].strip.capitalize).first
-  	unless score
-  		score = UsernameScore.new
-  		score.score = 0
-  		score.username = params[:username].strip.capitalize
-  	end
-  	
-		logger.debug score.username
 
-		code = RewardCode.where(:code => params[:code].strip.upcase).first
- 		if code
- 			if code.status == 0
- 			 	score.score = score.score + code.points
-	 			score.save
-	 			code.status = 1
-	 			code.save
-	 			cookies.permanent[:username] = score.username
- 				@message_class = 'alert-success'
- 				@message = '<strong>Gratulation!</strong> ' + score.username + ' wurden ' + code.points.to_s + ' Punkte gutgeschrieben.'
- 			else
- 				@message_class = 'alert-warning'
- 				@message = '<strong>Hinweis</strong> Code schon benutzt!'
- 			end
- 		else
- 		 	@message_class = 'alert-warning'
- 			@message = '<strong>Hinweis</strong> Code nicht erkannt!'
+	if !params[:username].nil?
+		score = UsernameScore.where(:username => params[:username].strip.capitalize).first
+		unless score
+			score = UsernameScore.new
+			score.score = 0
+			score.username = params[:username].strip.capitalize
+		end
+		
+			logger.debug score.username
+	
+			code = RewardCode.where(:code => params[:code].strip.upcase).first
+			if code
+				if code.status == 0
+					score.score = score.score + code.points
+					score.save
+					code.status = 1
+					code.save
+					cookies.permanent[:username] = score.username
+					@message_class = 'alert-success'
+					@message = '<strong>Gratulation!</strong> ' + score.username + ' wurden ' + code.points.to_s + ' Punkte gutgeschrieben.'
+				else
+					@message_class = 'alert-warning'
+					@message = '<strong>Hinweis</strong> Code schon benutzt!'
+				end
+			else
+				@message_class = 'alert-warning'
+				@message = '<strong>Hinweis</strong> Code nicht erkannt!'
+			end
  		end
   	
-  	@cookie_username = cookies[:username]
-		@scores = UsernameScore.all
+  		@cookie_username = cookies[:username]
+	  	@cookie_username = 'Anonym' if @cookie_username.nil?
+		@scores = UsernameScore.order("score DESC")
 		render action: "highscores"
   end
   
