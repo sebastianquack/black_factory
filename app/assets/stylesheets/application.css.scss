@@ -27,16 +27,24 @@ $font-family-base: 'Nixie One';
 
 // END BOOTSTRAP TESTS
 
-@import url(http://fonts.googleapis.com/css?family=Nixie+One|La+Belle+Aurore);
+@import url(http://fonts.googleapis.com/css?family=La+Belle+Aurore);
+
 /*
+family=Nixie+One|
 font-family: 'Nixie One', cursive;
 font-family: 'Flamenco', cursive;
 */
+
 @font-face {
 font-family: Neusa-Bold;
 src: url("Neusa-Bold.otf") format("opentype");
 }
 
+
+@font-face {
+font-family: Kankin;
+src: url("Kankin.eot");
+}
 @font-face {
 font-family: Kankin;
 src: url("Kankin.otf") format("opentype");
@@ -345,6 +353,11 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	padding:10px 20px;
 }
 
+.comment .author { 
+	white-space:nowrap; 
+	text-align:right;	
+}
+
 .comment:after {
 	content: "";
 	display:block;
@@ -532,4 +545,27 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 #imageModal .modal-footer {
 	margin-top:0;
+}
+
+
+#imageModal .modal-content
+{
+}
+
+#imageModal .modal-body img
+{
+	background-image:url("/assets/darkLoader.gif");
+	background-repeat:no-repeat;
+	background-position:50% 0;
+	height:100%;
+	min-height:120px;
+}
+
+
+#imageModal .modal-header,
+#imageModal .modal-footer {
+}
+
+#imageModal .modal-header button,
+#imageModal .modal-footer button {
 }

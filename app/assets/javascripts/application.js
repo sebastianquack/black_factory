@@ -172,6 +172,7 @@ $(document).ready(function() {
 	imageModalFill = function(imgObj){
 		$('#imageModal .modal-body').empty();
 		var title = $(imgObj).parent('a').attr("title");
+		if (title == undefined) title = "";
 		if (title != "") title = '<p>' + title + '</p>';
 		//if (title == "") title = "&nbsp";
 		//$('#imageModal .modal-title').html("Bildanzeige");
@@ -189,7 +190,7 @@ $(document).ready(function() {
 		modal_image_collection_pointer = $("img.image-modal").index($(this))-1;
 		imageModalFill(this);
 		$('#imageModal').modal({show:true});
-		console.log("length " + modal_image_collection.length);
+		if (modal_image_collection.length == 1) $('#imageModal .btn-modal-image-previous, #imageModal .btn-modal-image-next').hide();
 		return false;
 	});	
 	
