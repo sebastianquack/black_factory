@@ -58,7 +58,7 @@ class RewardCodesController < ApplicationController
   end
 
 	def index_print
-    @reward_codes = RewardCode.where(:status => 0)
+    @reward_codes = RewardCode.where(:status => 0, :points => params[:points])
 
     respond_to do |format|
       format.html { render layout: false }
