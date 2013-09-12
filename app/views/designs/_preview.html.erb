@@ -13,7 +13,7 @@
 				<%= design.username %>s Fabrik
 				<span class="label label-info label-new shade-highlight" data-age="<%= Time.now.to_time.to_i - design.created_at.to_time.to_i %>">Neu</span>
 			</h4>
-			Beliebtheit: <b><span class="design-score"><%= design.score %></span></b><!-- (<span class="design-vote_count"><%= design.vote_count %></span> Meinungen)<br/>-->
+			Beliebtheit: <b><span class="design-score"><%= design.score.to_i %></span></b><!-- (<span class="design-vote_count"><%= design.vote_count %></span> Meinungen)<br/>-->
 		</div>
 	
 	</div>

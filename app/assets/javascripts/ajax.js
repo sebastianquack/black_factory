@@ -131,7 +131,7 @@ initStarRating = function() {
 				data: "value=" + value,
 				dataType: "json",
 				success: function(data) {
-					$(".designs [data-id=" + data.id + "], .design").find(".design-score").text(data.score);
+					$(".designs [data-id=" + data.id + "], .design").find(".design-score").text(Math.floor(data.score));
 					$(".designs [data-id=" + data.id + "]").attr("data-score", data.score_sort);
 
 					$(".designs [data-id=" + data.id + "], .design").find(".design-vote_count").text(data.vote_count);	

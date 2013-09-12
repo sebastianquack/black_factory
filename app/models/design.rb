@@ -10,9 +10,13 @@ class Design < ActiveRecord::Base
   after_create :init_votes
   
   def init_votes
-  	self.score = 0
+  	self.score = Design.average('score')
   	self.vote_count = 0
   	self.save
+  	vote_cookie = VoteCookie.new
+  	vote_cookie.design_id = self.id
+  	vote_cookie.vote = self.score
+  	vote_cookie.save
   end
 
 end

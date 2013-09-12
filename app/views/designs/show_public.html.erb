@@ -66,9 +66,9 @@
 				</p>
 				
 				<p>
-				  <b>Gesamtwertung: </b>
+				  <b>Beliebtheit: </b>
 				
-				  <span class="design-score"><%= @design.score %></span> (Berechnet aus <span class="design-vote_count"><%= @design.vote_count %></span> Meinung<span class="plural" <% if @design.vote_count == 1 %>style="display:none"<% end %>>en</span>)
+				  <span class="design-score"><%= @design.score.to_i %></span> 
 				</p>
 				
 				<p class="deine_meinung">
