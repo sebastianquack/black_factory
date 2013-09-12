@@ -6,9 +6,9 @@
 		<% unless comment.hidden %>
 		<div class="comment well-sm well">
 			<q class=""><%= comment.content %></q>
-			<div class="pull-right">
+			<div class="pull-righ author">
 			<small class="username"><%= comment.username %></small>
-			<small class="created_at">vor <%= time_ago_in_words(comment.created_at).sub(" eine "," einer ").sub(" Tage"," Tagen") %></small>
+			<small class="created_at">vor <%= time_ago_in_words(comment.created_at).sub(" eine "," einer ").sub(" Tage"," Tagen").sub("ein Tag","einem Tag") %></small>
 			</div>
 		</div>
 		<% end %>
