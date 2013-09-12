@@ -23,6 +23,7 @@ DarkFactory::Application.routes.draw do
 	match 'designs/creator' => 'designs#creator', 'as' => 'creator'
 	match 'designs/create' => 'designs#create_public'
 	match 'designs/:id' => 'designs#show_public', 'as' => 'design'
+	match 'designs/print/:id' => 'designs#print'
 	match 'designs/:id/previous' => 'designs#show_previous'
 	match 'designs/:id/next' => 'designs#show_next'	
 	match 'designs/:id/vote' => 'designs#vote'

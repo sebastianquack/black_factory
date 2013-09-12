@@ -29,6 +29,11 @@ class DesignsController < ApplicationController
 		end
 	end
 
+	def print 
+		@design = Design.find(params[:id])
+		@challenge = @design.challenge	
+	end
+
 	def show_previous #higher score
 		current_design = Design.find(params[:id])		
 		@design = Design.where("score >= ? AND id != ? AND challenge_id = ?", current_design.score, current_design.id, current_design.challenge_id).order('score DESC').last

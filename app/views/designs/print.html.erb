@@ -1,0 +1,27 @@
+<div class="row">
+
+	<div class="col-sm-8 col-sm-offset-2">
+	
+		<div class="design card">
+		
+			<div class="card-content">
+		
+				<h2><%= @design.username %>s Fabrik (<%= @challenge.name %>)</h2>
+				<p>
+				  Beliebtheit: <b><%= @design.score.to_i %></b>
+				</p>				
+				<p>
+				  <%= @design.description %>
+				</p>
+				<% @design.images.each do |image| %>
+						<%= image_tag image.image.url(:medium), :style => "width: 500px; padding-bottom: 5px"%><br/>
+						<%= image.description %><br/><br/>
+				<% end %>
+		
+				<div style="clear:both"></div>
+										
+			</div>
+		
+		</div>	
+	</div>
+	
