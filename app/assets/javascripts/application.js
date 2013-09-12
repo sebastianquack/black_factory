@@ -187,7 +187,7 @@ $(document).ready(function() {
 	$('img.image-modal').click(function(){
 		if (typeof modal_image_collection == "undefined")
 			modal_image_collection = $("img.image-modal");
-		modal_image_collection_pointer = $("img.image-modal").index($(this))-1;
+		modal_image_collection_pointer = $("img.image-modal").index($(this));
 		imageModalFill(this);
 		$('#imageModal').modal({show:true});
 		if (modal_image_collection.length == 1) $('#imageModal .btn-modal-image-previous, #imageModal .btn-modal-image-next').hide();
