@@ -57,6 +57,15 @@ class RewardCodesController < ApplicationController
     end
   end
 
+	def index_print
+    @reward_codes = RewardCode.where(:status => 0)
+
+    respond_to do |format|
+      format.html { render layout: false }
+      format.json { render json: @reward_codes }
+    end
+  end
+
   # GET /reward_codes/1
   # GET /reward_codes/1.json
   def show
