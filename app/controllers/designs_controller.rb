@@ -85,8 +85,9 @@ class DesignsController < ApplicationController
 				
       	cookies.permanent[:username] = @design.username
       	
-    	u = UsernameScore.where(:username => @design.username).first_or_create :score => 0
-		u.save      	
+    	u = UsernameScore.where(:username => @design.username).first_or_create(:score => 0)
+  		u.score = u.score + 100
+			u.save      	
       	
         format.html { 
         	redirect_to :controller => "designs", :action => "show_public", :id => @design.id
@@ -109,12 +110,17 @@ class DesignsController < ApplicationController
 		
 		if params[:value].to_i > 0 && params[:value].to_i < 6
 			record = VoteCookie.where(cookiehash: cookie_hash, design_id: @design.id).first
+	    u = UsernameScore.where(:username => @design.username).first_or_create(:score => 0)
 			if record == nil
 				record = VoteCookie.new
 				record.design_id = @design.id
 				record.cookiehash = cookie_hash
+			else 
+				u.score = u.score - (record.vote.to_i * 10)
 			end
 			record.vote = params[:value]
+ 			u.score = u.score + (params[:value].to_i * 10)
+			u.save      	
 			record.save
 		end
 		
