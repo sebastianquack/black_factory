@@ -1,6 +1,6 @@
 <div class="preview-link preview card" data-url="<%= url_for controller: "challenges", action: "show_public", id: challenge %>">
 
-	<%= image_tag challenge.main_image.image.url(:medium) if challenge.main_image %>
+	<%= image_tag challenge.main_image.image.url(:medium), :class => "main_image" if challenge.main_image %>
 	
 	<div class="card-content">
 	

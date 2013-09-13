@@ -7,7 +7,7 @@
 
 	<div class="preview card preview-link" data-url="<%= url_for controller: "designs", action: "show_public", id: design.id, only_path: true %>">
 		
-		<img class="media-object" src="<%= design.main_image.image.url(:medium) if design.main_image %>" alt="<%= design.main_image.description if design.main_image %>">
+		<img class="media-object main_image" src="<%= design.main_image.image.url(:mediumsquared) if design.main_image %>" alt="<%= design.main_image.description if design.main_image %>">
 		<div class="card-content">
 			<h4 class="shade-highlight">
 				<%= design.username %>s Fabrik

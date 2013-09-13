@@ -320,7 +320,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	top:2px;
 }
 
-.card > img:first-child {
+.card > img:first-child, .card img.main_image {
 	border-radius: 10px 10px 0 0;
 	width:100%;
 }

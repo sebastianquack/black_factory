@@ -88,6 +88,12 @@
 			<% unless design.id == @challenge.winner_design_id %>
 				<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
 				<% i = i + 1 %>
+				<% if (i) % 3 == 0 %>
+					<div style="clear:both" class="visible-lg"></div>
+				<% end %>
+				<% if (i) % 2 == 0 %>
+					<div style="clear:both" class="hidden-lg hidden-xs"></div>
+				<% end %>				
 			<% end %>
 						
 		<% end %>
