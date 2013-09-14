@@ -9,7 +9,9 @@
 		<h3><%= l challenge.time, :format => :long %></h3>
 		
 		<p class="shade-highlight">
-		Noch <span class="countdown" data-time="<%= challenge.time.to_i %>"></span> bis zum Umbau.
+		<% if Time.now.to_i < challenge.time.to_i %>Noch <% end %>
+		<span class="countdown" data-time="<%= challenge.time.to_i %>"></span>
+		<% if Time.now.to_i < challenge.time.to_i %> bis zum Umbau.<% end %>
 		</p>
 		
 		<!--p><%= challenge.description %></p-->
