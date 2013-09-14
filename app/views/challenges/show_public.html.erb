@@ -5,20 +5,22 @@
 		<div class="static-section card">
 
 			<%= image_tag @challenge.main_image.image.url(:large) if @challenge.main_image %>
-	
-			<div class="challenge card-content">
-					
-				<div id="image_thumbs">	
-				<% @challenge.images.each do |image| %>
-						<% if image.id != @challenge.main_image.id %>
-							<div class="image-preview">
-							<%= image_tag image.image.url(:medium) %>
-							</div>
-						<% end %>
-				<% end %>
-				</div>
-				<div style="clear:both"></div>
-				
+						
+			<div id="image_thumbs">	
+			<% @challenge.images.each do |image| %>
+					<% if image.id != @challenge.main_image.id %>
+						<div class="image-preview">
+						<%= link_to image.image.url(:large), :title => (image.description if image.description) do %>
+							<%= image_tag image.image.url(:thumbsquared), :class => "image-modal" %><br/>
+						<% end %>							
+						</div>
+					<% end %>
+			<% end %>
+			</div>
+			<div style="clear:both"></div>
+
+			<div class="challenge card-content <% if @challenge.winner_design %>over<% end %>">
+
 				<% if @challenge.winner_design %>
 	
 					<form>
@@ -34,7 +36,7 @@
 					</form>
 				
 				<% end %>
-								
+
 				<h2>
 				  <%= @challenge.name %>
 				</h2>
