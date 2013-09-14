@@ -15,7 +15,7 @@
 			<div>
 					<% unless image.id == design.main_image_id %>
 						<%= link_to image.image.url(:large), :title => image.description do %>
-							<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
+							<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %>
 						<% end %>
 					<% end %>
 			</div>

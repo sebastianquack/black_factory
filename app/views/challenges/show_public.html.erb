@@ -11,7 +11,7 @@
 					<% if image.id != @challenge.main_image.id %>
 						<div class="image-preview">
 						<%= link_to image.image.url(:large), :title => (image.description if image.description) do %>
-							<%= image_tag image.image.url(:thumbsquared), :class => "image-modal" %><br/>
+							<%= image_tag image.image.url(:thumbsquared), :class => "image-preview image-modal" %>
 						<% end %>							
 						</div>
 					<% end %>
