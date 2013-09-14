@@ -14,7 +14,9 @@
 			<% design.images.each do |image| %>
 			<div>
 					<% unless image.id == design.main_image_id %>
-					<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
+						<%= link_to image.image.url(:large), :title => image.description do %>
+							<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
+						<% end %>
 					<% end %>
 			</div>
 			<% end %><br/>
@@ -24,6 +26,7 @@
 				  <a class="oembed" href="<%= design.media_link.url if design.media_link %>"><%= image_tag("darkLoader.gif") %></a>
 				</p>
 			<% end %>
+			<div style="clear:both"></div>
 						
 			<p><%= design.description %></p>
 			
