@@ -2,7 +2,7 @@ require 'securerandom'
 
 class DesignsController < ApplicationController
 
-	before_filter :authenticate, except: [:show_public, :show_previous, :show_next, :creator, :create_public, :vote]
+	before_filter :authenticate, except: [:show_public, :show_previous, :show_next, :creator, :create_public, :vote, :print]
 
 	# GET /designs/1
 	# GET /designs/1.json
