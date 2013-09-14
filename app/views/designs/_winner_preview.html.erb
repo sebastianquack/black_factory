@@ -4,9 +4,8 @@
 	
 		<div class="card-content">
 
-
-		<h2>Der Sieger-Entwurf: <%= design.name %></h2>
-		<%= image_tag design.main_image.image.url(:large) if design.main_image %><br/>
+		<h2>Das Sieger-Modell: <%= design.username %>s Fabrik</h2>
+		<%= image_tag design.main_image.image.url(:large) if design.main_image %>
 		
 			<% if design.main_image %>
 				<%= design.main_image.description %></br>
@@ -15,8 +14,7 @@
 			<% design.images.each do |image| %>
 			<div>
 					<% unless image.id == design.main_image_id %>
-					<%= image_tag image.image.url(:thumb) %><br/>
-					<%= image.description %>
+					<%= image_tag image.image.url(:mediumsquared), :class => "image-preview image-modal", :title => image.description %><br/>
 					<% end %>
 			</div>
 			<% end %><br/>
@@ -27,20 +25,12 @@
 				</p>
 			<% end %>
 						
-			<p>
-			  <b>Description:</b>
-			  <%= design.description %>
-			</p>
+			<p><%= design.description %></p>
 			
 			<p>
-			  <b>Challenge:</b>
-			  <%= design.challenge.name %>
-			</p>
+			  <b>Beliebtheit:
 			
-			<p>
-			  <b>Bewertung:</b>
-			
-			  <%= design.score %> (<%= design.vote_count %> Bewertungen)
+			  <%= design.score %> (<%= design.vote_count %> Meinungen)</b>
 			</p>
 			
 				
