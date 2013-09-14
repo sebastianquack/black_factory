@@ -14,7 +14,7 @@
 				  <%= @design.description %>
 				</p>
 				<% @design.images.each do |image| %>
-						<%= image_tag image.image.url(:medium), :style => "width: 500px; padding-bottom: 5px"%><br/>
+						<%= image_tag image.image.url, :style => "width: 500px; padding-bottom: 5px"%><br/>
 						<%= image.description %><br/><br/>
 				<% end %>
 		
@@ -26,6 +26,8 @@
 	</div>
 	
 <script type="text/javascript">
+$(window).load( function () {
 	window.print();
-	window.close();
+	history.back();
+	});
 </script>
