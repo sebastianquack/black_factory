@@ -71,7 +71,7 @@ $(document).ready(function() {
 		  // use "name" and "id" fields from JSON object
 		  if (initialselection == value.id) opt.attr('selected', 'selected');
 		  opt.attr('value', value.id);
-		  opt.text(value.name);
+		  opt.text(value.username + 's Fabrik');
 		  opt.appendTo(selectbox2);
 		});		
 	  }
