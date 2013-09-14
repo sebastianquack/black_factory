@@ -1,6 +1,6 @@
 <div class="row">
 
-	<div class="col-sm-6 col-md-6 col-lg-4">
+	<div class="col-sm-6 col-md-6 col-lg-<% if @challenge.winner_design %>6<% else %>4<% end %>">
 	
 		<div class="static-section card">
 
@@ -58,7 +58,7 @@
 
 	</div>
 	
-	<div id="designs" class="designs col-sx-6 col-sm-6 col-md-6 col-lg-8">
+	<div id="designs" class="designs col-sx-6 col-sm-6 col-md-6 col-lg-<% if @challenge.winner_design %>6<% else %>8<% end %>">
 		<% if @challenge.time > Time.now && @first_challenge != true %>
 			<div class="col-sx-6 col-sm-6 col-md-6 col-lg-4" data-id="-1" data-score="100000">
 
@@ -91,10 +91,10 @@
 				<%= render partial: "designs/preview", locals: {design: design, current_vote: @vote_cookies[design.id], index: i} %>
 				<% i = i + 1 %>
 				<% if (i) % 3 == 0 %>
-					<div style="clear:both" class="visible-lg"></div>
+					<div style="clear:both" class="<% if @challenge.winner_design %><% else %>visible-lg<% end %>"></div>
 				<% end %>
 				<% if (i) % 2 == 0 %>
-					<div style="clear:both" class="hidden-lg hidden-xs"></div>
+					<div style="clear:both" class="<% if @challenge.winner_design %><% else %>hidden-lg<% end %> hidden-xs"></div>
 				<% end %>				
 			<% end %>
 						
