@@ -398,6 +398,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	margin-top:20px;
 }
 
+.design .image-preview:last-child {
+margin-bottom: 20px;
+}
+
 .design .star-form , .deine_meinung{
 	display: inline-block;
 }
