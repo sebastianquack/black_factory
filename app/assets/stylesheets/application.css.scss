@@ -242,7 +242,7 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	/*height:auto;*/
 }
 
-.card img.image-preview {
+.card img.image-preview, div.image-preview img {
 	width: 25%;
 	float: left;
 }
@@ -343,6 +343,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 	border-width:1px 0 0 0;
 }
 
+.challenge.over .media-list {
+
+}
+
 .comments {
 	padding:10px;
 }
@@ -392,6 +396,10 @@ img[src*=large], img[src*=medium], #media_link_preview iframe, .media_link, .med
 
 .comment-form input[type=submit] {
 	margin-top:20px;
+}
+
+.design .image-preview:last-child {
+margin-bottom: 20px;
 }
 
 .design .star-form , .deine_meinung{
